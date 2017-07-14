@@ -33,11 +33,10 @@ RCT_EXPORT_MODULE()
   return [self visibleViewController:presentedViewController];
 }
 
-- (void)_show:(NSString *)msg duration:(NSTimeInterval)duration gravity:(NSInteger)gravity {
+- (void)_show:(NSMutableArray *)photos {
   dispatch_async(dispatch_get_main_queue(), ^{
     UIViewController *ctrl =
         [self visibleViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
-    NSMutableArray *photos = [NSMutableArray array];
 
     NYTPhotosViewController *photosViewController =
         [[NYTPhotosViewController alloc] initWithPhotos:photos initialPhoto:nil];
@@ -45,4 +44,5 @@ RCT_EXPORT_MODULE()
   });
 }
 
+RCT_EXPORT_METHOD(show : (NSMutableArray *)photos { [self _show:photos]; });
 @end

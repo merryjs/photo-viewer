@@ -45,4 +45,4 @@ buck-out/
 *.keystore
 
 # Carthage
-Carthage/Build      
+ios/Carthage/Checkouts      
