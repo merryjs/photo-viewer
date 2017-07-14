@@ -40,7 +40,7 @@ RCT_EXPORT_MODULE()
     NSMutableArray *photos = [NSMutableArray array];
 
     NYTPhotosViewController *photosViewController =
-        [[NYTPhotosViewController alloc] initWithPhotos:photos];
+        [[NYTPhotosViewController alloc] initWithPhotos:photos initialPhoto:nil];
     [ctrl presentViewController:photosViewController animated:YES completion:nil];
   });
 }
