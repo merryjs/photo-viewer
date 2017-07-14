@@ -251,11 +251,7 @@
 					"$(SRCROOT)/../**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-lc++",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = MerryPhotoViewer;
 				SKIP_INSTALL = YES;
 			};
@@ -276,11 +272,7 @@
 					"$(SRCROOT)/../**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-lc++",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = MerryPhotoViewer;
 				SKIP_INSTALL = YES;
 			};
