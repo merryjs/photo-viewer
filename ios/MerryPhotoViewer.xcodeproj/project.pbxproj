@@ -10,6 +10,9 @@
 		36AAC1A11F18B034004BFDC1 /* NYTPhotoViewerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AAC19E1F18B034004BFDC1 /* NYTPhotoViewerCore.framework */; };
 		36AAC1A21F18B034004BFDC1 /* NYTPhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AAC19F1F18B034004BFDC1 /* NYTPhotoViewer.framework */; };
 		36AAC1A31F18B034004BFDC1 /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AAC1A01F18B034004BFDC1 /* FLAnimatedImage.framework */; };
+		36AAC1E01F18BCC8004BFDC1 /* NYTPhotoViewerCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 36AAC19E1F18B034004BFDC1 /* NYTPhotoViewerCore.framework */; };
+		36AAC1E11F18BCC8004BFDC1 /* NYTPhotoViewer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 36AAC19F1F18B034004BFDC1 /* NYTPhotoViewer.framework */; };
+		36AAC1E21F18BCC8004BFDC1 /* FLAnimatedImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 36AAC1A01F18B034004BFDC1 /* FLAnimatedImage.framework */; };
 		B3E7B58A1CC2AC0600A0062D /* MerryPhotoViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* MerryPhotoViewer.m */; };
 /* End PBXBuildFile section */
 
@@ -20,6 +23,9 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				36AAC1E01F18BCC8004BFDC1 /* NYTPhotoViewerCore.framework in CopyFiles */,
+				36AAC1E11F18BCC8004BFDC1 /* NYTPhotoViewer.framework in CopyFiles */,
+				36AAC1E21F18BCC8004BFDC1 /* FLAnimatedImage.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +137,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		36AAC1A41F18B14F004BFDC1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -144,9 +150,9 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NYTPhotoViewer.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NYTPhotoViewerCore.framework",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 
