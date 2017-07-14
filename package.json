@@ -1,0 +1,25 @@
+{
+  "name": "@merryjs/photo-viewer",
+  "version": "1.0.0",
+  "description": "## Getting started",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": "bang88",
+  "license": "MIT",
+  "peerDependencies": {
+    "react-native": "^0.41.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/merryjs/photo-viewer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/merryjs/photo-viewer/issues"
+  },
+  "homepage": "https://github.com/merryjs/photo-viewer#readme"
+}
