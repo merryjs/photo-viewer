@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		361B2EB31F19CEE400C0608B /* MerryPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B2EB21F19CEE400C0608B /* MerryPhoto.m */; };
 		3666CD061F192FC900CFCFD4 /* FLAnimatedImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 36AAC1E61F18C978004BFDC1 /* FLAnimatedImage.framework */; };
 		3666CD071F192FC900CFCFD4 /* NYTPhotoViewer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 36AAC1E71F18C978004BFDC1 /* NYTPhotoViewer.framework */; };
 		36AAC1E91F18C978004BFDC1 /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AAC1E61F18C978004BFDC1 /* FLAnimatedImage.framework */; };
@@ -30,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libMerryPhotoViewer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMerryPhotoViewer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		361B2EB21F19CEE400C0608B /* MerryPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerryPhoto.m; sourceTree = "<group>"; };
+		361B2EB41F19CEF600C0608B /* MerryPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerryPhoto.h; sourceTree = "<group>"; };
 		36AAC1E61F18C978004BFDC1 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Carthage/Build/iOS/FLAnimatedImage.framework; sourceTree = "<group>"; };
 		36AAC1E71F18C978004BFDC1 /* NYTPhotoViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewer.framework; path = Carthage/Build/iOS/NYTPhotoViewer.framework; sourceTree = "<group>"; };
 		36AAC1E81F18C978004BFDC1 /* NYTPhotoViewerCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewerCore.framework; path = Carthage/Build/iOS/NYTPhotoViewerCore.framework; sourceTree = "<group>"; };
@@ -71,6 +74,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				361B2EB41F19CEF600C0608B /* MerryPhoto.h */,
+				361B2EB21F19CEE400C0608B /* MerryPhoto.m */,
 				B3E7B5881CC2AC0600A0062D /* MerryPhotoViewer.h */,
 				B3E7B5891CC2AC0600A0062D /* MerryPhotoViewer.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
@@ -134,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				361B2EB31F19CEE400C0608B /* MerryPhoto.m in Sources */,
 				B3E7B58A1CC2AC0600A0062D /* MerryPhotoViewer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

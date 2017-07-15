@@ -1,5 +1,6 @@
 
 #import "MerryPhotoViewer.h"
+#import "MerryPhoto.h"
 
 @implementation MerryPhotoViewer
 
@@ -33,16 +34,25 @@ RCT_EXPORT_MODULE()
   return [self visibleViewController:presentedViewController];
 }
 
-- (void)_show:(NSMutableArray *)photos {
+- (void)_show:(NSArray *)photos {
   dispatch_async(dispatch_get_main_queue(), ^{
     UIViewController *ctrl =
         [self visibleViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
 
+      NSMutableArray *mphotos = [NSMutableArray array];
+
+      MerryPhoto *merryPhoto = [[MerryPhoto alloc]init];
+      
+      merryPhoto.image = [UIImage imageNamed:@"aaa"];
+      merryPhoto.imageData = nil;
+      
+      [mphotos addObject:merryPhoto];
+      
     NYTPhotosViewController *photosViewController =
-        [[NYTPhotosViewController alloc] initWithPhotos:photos initialPhoto:nil];
+        [[NYTPhotosViewController alloc] initWithPhotos:mphotos initialPhoto:nil];
     [ctrl presentViewController:photosViewController animated:YES completion:nil];
   });
 }
 
-RCT_EXPORT_METHOD(show : (NSMutableArray *)photos { [self _show:photos]; });
+RCT_EXPORT_METHOD(show : (NSArray *)photos { [self _show:photos]; });
 @end
