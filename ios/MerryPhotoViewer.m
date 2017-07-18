@@ -41,33 +41,37 @@ RCT_EXPORT_MODULE()
   return [self visibleViewController:presentedViewController];
 }
 
-
 /**
  Create an internal method
 
  @param photos Photos Array
  */
 - (void)_show:(NSArray *)photos {
+  NSMutableArray *nytPhotos = [NSMutableArray array];
+
+  for (int i = 0; i < photos.count; i++) {
+    MerryPhoto *merryPhoto = [MerryPhoto new];
+    NSString *url = photos[i];
+    NSLog(@"URL: %@", url);
+
+    NSData *imageFromUrl = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+    // merryPhoto.image = [UIImage imageWithData:imageFromUrl];
+    merryPhoto.image = nil;
+    merryPhoto.imageData = imageFromUrl;
+
+    [nytPhotos addObject:merryPhoto];
+  }
+
   dispatch_async(dispatch_get_main_queue(), ^{
-      
+
     UIViewController *ctrl =
         [self visibleViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
 
-      NSMutableArray *mphotos = [NSMutableArray array];
-
-      MerryPhoto *merryPhoto = [[MerryPhoto alloc]init];
-      
-      merryPhoto.image = [UIImage imageNamed:@"aaa"];
-      merryPhoto.imageData = nil;
-      
-      [mphotos addObject:merryPhoto];
-      
     NYTPhotosViewController *photosViewController =
-        [[NYTPhotosViewController alloc] initWithPhotos:mphotos initialPhoto:nil];
+        [[NYTPhotosViewController alloc] initWithPhotos:nytPhotos initialPhoto:nil];
     [ctrl presentViewController:photosViewController animated:YES completion:nil];
   });
 }
-
 
 /**
  Export for js use
@@ -76,6 +80,5 @@ RCT_EXPORT_MODULE()
 
  */
 RCT_EXPORT_METHOD(show : (NSArray *)photos { [self _show:photos]; });
-
 
 @end
