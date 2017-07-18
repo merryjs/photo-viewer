@@ -8,18 +8,18 @@
 
 #ifndef MerryPhoto_h
 #define MerryPhoto_h
-#import <NYTPhotoViewer/NYTPhoto.h>
 #import <Foundation/Foundation.h>
+#import <NYTPhotoViewer/NYTPhoto.h>
 
 @interface MerryPhoto : NSObject<NYTPhoto>
 
 // Redeclare all the properties as readwrite for sample/testing purposes.
-@property (nonatomic) UIImage *image;
-@property (nonatomic) NSData *imageData;
-@property (nonatomic) UIImage *placeholderImage;
-@property (nonatomic) NSAttributedString *attributedCaptionTitle;
-@property (nonatomic) NSAttributedString *attributedCaptionSummary;
-@property (nonatomic) NSAttributedString *attributedCaptionCredit;
+@property(nonatomic) UIImage *image;
+@property(nonatomic) NSData *imageData;
+@property(nonatomic) UIImage *placeholderImage;
+@property(nonatomic) NSAttributedString *attributedCaptionTitle;
+@property(nonatomic) NSAttributedString *attributedCaptionSummary;
+@property(nonatomic) NSAttributedString *attributedCaptionCredit;
 
 @end
 
