@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		361B2EB31F19CEE400C0608B /* MerryPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B2EB21F19CEE400C0608B /* MerryPhoto.m */; };
-		3666CD061F192FC900CFCFD4 /* FLAnimatedImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 36AAC1E61F18C978004BFDC1 /* FLAnimatedImage.framework */; };
-		3666CD071F192FC900CFCFD4 /* NYTPhotoViewer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 36AAC1E71F18C978004BFDC1 /* NYTPhotoViewer.framework */; };
-		36AAC1E91F18C978004BFDC1 /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AAC1E61F18C978004BFDC1 /* FLAnimatedImage.framework */; };
-		36AAC1EA1F18C978004BFDC1 /* NYTPhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AAC1E71F18C978004BFDC1 /* NYTPhotoViewer.framework */; };
 		B3E7B58A1CC2AC0600A0062D /* MerryPhotoViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* MerryPhotoViewer.m */; };
 /* End PBXBuildFile section */
 
@@ -22,8 +18,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				3666CD061F192FC900CFCFD4 /* FLAnimatedImage.framework in CopyFiles */,
-				3666CD071F192FC900CFCFD4 /* NYTPhotoViewer.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,9 +27,6 @@
 		134814201AA4EA6300B7C361 /* libMerryPhotoViewer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMerryPhotoViewer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		361B2EB21F19CEE400C0608B /* MerryPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerryPhoto.m; sourceTree = "<group>"; };
 		361B2EB41F19CEF600C0608B /* MerryPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerryPhoto.h; sourceTree = "<group>"; };
-		36AAC1E61F18C978004BFDC1 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Carthage/Build/iOS/FLAnimatedImage.framework; sourceTree = "<group>"; };
-		36AAC1E71F18C978004BFDC1 /* NYTPhotoViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewer.framework; path = Carthage/Build/iOS/NYTPhotoViewer.framework; sourceTree = "<group>"; };
-		36AAC1E81F18C978004BFDC1 /* NYTPhotoViewerCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewerCore.framework; path = Carthage/Build/iOS/NYTPhotoViewerCore.framework; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* MerryPhotoViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerryPhotoViewer.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* MerryPhotoViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerryPhotoViewer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -45,8 +36,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36AAC1E91F18C978004BFDC1 /* FLAnimatedImage.framework in Frameworks */,
-				36AAC1EA1F18C978004BFDC1 /* NYTPhotoViewer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,9 +53,6 @@
 		36AAC19D1F18B034004BFDC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				36AAC1E61F18C978004BFDC1 /* FLAnimatedImage.framework */,
-				36AAC1E71F18C978004BFDC1 /* NYTPhotoViewer.framework */,
-				36AAC1E81F18C978004BFDC1 /* NYTPhotoViewerCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -150,7 +136,7 @@
 		58B511ED1A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -190,7 +176,7 @@
 		58B511EE1A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -233,7 +219,6 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
-					"$(SRCROOT)/../**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -254,7 +239,6 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
-					"$(SRCROOT)/../**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
