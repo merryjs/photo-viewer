@@ -7,6 +7,6 @@
 
 #import <NYTPhotoViewer/NYTPhotosViewController.h>
 
-@interface MerryPhotoViewer : NSObject<RCTBridgeModule>
-
+@interface MerryPhotoViewer : NSObject<NYTPhotosViewControllerDelegate,RCTBridgeModule>
+@property (nonatomic) NSMutableArray *photos;
 @end
