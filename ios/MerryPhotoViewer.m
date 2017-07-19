@@ -46,7 +46,7 @@ RCT_EXPORT_MODULE()
 
  @param photos Photos Array
  */
-- (void)_show:(NSArray *)photos {
+- (void)_show:(NSArray *)photos:(NSInteger *)initial {
   NSMutableArray *nytPhotos = [NSMutableArray array];
 
   for (int i = 0; i < photos.count; i++) {
@@ -68,7 +68,7 @@ RCT_EXPORT_MODULE()
         [self visibleViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
 
     NYTPhotosViewController *photosViewController =
-        [[NYTPhotosViewController alloc] initWithPhotos:nytPhotos initialPhoto:nil];
+        [[NYTPhotosViewController alloc] initWithPhotos:nytPhotos initialPhoto:[nytPhotos objectAtIndex:initial]];
     [ctrl presentViewController:photosViewController animated:YES completion:nil];
   });
 }
@@ -79,6 +79,6 @@ RCT_EXPORT_MODULE()
  @param NSArray Photos Array
 
  */
-RCT_EXPORT_METHOD(show : (NSArray *)photos { [self _show:photos]; });
+RCT_EXPORT_METHOD(show : (NSArray *)photos : (NSInteger *)initial { [self _show:photos:initial]; });
 
 @end
