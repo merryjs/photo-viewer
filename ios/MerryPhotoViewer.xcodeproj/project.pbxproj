@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		361B2EB31F19CEE400C0608B /* MerryPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B2EB21F19CEE400C0608B /* MerryPhoto.m */; };
+		36205A311F1F83B40014EBC7 /* MerryPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36205A301F1F83B40014EBC7 /* MerryPhotoViewController.m */; };
 		B3E7B58A1CC2AC0600A0062D /* MerryPhotoViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* MerryPhotoViewer.m */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,8 @@
 		134814201AA4EA6300B7C361 /* libMerryPhotoViewer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMerryPhotoViewer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		361B2EB21F19CEE400C0608B /* MerryPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerryPhoto.m; sourceTree = "<group>"; };
 		361B2EB41F19CEF600C0608B /* MerryPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerryPhoto.h; sourceTree = "<group>"; };
+		36205A2F1F1F83870014EBC7 /* MerryPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerryPhotoViewController.h; sourceTree = "<group>"; };
+		36205A301F1F83B40014EBC7 /* MerryPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerryPhotoViewController.m; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* MerryPhotoViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerryPhotoViewer.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* MerryPhotoViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerryPhotoViewer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,6 +63,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				36205A301F1F83B40014EBC7 /* MerryPhotoViewController.m */,
+				36205A2F1F1F83870014EBC7 /* MerryPhotoViewController.h */,
 				361B2EB41F19CEF600C0608B /* MerryPhoto.h */,
 				361B2EB21F19CEE400C0608B /* MerryPhoto.m */,
 				B3E7B5881CC2AC0600A0062D /* MerryPhotoViewer.h */,
@@ -125,6 +130,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36205A311F1F83B40014EBC7 /* MerryPhotoViewController.m in Sources */,
 				361B2EB31F19CEE400C0608B /* MerryPhoto.m in Sources */,
 				B3E7B58A1CC2AC0600A0062D /* MerryPhotoViewer.m in Sources */,
 			);

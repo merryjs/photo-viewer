@@ -2,7 +2,7 @@
 //  MerryPhoto.h
 //  MerryPhotoViewer
 //
-//  Created by Qibang Sun on 15/07/2017.
+//  Created by bang on 15/07/2017.
 //  Copyright © 2017 Merryjs.com All rights reserved.
 //
 
