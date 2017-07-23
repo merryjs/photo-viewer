@@ -11,15 +11,17 @@
 // React
 #if __has_include("RCTBridgeModule.h")
 #import "RCTBridgeModule.h"
-#import "RCTImageLoader.h"
+// #import "RCTImageLoader.h"
 #else
 #import <React/RCTBridgeModule.h>
-#import <React/RCTImageLoader.h>
+// #import <React/RCTImageLoader.h>
 #endif
 // NYT
 #import <Foundation/Foundation.h>
 #import <NYTPhotoViewer/NYTPhotoViewerArrayDataSource.h>
 #import <NYTPhotoViewer/NYTPhotosViewController.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/FLAnimatedImageView+WebCache.h>
 
 @interface MerryPhotoViewer
     : NSObject<RCTBridgeModule, NYTPhotosViewControllerDelegate>

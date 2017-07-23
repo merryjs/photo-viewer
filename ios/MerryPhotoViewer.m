@@ -148,10 +148,13 @@ RCT_EXPORT_MODULE();
   NSMutableArray *photos = [self.options mutableArrayValueForKey:@"photos"];
 
   NSString *url = photos[index];
-  //    NSLog(@"URL: %@", url);
+  UIImageView *imageView = [[UIImageView alloc] init];
+  //    [imageView sd_setShowActivityIndicatorView:YES];
+  //    [imageView sd_setIndicatorStyle:UIActivityIndicatorViewStyleGray];
 
-  NSData *imageFromUrl = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-  return [UIImage imageWithData:imageFromUrl];
+  [imageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil];
+    
+  return imageView.image;
 }
 RCT_EXPORT_METHOD(show
                   : (NSDictionary *)options resolver
@@ -166,14 +169,8 @@ RCT_EXPORT_METHOD(show
 
   for (int i = 0; i < photos.count; i++) {
     MerryPhoto *merryPhoto = [MerryPhoto new];
-    //        NSString *url = photos[i];
-    //    NSLog(@"URL: %@", url);
-
-    //        NSData *imageFromUrl = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-    // merryPhoto.image = [UIImage imageWithData:imageFromUrl];
+      
     merryPhoto.image = nil;
-    //        merryPhoto.imageData = imageFromUrl;
-    merryPhoto.imageData = nil;
 
     [msPhotos addObject:merryPhoto];
   }
@@ -194,7 +191,7 @@ RCT_EXPORT_METHOD(show
     self.nytPhotoVC = photosViewController;
 
     [ctrl presentViewController:photosViewController animated:YES completion:nil];
-    if ((int)initialPhoto >= 0) {
+    if (initialPhoto) {
       [self updatePhotoAtIndex:photosViewController:initialPhoto];
     }
 
@@ -202,16 +199,12 @@ RCT_EXPORT_METHOD(show
 }
 
 #pragma mark - NYTPhotosViewControllerDelegate
-//
-//- (UIView *)photosViewController:(NYTPhotosViewController *)photosViewController
-//           referenceViewForPhoto:(id<NYTPhoto>)photo {
-//    if ([photo isEqual:self.photos[NYTViewControllerPhotoIndexNoReferenceView]]) {
-//        return nil;
-//    }
-//
-//    return nil;
-//    //    return self.imageButton;
-//}
+
+- (UIView *)photosViewController:(NYTPhotosViewController *)photosViewController
+           referenceViewForPhoto:(id<NYTPhoto>)photo {
+    
+    return nil;
+}
 //
 //- (UIView *)photosViewController:(NYTPhotosViewController *)photosViewController
 //             loadingViewForPhoto:(id<NYTPhoto>)photo {
@@ -276,9 +269,9 @@ RCT_EXPORT_METHOD(show
  @param photosViewController <#photosViewController description#>
  @param photoIndex <#photoIndex description#>
  */
-- (void)updatePhotoAtIndex:(NYTPhotosViewController *)photosViewController:(NSUInteger)photoIndex {
+- (void)updatePhotoAtIndex:(NYTPhotosViewController *)photosViewController :(NSUInteger)photoIndex {
   NSInteger current = (unsigned long)photoIndex;
-  CGFloat updateImageDelay = 0.3;
+  CGFloat updateImageDelay = 1;
   MerryPhoto *currentPhoto = [self.dataSource.photos objectAtIndex:current];
 
   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(updateImageDelay * NSEC_PER_SEC)),
@@ -292,9 +285,7 @@ RCT_EXPORT_METHOD(show
 - (void)photosViewController:(NYTPhotosViewController *)photosViewController
           didNavigateToPhoto:(id<NYTPhoto>)photo
                      atIndex:(NSUInteger)photoIndex {
-  if (!photo.image && !photo.imageData) {
-    [self updatePhotoAtIndex:photosViewController:photoIndex];
-  }
+  [self updatePhotoAtIndex:photosViewController:photoIndex];
   NSLog(@"Did Navigate To Photo: %@ identifier: %lu", photo, (unsigned long)photoIndex);
 }
 
