@@ -153,7 +153,7 @@ RCT_EXPORT_MODULE();
   //    [imageView sd_setIndicatorStyle:UIActivityIndicatorViewStyleGray];
 
   [imageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil];
-    
+
   return imageView.image;
 }
 RCT_EXPORT_METHOD(show
@@ -169,7 +169,7 @@ RCT_EXPORT_METHOD(show
 
   for (int i = 0; i < photos.count; i++) {
     MerryPhoto *merryPhoto = [MerryPhoto new];
-      
+
     merryPhoto.image = nil;
 
     [msPhotos addObject:merryPhoto];
@@ -192,8 +192,38 @@ RCT_EXPORT_METHOD(show
 
     [ctrl presentViewController:photosViewController animated:YES completion:nil];
     if (initialPhoto) {
-      [self updatePhotoAtIndex:photosViewController:initialPhoto];
+      [self updatePhotoAtIndex:photosViewController Index:initialPhoto];
     }
+
+  });
+}
+
+/**
+ Update Photo
+ @param photosViewController <#photosViewController description#>
+ @param photoIndex <#photoIndex description#>
+ */
+- (void)updatePhotoAtIndex:(NYTPhotosViewController *)photosViewController
+                     Index:(NSUInteger)photoIndex {
+  NSInteger current = (unsigned long)photoIndex;
+  MerryPhoto *currentPhoto = [self.dataSource.photos objectAtIndex:current];
+  NSMutableArray *photos = [self.options mutableArrayValueForKey:@"photos"];
+
+  NSString *url = photos[current];
+  NSURL *imageURL = [NSURL URLWithString:url];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
+    [downloader
+        downloadImageWithURL:imageURL
+                     options:0
+                    progress:nil
+                   completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+                     //                       when downloads completed update photo
+                     if (image && finished) {
+                       currentPhoto.image = image;
+                       [photosViewController updatePhoto:currentPhoto];
+                     }
+                   }];
 
   });
 }
@@ -202,90 +232,23 @@ RCT_EXPORT_METHOD(show
 
 - (UIView *)photosViewController:(NYTPhotosViewController *)photosViewController
            referenceViewForPhoto:(id<NYTPhoto>)photo {
-    
-    return nil;
+  return nil;
 }
-//
-//- (UIView *)photosViewController:(NYTPhotosViewController *)photosViewController
-//             loadingViewForPhoto:(id<NYTPhoto>)photo {
-//    if ([photo isEqual:self.photos[NYTViewControllerPhotoIndexCustomEverything]]) {
-//        UILabel *loadingLabel = [[UILabel alloc] init];
-//        loadingLabel.text = @"Custom Loading...";
-//        loadingLabel.textColor = [UIColor greenColor];
-//        return loadingLabel;
-//    }
-//
-//    return nil;
-//}
-//
-//- (UIView *)photosViewController:(NYTPhotosViewController *)photosViewController
-//             captionViewForPhoto:(id<NYTPhoto>)photo {
-//    if ([photo isEqual:self.photos[NYTViewControllerPhotoIndexCustomEverything]]) {
-//        UILabel *label = [[UILabel alloc] init];
-//        label.text = @"Custom Caption View";
-//        label.textColor = [UIColor whiteColor];
-//        label.backgroundColor = [UIColor redColor];
-//        return label;
-//    }
-//
-//    return nil;
-//}
-//
-//- (CGFloat)photosViewController:(NYTPhotosViewController *)photosViewController
-//       maximumZoomScaleForPhoto:(id<NYTPhoto>)photo {
-//    if ([photo isEqual:self.photos[NYTViewControllerPhotoIndexCustomMaxZoomScale]]) {
-//        return 10.0f;
-//    }
-//
-//    return 1.0f;
-//}
-//
-//- (NSDictionary *)photosViewController:(NYTPhotosViewController *)photosViewController
-//    overlayTitleTextAttributesForPhoto:(id<NYTPhoto>)photo {
-//    if ([photo isEqual:self.photos[NYTViewControllerPhotoIndexCustomEverything]]) {
-//        return @{NSForegroundColorAttributeName : [UIColor grayColor]};
-//    }
-//
-//    return nil;
-//}
-//
-//- (NSString *)photosViewController:(NYTPhotosViewController *)photosViewController
-//                     titleForPhoto:(id<NYTPhoto>)photo
-//                           atIndex:(NSUInteger)photoIndex
-//                   totalPhotoCount:(NSUInteger)totalPhotoCount {
-//    if ([photo isEqual:self.photos[NYTViewControllerPhotoIndexCustomEverything]]) {
-//        return [NSString
-//                stringWithFormat:@"%lu/%lu", (unsigned long)photoIndex + 1, (unsigned
-//                long)totalPhotoCount];
-//    }
-//
-//    return nil;
-//}
-//
 
-/**
- update photo after 1s
-
- @param photosViewController <#photosViewController description#>
- @param photoIndex <#photoIndex description#>
- */
-- (void)updatePhotoAtIndex:(NYTPhotosViewController *)photosViewController :(NSUInteger)photoIndex {
-  NSInteger current = (unsigned long)photoIndex;
-  CGFloat updateImageDelay = 1;
-  MerryPhoto *currentPhoto = [self.dataSource.photos objectAtIndex:current];
-
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(updateImageDelay * NSEC_PER_SEC)),
-                 dispatch_get_main_queue(), ^{
-
-                   currentPhoto.image = [self downloadImageById:current];
-
-                   [photosViewController updatePhoto:currentPhoto];
-                 });
+- (NSString *)photosViewController:(NYTPhotosViewController *)photosViewController
+                     titleForPhoto:(id<NYTPhoto>)photo
+                           atIndex:(NSInteger)photoIndex
+                   totalPhotoCount:(nullable NSNumber *)totalPhotoCount {
+  return [NSString stringWithFormat:@"%lu/%lu", (unsigned long)photoIndex + 1,
+                                    (unsigned long)totalPhotoCount.integerValue];
 }
+
 - (void)photosViewController:(NYTPhotosViewController *)photosViewController
           didNavigateToPhoto:(id<NYTPhoto>)photo
                      atIndex:(NSUInteger)photoIndex {
-  [self updatePhotoAtIndex:photosViewController:photoIndex];
+  if (!photo.image && !photo.imageData) {
+    [self updatePhotoAtIndex:photosViewController Index:photoIndex];
+  }
   NSLog(@"Did Navigate To Photo: %@ identifier: %lu", photo, (unsigned long)photoIndex);
 }
 
