@@ -243,6 +243,13 @@ RCT_EXPORT_METHOD(show
                                     (unsigned long)totalPhotoCount.integerValue];
 }
 
+/**
+ Download current photo if its nil
+
+ @param photosViewController <#photosViewController description#>
+ @param photo <#photo description#>
+ @param photoIndex <#photoIndex description#>
+ */
 - (void)photosViewController:(NYTPhotosViewController *)photosViewController
           didNavigateToPhoto:(id<NYTPhoto>)photo
                      atIndex:(NSUInteger)photoIndex {
