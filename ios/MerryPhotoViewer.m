@@ -56,57 +56,6 @@ RCT_EXPORT_MODULE();
   }
 }
 
-/// A second set of test photos, to demonstrate reloading the entire data source.
-+ (NYTPhotoViewerArrayDataSource *)newVariedDataSourceIncludingPhoto:(MerryPhoto *)photo {
-  NSMutableArray *photos = [NSMutableArray array];
-
-  [photos addObject:({
-            MerryPhoto *p = [MerryPhoto new];
-            p.image = [UIImage imageNamed:@"Chess"];
-            p.attributedCaptionTitle = [self attributedTitleFromString:@"Chess"];
-            p.attributedCaptionCredit = [self attributedCreditFromString:@"Photo: Chris Dzombak"];
-            p;
-          })];
-
-  [photos
-      addObject:({
-        MerryPhoto *p = photo;
-        photo.attributedCaptionTitle = nil;
-        p.attributedCaptionSummary = [self
-            attributedSummaryFromString:@"This photo’s caption has changed in the data source."];
-        p;
-      })];
-
-  return [NYTPhotoViewerArrayDataSource dataSourceWithPhotos:photos];
-}
-
-+ (NSAttributedString *)attributedTitleFromString:(NSString *)caption {
-  return [[NSAttributedString alloc]
-      initWithString:caption
-          attributes:@{
-            NSForegroundColorAttributeName : [UIColor whiteColor],
-            NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
-          }];
-}
-
-+ (NSAttributedString *)attributedSummaryFromString:(NSString *)summary {
-  return [[NSAttributedString alloc]
-      initWithString:summary
-          attributes:@{
-            NSForegroundColorAttributeName : [UIColor lightGrayColor],
-            NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
-          }];
-}
-
-+ (NSAttributedString *)attributedCreditFromString:(NSString *)credit {
-  return [[NSAttributedString alloc]
-      initWithString:credit
-          attributes:@{
-            NSForegroundColorAttributeName : [UIColor grayColor],
-            NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]
-          }];
-}
-
 /**
  Get root view
 
@@ -177,6 +126,7 @@ RCT_EXPORT_METHOD(show
 
   self.photos = msPhotos;
   self.dataSource = [NYTPhotoViewerArrayDataSource dataSourceWithPhotos:self.photos];
+  //    hide status bar
 
   dispatch_async(dispatch_get_main_queue(), ^{
 
@@ -189,11 +139,11 @@ RCT_EXPORT_METHOD(show
                                                    delegate:self];
 
     self.nytPhotoVC = photosViewController;
-
     [ctrl presentViewController:photosViewController animated:YES completion:nil];
     if (initialPhoto) {
       [self updatePhotoAtIndex:photosViewController Index:initialPhoto];
     }
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
 
   });
 }
@@ -235,6 +185,15 @@ RCT_EXPORT_METHOD(show
   return nil;
 }
 
+/**
+ Customize title display
+
+ @param photosViewController <#photosViewController description#>
+ @param photo <#photo description#>
+ @param photoIndex <#photoIndex description#>
+ @param totalPhotoCount <#totalPhotoCount description#>
+ @return <#return value description#>
+ */
 - (NSString *)photosViewController:(NYTPhotosViewController *)photosViewController
                      titleForPhoto:(id<NYTPhoto>)photo
                            atIndex:(NSInteger)photoIndex
@@ -266,6 +225,33 @@ RCT_EXPORT_METHOD(show
 
 - (void)photosViewControllerDidDismiss:(NYTPhotosViewController *)photosViewController {
   NSLog(@"Did Dismiss Photo Viewer: %@", photosViewController);
+  [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
 }
 
++ (NSAttributedString *)attributedTitleFromString:(NSString *)caption {
+  return [[NSAttributedString alloc]
+      initWithString:caption
+          attributes:@{
+            NSForegroundColorAttributeName : [UIColor whiteColor],
+            NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
+          }];
+}
+
++ (NSAttributedString *)attributedSummaryFromString:(NSString *)summary {
+  return [[NSAttributedString alloc]
+      initWithString:summary
+          attributes:@{
+            NSForegroundColorAttributeName : [UIColor lightGrayColor],
+            NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
+          }];
+}
+
++ (NSAttributedString *)attributedCreditFromString:(NSString *)credit {
+  return [[NSAttributedString alloc]
+      initWithString:credit
+          attributes:@{
+            NSForegroundColorAttributeName : [UIColor grayColor],
+            NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]
+          }];
+}
 @end
