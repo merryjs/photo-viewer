@@ -1,0 +1,2 @@
+github "NYTimes/NYTPhotoViewer" "develop"
+github "rs/SDWebImage"
