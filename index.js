@@ -1,3 +1,19 @@
-import { NativeModules } from 'react-native';
+import { NativeModules } from "react-native";
 const { MerryPhotoViewer } = NativeModules;
-export default MerryPhotoViewer;
+/**
+ * photo viewer
+ */
+const photoViewer = {
+    init: (options) => {
+        MerryPhotoViewer.config(options);
+        return {
+            show: (photo) => {
+                MerryPhotoViewer.show(photo);
+            },
+            hide: () => {
+                MerryPhotoViewer.hide();
+            }
+        };
+    }
+};
+export default photoViewer;
