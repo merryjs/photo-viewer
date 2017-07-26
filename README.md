@@ -1,7 +1,7 @@
 
 # @merryjs/photo-viewer[WIP]
 
-> A photo viewer for react native build on top of NYTPhotoViewer
+> A photo viewer for react native build on top of NYTPhotoViewer
 
 ![preview](./assets/preview.gif)
 
