@@ -1,14 +1,12 @@
 {
   "name": "@merryjs/photo-viewer",
   "version": "1.0.0-alpha.4",
-  "description": "## Getting started",
+  "description": "A photo viewer for react native",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc -w"
   },
-  "keywords": [
-    "react-native"
-  ],
+  "keywords": ["react-native", "photo viewer", "photo zoom pan"],
   "author": "bang88",
   "license": "MIT",
   "peerDependencies": {
