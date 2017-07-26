@@ -18,16 +18,14 @@ export interface PhotoViewerOptions {
  * photo viewer
  */
 const photoViewer = {
-  init: (options: PhotoViewerOptions) => {
+  config: (options: PhotoViewerOptions) => {
     MerryPhotoViewer.config(options);
-    return {
-      show: (photo?: number) => {
-        MerryPhotoViewer.show(photo);
-      },
-      hide: () => {
-        MerryPhotoViewer.hide();
-      }
-    };
+  },
+  show: (photo?: number) => {
+    MerryPhotoViewer.show(photo);
+  },
+  hide: () => {
+    MerryPhotoViewer.hide();
   }
 };
 

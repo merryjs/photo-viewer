@@ -1,5 +1,9 @@
 
-# @merryjs/photo-viewer
+# @merryjs/photo-viewer[WIP]
+
+> A photo viewer for react native build on top of NYTPhotoViewer
+
+![preview](./assets/preview.gif)
 
 ## Getting started
 
@@ -18,6 +22,10 @@
 2. Go to `node_modules` ➜ `@merryjs/photo-viewer` and add `MerryPhotoViewer.xcodeproj`
 3. In XCode, in the project navigator, select your project. Add `libMerryPhotoViewer.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
 4. Run your project (`Cmd+R`)<
+
+##### IOS Link Frameworks
+
+NOTE: TOOD
 
 #### Android
 
@@ -42,4 +50,3 @@ import MerryPhotoViewer from '@merryjs/photo-viewer';
 // TODO: What to do with the module?
 MerryPhotoViewer;
 ```
-  

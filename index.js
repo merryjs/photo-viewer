@@ -4,16 +4,14 @@ const { MerryPhotoViewer } = NativeModules;
  * photo viewer
  */
 const photoViewer = {
-    init: (options) => {
+    config: (options) => {
         MerryPhotoViewer.config(options);
-        return {
-            show: (photo) => {
-                MerryPhotoViewer.show(photo);
-            },
-            hide: () => {
-                MerryPhotoViewer.hide();
-            }
-        };
+    },
+    show: (photo) => {
+        MerryPhotoViewer.show(photo);
+    },
+    hide: () => {
+        MerryPhotoViewer.hide();
     }
 };
 export default photoViewer;

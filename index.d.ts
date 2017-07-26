@@ -12,9 +12,8 @@ export interface PhotoViewerOptions {
  * photo viewer
  */
 declare const photoViewer: {
-    init: (options: PhotoViewerOptions) => {
-        show: (photo?: number | undefined) => void;
-        hide: () => void;
-    };
+    config: (options: PhotoViewerOptions) => void;
+    show: (photo?: number | undefined) => void;
+    hide: () => void;
 };
 export default photoViewer;
