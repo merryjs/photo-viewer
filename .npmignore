@@ -49,3 +49,4 @@ ios/Carthage/Checkouts
 
 index.ts
 assets/
+tsconfig.json
