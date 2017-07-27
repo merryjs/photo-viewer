@@ -4,14 +4,23 @@ const { MerryPhotoViewer } = NativeModules;
 
 export interface Photo {
   url: string;
-  title: string;
-  summary: string;
+  title?: string;
+  summary?: string;
+  titleColor?: string;
+  summaryColor?: string;
 }
 
 export interface PhotoViewerOptions {
   data: string[];
-  titleColor?: string;
-  summaryColor?: string;
+  initial: number;
+  hideStatusBar: boolean,
+  // android only
+  swipeToDismiss?: boolean;
+  zooming?: boolean;
+  // not support #ddd should be "#000000"
+  backgroundColor?: string;
+  // default share
+  shareText?: string;
 }
 
 /**

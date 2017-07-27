@@ -1,12 +1,18 @@
 export interface Photo {
     url: string;
-    title: string;
-    summary: string;
+    title?: string;
+    summary?: string;
+    titleColor?: string;
+    summaryColor?: string;
 }
 export interface PhotoViewerOptions {
     data: string[];
-    titleColor?: string;
-    summaryColor?: string;
+    initial: number;
+    hideStatusBar: boolean;
+    swipeToDismiss?: boolean;
+    zooming?: boolean;
+    backgroundColor?: string;
+    shareText?: string;
 }
 /**
  * photo viewer
