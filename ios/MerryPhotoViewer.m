@@ -22,7 +22,6 @@ RCT_EXPORT_MODULE();
 
 - (instancetype)init {
   if (self = [super init]) {
-    self.options = @{ @"X" : @NO };
   }
   return self;
 }
@@ -30,7 +29,7 @@ RCT_EXPORT_MODULE();
 /**
    we want to auto generate some getters and setters for our bridge.
  */
-@synthesize bridge = _bridge;
+//@synthesize bridge = _bridge;
 
 /**
  Get root view
@@ -85,37 +84,6 @@ RCT_EXPORT_METHOD(hide
                     });
 
                   })
-
-RCT_EXPORT_METHOD(config
-                  : (NSDictionary *)options
-                  : (RCTPromiseResolveBlock)resolve
-                  : (RCTPromiseRejectBlock)reject) {
-  @try {
-    self.options = [NSMutableDictionary dictionaryWithDictionary:self.options];
-    for (NSString *key in options.keyEnumerator) {
-      [self.options setValue:options[key] forKey:key];
-    }
-    NSMutableArray *photos = [self.options mutableArrayValueForKey:@"data"];
-    //  NSUInteger initialPhoto = [[self.options objectForKey:@"initial"] integerValue];
-
-    NSMutableArray *msPhotos = [NSMutableArray array];
-
-    for (int i = 0; i < photos.count; i++) {
-      MerryPhoto *merryPhoto = [MerryPhoto new];
-
-      merryPhoto.image = nil;
-
-      [msPhotos addObject:merryPhoto];
-    }
-
-    self.photos = msPhotos;
-    self.dataSource = [NYTPhotoViewerArrayDataSource dataSourceWithPhotos:self.photos];
-    resolve(nil);
-  } @catch (NSException *exception) {
-    reject(@"9527", @"Display photo viewer failed, please config it first", nil);
-  } @finally {
-  }
-}
 
 RCT_EXPORT_METHOD(show
                   : (NSDictionary *)options resolver

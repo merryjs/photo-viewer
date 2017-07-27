@@ -25,13 +25,9 @@
 
 @interface MerryPhotoViewer
     : NSObject<RCTBridgeModule, NYTPhotosViewControllerDelegate>
+
 @property(nonatomic) NSMutableArray *photos;
 
-@property(nonatomic, retain) NSDictionary *options;
-@property(nonatomic, strong) RCTPromiseResolveBlock resolve;
-@property(nonatomic, strong) RCTPromiseRejectBlock reject;
-
-@property(nonatomic, strong) NYTPhotosViewController *nytPhotoVC;
 @property(nonatomic) NYTPhotoViewerArrayDataSource *dataSource;
 
 @end

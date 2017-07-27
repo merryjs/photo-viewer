@@ -8,10 +8,22 @@ export interface Photo {
 export interface PhotoViewerOptions {
     data: string[];
     initial: number;
-    hideStatusBar: boolean;
-    swipeToDismiss?: boolean;
-    zooming?: boolean;
     backgroundColor?: string;
+    /**
+       * android only
+       */
+    hideStatusBar: boolean;
+    /**
+       * android only
+       */
+    swipeToDismiss?: boolean;
+    /**
+       * android only
+       */
+    zooming?: boolean;
+    /**
+       * android only
+       */
     shareText?: string;
 }
 /**

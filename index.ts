@@ -12,14 +12,23 @@ export interface Photo {
 
 export interface PhotoViewerOptions {
   data: string[];
-  initial: number;
-  hideStatusBar: boolean;
-  // android only
-  swipeToDismiss?: boolean;
-  zooming?: boolean;
-  // not support #ddd should be "#000000"
+	initial: number;
   backgroundColor?: string;
-  // default share
+  /**
+	 * android only
+	 */
+  hideStatusBar: boolean;
+  /**
+	 * android only
+	 */
+  swipeToDismiss?: boolean;
+  /**
+	 * android only
+	 */
+  zooming?: boolean;
+  /**
+	 * android only
+	 */
   shareText?: string;
 }
 /**
