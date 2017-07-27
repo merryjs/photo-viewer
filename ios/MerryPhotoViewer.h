@@ -11,10 +11,10 @@
 // React
 #if __has_include("RCTBridgeModule.h")
 #import "RCTBridgeModule.h"
-// #import "RCTImageLoader.h"
+ #import "RCTConvert"
 #else
 #import <React/RCTBridgeModule.h>
-// #import <React/RCTImageLoader.h>
+#import <React/RCTConvert.h>
 #endif
 // NYT
 #import <Foundation/Foundation.h>

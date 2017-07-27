@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 
 #import "MerryPhoto.h"
+#import "MerryPhotoOptions.h"
 #import "MerryPhotoViewer.h"
 
 @implementation MerryPhotoViewer {
   BOOL presented;
+  MerryPhotoOptions *merryPhotoOptions;
 }
 
 // tell React we want export this module
@@ -116,22 +118,43 @@ RCT_EXPORT_METHOD(config
 }
 
 RCT_EXPORT_METHOD(show
-                  : (NSInteger *)initialPhoto resolver
+                  : (NSDictionary *)options resolver
                   : (RCTPromiseResolveBlock)resolve rejecter
                   : (RCTPromiseRejectBlock)reject) {
+  merryPhotoOptions = [[MerryPhotoOptions alloc] initWithDictionary:options];
+
   if (presented) {
     return;
   }
-  if (!self.options) {
+  if (!merryPhotoOptions) {
     reject(@"9527", @"Display photo viewer failed, please config it first", nil);
     return;
   }
+
+  NSMutableArray *msPhotos = [NSMutableArray array];
+  for (MerryPhotoData *d in merryPhotoOptions.data) {
+    MerryPhoto *merryPhoto = [MerryPhoto new];
+
+    merryPhoto.image = nil;
+    if (d.title) {
+      merryPhoto.attributedCaptionTitle = [MerryPhotoViewer attributedTitleFromString:d.title];
+    }
+    if (d.summary) {
+      merryPhoto.attributedCaptionSummary =
+          [MerryPhotoViewer attributedSummaryFromString:d.summary];
+    }
+    [msPhotos addObject:merryPhoto];
+  }
+
+  self.photos = msPhotos;
+  self.dataSource = [NYTPhotoViewerArrayDataSource dataSourceWithPhotos:self.photos];
+
   dispatch_async(dispatch_get_main_queue(), ^{
 
     @try {
       NYTPhotosViewController *photosViewController = [[NYTPhotosViewController alloc]
           initWithDataSource:self.dataSource
-                initialPhoto:[self.photos objectAtIndex:initialPhoto]
+                initialPhoto:[self.photos objectAtIndex:merryPhotoOptions.initial]
                     delegate:self];
 
       [[self getRootView] presentViewController:photosViewController
@@ -139,11 +162,11 @@ RCT_EXPORT_METHOD(show
                                      completion:^{
                                        presented = YES;
                                      }];
-      if (initialPhoto) {
-        [self updatePhotoAtIndex:photosViewController Index:initialPhoto];
+      if (merryPhotoOptions.initial) {
+        [self updatePhotoAtIndex:photosViewController Index:merryPhotoOptions.initial];
       }
       [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
-      resolve(@[]);
+      resolve(@"");
     } @catch (NSException *exception) {
       reject(@"9527", @"Display photo viewer failed, please check your configurations", exception);
     } @finally {
@@ -161,9 +184,8 @@ RCT_EXPORT_METHOD(show
                      Index:(NSUInteger)photoIndex {
   NSInteger current = (unsigned long)photoIndex;
   MerryPhoto *currentPhoto = [self.dataSource.photos objectAtIndex:current];
-  NSMutableArray *photos = [self.options mutableArrayValueForKey:@"data"];
-
-  NSString *url = photos[current];
+  MerryPhotoData *mData = merryPhotoOptions.data[current];
+  NSString *url = mData.url;
   NSURL *imageURL = [NSURL URLWithString:url];
   dispatch_async(dispatch_get_main_queue(), ^{
     SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
