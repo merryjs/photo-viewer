@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.merryjs.R;
+import com.merryjs.PhotoViewer.R;
+
 
 /**
  * Created by bang on 26/07/2017.

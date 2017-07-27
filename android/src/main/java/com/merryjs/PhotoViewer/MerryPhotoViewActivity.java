@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
 import com.facebook.drawee.generic.RoundingParams;
 import com.google.gson.Gson;
-import com.merryexamples.R;
+import com.merryjs.PhotoViewer.R;
 import com.stfalcon.frescoimageviewer.ImageViewer;
 
 import java.util.Random;
