@@ -22,7 +22,7 @@ export interface PhotoViewerOptions {
        */
     backgroundColor?: string;
     /**
-       * Android only
+       * Hide status bar
        */
     hideStatusBar: boolean;
     /**
