@@ -136,12 +136,12 @@ RCT_EXPORT_METHOD(show
     MerryPhoto *merryPhoto = [MerryPhoto new];
 
     merryPhoto.image = nil;
+
     if (d.title) {
-      merryPhoto.attributedCaptionTitle = [MerryPhotoViewer attributedTitleFromString:d.title];
+      merryPhoto.attributedCaptionTitle = [MerryPhotoViewer attributedTitleFromString: d.title : d.titleColor ?  [RCTConvert UIColor:d.titleColor] : [UIColor whiteColor]];
     }
     if (d.summary) {
-      merryPhoto.attributedCaptionSummary =
-          [MerryPhotoViewer attributedSummaryFromString:d.summary];
+      merryPhoto.attributedCaptionSummary =  [MerryPhotoViewer attributedSummaryFromString:d.summary :d.summaryColor ? [RCTConvert UIColor:d.summaryColor] :[UIColor lightGrayColor]];
     }
     [msPhotos addObject:merryPhoto];
   }
@@ -184,8 +184,9 @@ RCT_EXPORT_METHOD(show
                      Index:(NSUInteger)photoIndex {
   NSInteger current = (unsigned long)photoIndex;
   MerryPhoto *currentPhoto = [self.dataSource.photos objectAtIndex:current];
-  MerryPhotoData *mData = merryPhotoOptions.data[current];
-  NSString *url = mData.url;
+  MerryPhotoData *d = merryPhotoOptions.data[current];
+
+  NSString *url = d.url;
   NSURL *imageURL = [NSURL URLWithString:url];
   dispatch_async(dispatch_get_main_queue(), ^{
     SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
@@ -241,6 +242,7 @@ RCT_EXPORT_METHOD(show
   if (!photo.image && !photo.imageData) {
     [self updatePhotoAtIndex:photosViewController Index:photoIndex];
   }
+
   NSLog(@"Did Navigate To Photo: %@ identifier: %lu", photo, (unsigned long)photoIndex);
 }
 
@@ -255,30 +257,30 @@ RCT_EXPORT_METHOD(show
   [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
 }
 
-+ (NSAttributedString *)attributedTitleFromString:(NSString *)caption {
++ (NSAttributedString *)attributedTitleFromString:(NSString *)caption:(UIColor *)color {
   return [[NSAttributedString alloc]
       initWithString:caption
           attributes:@{
-            NSForegroundColorAttributeName : [UIColor whiteColor],
+            NSForegroundColorAttributeName : color,
             NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
           }];
 }
 
-+ (NSAttributedString *)attributedSummaryFromString:(NSString *)summary {
++ (NSAttributedString *)attributedSummaryFromString:(NSString *)summary:(UIColor *)color {
   return [[NSAttributedString alloc]
       initWithString:summary
           attributes:@{
-            NSForegroundColorAttributeName : [UIColor lightGrayColor],
+            NSForegroundColorAttributeName : color,
             NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody]
           }];
 }
-
-+ (NSAttributedString *)attributedCreditFromString:(NSString *)credit {
-  return [[NSAttributedString alloc]
-      initWithString:credit
-          attributes:@{
-            NSForegroundColorAttributeName : [UIColor grayColor],
-            NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]
-          }];
-}
+// if this is need will implement it in the future
+//+ (NSAttributedString *)attributedCreditFromString:(NSString *)credit {
+//  return [[NSAttributedString alloc]
+//      initWithString:credit
+//          attributes:@{
+//            NSForegroundColorAttributeName : [UIColor grayColor],
+//            NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]
+//          }];
+//}
 @end
