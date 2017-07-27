@@ -38,6 +38,16 @@ export interface PhotoViewerOptions {
        * Set share text the default text is SHARE
        */
     shareText?: string;
+    /**
+     * Android only
+     * Share text color
+     */
+    shareTextColor?: string;
+    /**
+     * Android only
+     * 1 / 2 Page text color
+     */
+    titlePagerColor?: string;
 }
 /**
  * Photo viewer

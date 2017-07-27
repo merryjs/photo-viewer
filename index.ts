@@ -41,7 +41,17 @@ export interface PhotoViewerOptions {
 	 * Android only
 	 * Set share text the default text is SHARE
 	 */
-  shareText?: string;
+	shareText?: string;
+	/**
+	 * Android only
+	 * Share text color
+	 */
+	shareTextColor?: string;
+	/**
+	 * Android only
+	 * 1 / 2 Page text color
+	 */
+  titlePagerColor?: string;
 }
 const isIos = Platform.OS === "ios";
 
@@ -51,7 +61,6 @@ const isIos = Platform.OS === "ios";
  */
 const processor = (options: PhotoViewerOptions) => {
   if (options && options.data && options.data.length) {
-
     options.data = options.data.map(o => {
       if (typeof o.summaryColor === "string") {
         o.summaryColor = processColor(o.summaryColor);
@@ -60,8 +69,7 @@ const processor = (options: PhotoViewerOptions) => {
         o.titleColor = processColor(o.titleColor);
       }
       return o;
-		});
-
+    });
   }
   return options;
 };
