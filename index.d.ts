@@ -1,33 +1,46 @@
+/**
+ * Photo data
+ */
 export interface Photo {
     url: string;
     title?: string;
     summary?: string;
-    titleColor?: string;
-    summaryColor?: string;
+    titleColor?: string | number;
+    summaryColor?: string | number;
 }
 export interface PhotoViewerOptions {
-    data: string[];
+    /**
+     * Pictures for view
+     */
+    data: Photo[];
+    /**
+     * Start position
+     */
     initial: number;
+    /**
+     * Set overlay background color
+     */
     backgroundColor?: string;
     /**
-       * android only
+       * Android only
        */
     hideStatusBar: boolean;
     /**
-       * android only
+       * Android only
        */
     swipeToDismiss?: boolean;
     /**
-       * android only
+       * Android only
        */
     zooming?: boolean;
     /**
-       * android only
+       * Android only
+       * Set share text the default text is SHARE
        */
     shareText?: string;
 }
 /**
- * photo viewer
+ * Photo viewer
  */
 declare const photoViewer: {
     show(options: PhotoViewerOptions): Promise<void>;

@@ -1,43 +1,83 @@
-import { NativeModules } from "react-native";
+import { NativeModules, processColor, Platform } from "react-native";
 
 const { MerryPhotoViewer } = NativeModules;
-
+/**
+ * Photo data
+ */
 export interface Photo {
   url: string;
   title?: string;
   summary?: string;
-  titleColor?: string;
-  summaryColor?: string;
+  titleColor?: string | number;
+  summaryColor?: string | number;
 }
 
 export interface PhotoViewerOptions {
-  data: string[];
+	/**
+	 * Pictures for view
+	 */
+	data: Photo[];
+	/**
+	 * Start position
+	 */
 	initial: number;
+	/**
+	 * Set overlay background color
+	 */
   backgroundColor?: string;
   /**
-	 * android only
+	 * Android only
 	 */
   hideStatusBar: boolean;
   /**
-	 * android only
+	 * Android only
 	 */
   swipeToDismiss?: boolean;
   /**
-	 * android only
+	 * Android only
 	 */
   zooming?: boolean;
   /**
-	 * android only
+	 * Android only
+	 * Set share text the default text is SHARE
 	 */
   shareText?: string;
 }
+const isIos = Platform.OS === "ios";
+
 /**
- * photo viewer
+ * Handle UIColor conversions for ios
+ * @param options PhotoViewerOptions
+ */
+const processor = (options: PhotoViewerOptions) => {
+  if (options && options.data && options.data.length) {
+    options.data = options.data.map(o => {
+      o.summaryColor = processColor(o.summaryColor);
+      o.titleColor = processColor(o.titleColor);
+      return o;
+    });
+  }
+  return options;
+};
+/**
+ * Photo viewer
  */
 const photoViewer = {
+	/**
+	 * Display the Photo Viewer
+	 * @param options PhotoViewerOptions
+	 */
   show(options: PhotoViewerOptions): Promise<void> {
-    return MerryPhotoViewer.show(options);
-  },
+    let o = { ...options };
+    // IOS color process
+    if (isIos) {
+      o = processor(o);
+    }
+    return MerryPhotoViewer.show(o);
+	},
+	/**
+	 * Hide Photo Viewer
+	 */
   hide() {
     MerryPhotoViewer.hide();
   }
