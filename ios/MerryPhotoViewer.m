@@ -133,7 +133,9 @@ RCT_EXPORT_METHOD(show
       if (merryPhotoOptions.initial) {
         [self updatePhotoAtIndex:photosViewController Index:merryPhotoOptions.initial];
       }
-      [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
+      if (merryPhotoOptions.hideStatusBar) {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
+      }
       resolve(@"");
     } @catch (NSException *exception) {
       reject(@"9527", @"Display photo viewer failed, please check your configurations", exception);
@@ -222,7 +224,9 @@ RCT_EXPORT_METHOD(show
 - (void)photosViewControllerDidDismiss:(NYTPhotosViewController *)photosViewController {
   NSLog(@"Did Dismiss Photo Viewer: %@", photosViewController);
   presented = NO;
-  [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
+  if (merryPhotoOptions.hideStatusBar) {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
+  }
 }
 
 + (NSAttributedString *)attributedTitleFromString:(NSString *)caption:(UIColor *)color {
