@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.merryexamples.R;
+import com.merryjs.R;
 
 /**
  * Created by bang on 26/07/2017.
