@@ -13,7 +13,7 @@ export interface Photo {
 export interface PhotoViewerOptions {
   data: string[];
   initial: number;
-  hideStatusBar: boolean,
+  hideStatusBar: boolean;
   // android only
   swipeToDismiss?: boolean;
   zooming?: boolean;
@@ -22,18 +22,14 @@ export interface PhotoViewerOptions {
   // default share
   shareText?: string;
 }
-
 /**
  * photo viewer
  */
 const photoViewer = {
-  config: (options: PhotoViewerOptions) => {
-    MerryPhotoViewer.config(options);
+  show(options: PhotoViewerOptions): Promise<void> {
+    return MerryPhotoViewer.show(options);
   },
-  show: (photo?: number) => {
-    MerryPhotoViewer.show(photo);
-  },
-  hide: () => {
+  hide() {
     MerryPhotoViewer.hide();
   }
 };
