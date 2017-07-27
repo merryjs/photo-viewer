@@ -13,15 +13,15 @@ export interface Photo {
 }
 
 export interface PhotoViewerOptions {
-	/**
+  /**
 	 * Pictures for view
 	 */
-	data: Photo[];
-	/**
+  data: Photo[];
+  /**
 	 * Start position
 	 */
-	initial: number;
-	/**
+  initial: number;
+  /**
 	 * Set overlay background color
 	 */
   backgroundColor?: string;
@@ -51,11 +51,17 @@ const isIos = Platform.OS === "ios";
  */
 const processor = (options: PhotoViewerOptions) => {
   if (options && options.data && options.data.length) {
+
     options.data = options.data.map(o => {
-      o.summaryColor = processColor(o.summaryColor);
-      o.titleColor = processColor(o.titleColor);
+      if (typeof o.summaryColor === "string") {
+        o.summaryColor = processColor(o.summaryColor);
+      }
+      if (typeof o.titleColor === "string") {
+        o.titleColor = processColor(o.titleColor);
+      }
       return o;
-    });
+		});
+
   }
   return options;
 };
@@ -63,7 +69,7 @@ const processor = (options: PhotoViewerOptions) => {
  * Photo viewer
  */
 const photoViewer = {
-	/**
+  /**
 	 * Display the Photo Viewer
 	 * @param options PhotoViewerOptions
 	 */
@@ -74,8 +80,8 @@ const photoViewer = {
       o = processor(o);
     }
     return MerryPhotoViewer.show(o);
-	},
-	/**
+  },
+  /**
 	 * Hide Photo Viewer
 	 */
   hide() {

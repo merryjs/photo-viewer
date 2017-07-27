@@ -10,16 +10,16 @@ export interface Photo {
 }
 export interface PhotoViewerOptions {
     /**
-     * Pictures for view
-     */
+       * Pictures for view
+       */
     data: Photo[];
     /**
-     * Start position
-     */
+       * Start position
+       */
     initial: number;
     /**
-     * Set overlay background color
-     */
+       * Set overlay background color
+       */
     backgroundColor?: string;
     /**
        * Android only

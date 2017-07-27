@@ -8,8 +8,12 @@ const isIos = Platform.OS === "ios";
 const processor = (options) => {
     if (options && options.data && options.data.length) {
         options.data = options.data.map(o => {
-            o.summaryColor = processColor(o.summaryColor);
-            o.titleColor = processColor(o.titleColor);
+            if (typeof o.summaryColor === "string") {
+                o.summaryColor = processColor(o.summaryColor);
+            }
+            if (typeof o.titleColor === "string") {
+                o.titleColor = processColor(o.titleColor);
+            }
             return o;
         });
     }
@@ -20,9 +24,9 @@ const processor = (options) => {
  */
 const photoViewer = {
     /**
-     * Display the Photo Viewer
-     * @param options PhotoViewerOptions
-     */
+       * Display the Photo Viewer
+       * @param options PhotoViewerOptions
+       */
     show(options) {
         let o = Object.assign({}, options);
         // IOS color process
@@ -32,8 +36,8 @@ const photoViewer = {
         return MerryPhotoViewer.show(o);
     },
     /**
-     * Hide Photo Viewer
-     */
+       * Hide Photo Viewer
+       */
     hide() {
         MerryPhotoViewer.hide();
     }
