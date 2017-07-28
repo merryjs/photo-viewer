@@ -95,8 +95,8 @@ When you have linked you need one more step for initialize the Fresco Library
     public void onCreate() {
         super.onCreate();
         SoLoader.init(this, /* native exopackage */ false);
-// If you picture very large you initialize it with thses configurations
- 
+// If your picture very large you initialize it with thses configurations
+ 
 //        ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
 //                .setProgressiveJpegConfig(new SimpleProgressiveJpegConfig())
 //                .setResizeAndRotateEnabledForNetwork(true)
