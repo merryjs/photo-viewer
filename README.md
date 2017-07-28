@@ -1,8 +1,21 @@
 
-# @merryjs/photo-viewer[WIP]
+# Photo-Viewer
 
-> A photo viewer for react native build on top of NYTPhotoViewer and
-- [@merryjs/photo-viewer[WIP]](#merryjs-photo-viewer-wip)
+> A photo viewer for react native build on top of [NYTPhotoViewer](https://github.com/NYTimes/NYTPhotoViewer) and [FrescoImageViewer](https://github.com/stfalcon-studio/FrescoImageViewer)
+
+**Key features:**
+
+- Double-tap to zoom
+- Captions and summaries
+- Support for multiple images
+- Interactive flick to dismiss
+- Animated zooming presentation
+- And more...
+
+
+## TOC
+- [Photo-Viewer](#photo-viewer)
+    - [TOC](#toc)
     - [Getting started](#getting-started)
         - [Mostly automatic installation](#mostly-automatic-installation)
         - [Manual installation](#manual-installation)
@@ -16,6 +29,7 @@
             - [Android Fresco initialize](#android-fresco-initialize)
     - [Usage](#usage)
     - [LICENSE](#license)
+
 
 ![preview](./assets/preview.gif)
 
