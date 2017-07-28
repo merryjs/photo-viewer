@@ -12,6 +12,7 @@
                 - [[CocoaPods](https://cocoapods.org/)](#cocoapods-https-cocoapods-org)
                 - [[Carthage](https://github.com/Carthage/Carthage)](#carthage-https-github-com-carthage-carthage)
             - [Android](#android)
+            - [Android Fresco initialize](#android-fresco-initialize)
     - [Usage](#usage)
     - [LICENSE](#license)
 
@@ -32,6 +33,7 @@ or
 When you done this you still need link some frameworks into your xcode's embedded framework section,
 here you have some choices please see [IOS link frameworks](#ios-link-frameworks) for more details
 
+and initialize Fresco Library please see [Android Fresco initialize](#android-fresco-initialize)
 
 ### Manual installation
 
@@ -72,7 +74,7 @@ and run `carthage update` when you done this you can link it like Manual link fr
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.reactlibrary.MerryPhotoViewerPackage;` to the imports at the top of the file
+  - Add `import com.merryjs.PhotoViewer.MerryPhotoViewerPackage;` to the imports at the top of the file
   - Add `new MerryPhotoViewerPackage()` to the list returned by the `getPackages()` method
 2. Append the following lines to `android/settings.gradle`:
   	```
@@ -84,6 +86,31 @@ and run `carthage update` when you done this you can link it like Manual link fr
       compile project(':@merryjs/photo-viewer')
   	```
 
+#### Android Fresco initialize
+
+When you have linked you need one more step for initialize the Fresco Library
+
+```
+@Override
+    public void onCreate() {
+        super.onCreate();
+        SoLoader.init(this, /* native exopackage */ false);
+// If you picture very large you initialize it with thses configurations
+ 
+//        ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
+//                .setProgressiveJpegConfig(new SimpleProgressiveJpegConfig())
+//                .setResizeAndRotateEnabledForNetwork(true)
+//                .setDownsampleEnabled(true)
+//                .build();
+//        Fresco.initialize(this, config);
+
+        Fresco.initialize(this);
+
+    }
+```
+
+Thats it.
+
 
 ## Usage
 
@@ -94,13 +121,16 @@ you can use it as below, very very easy to use:
 
 import photoViewer from '@merryjs/photo-viewer';
 
-photoViewer.show(options)
+photoViewer.show(options) // Promise
 
 ```
 
 At this moment, only two methods you need to call
 - `show` for display the photo viewer
 - `hide` for hide the photo viewer, but most case you just need `show` it.
+
+For more info please [see the js file](https://github.com/merryjs/photo-viewer/blob/master/index.js), its very simple, and if you use `TypeScript` you can have a good type definition and no need any setup.
+
 
 ## LICENSE
 
