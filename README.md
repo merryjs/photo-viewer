@@ -33,7 +33,7 @@ or
 When you done this you still need link some frameworks into your xcode's embedded framework section,
 here you have some choices please see [IOS link frameworks](#ios-link-frameworks) for more details
 
-and initialize Fresco Library please see [Android Fresco initialize](#android-fresco-initialize)
+and initialize Fresco Library please see [Android Fresco initialize](#android-fresco-initialize)
 
 ### Manual installation
 
@@ -88,15 +88,15 @@ and run `carthage update` when you done this you can link it like Manual link fr
 
 #### Android Fresco initialize
 
-When you have linked you need one more step for initialize the Fresco Library
+When you have linked you need one more step for initialize the Fresco Library
 
-```
+```java
 @Override
-    public void onCreate() {
-        super.onCreate();
-        SoLoader.init(this, /* native exopackage */ false);
-// If you picture very large you initialize it with thses configurations
- 
+public void onCreate() {
+super.onCreate();
+SoLoader.init(this, /* native exopackage */ false);
+// If your picture very large you can initialize it with these configurations
+
 //        ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
 //                .setProgressiveJpegConfig(new SimpleProgressiveJpegConfig())
 //                .setResizeAndRotateEnabledForNetwork(true)
@@ -104,9 +104,9 @@ When you have linked you need one more step for initialize the Fresco Library
 //                .build();
 //        Fresco.initialize(this, config);
 
-        Fresco.initialize(this);
+Fresco.initialize(this);
 
-    }
+}
 ```
 
 Thats it.
@@ -129,7 +129,7 @@ At this moment, only two methods you need to call
 - `show` for display the photo viewer
 - `hide` for hide the photo viewer, but most case you just need `show` it.
 
-For more info please [see the js file](https://github.com/merryjs/photo-viewer/blob/master/index.js), its very simple, and if you use `TypeScript` you can have a good type definition and no need any setup.
+For more info please [see the js file](https://github.com/merryjs/photo-viewer/blob/master/index.js), its very simple, and if you use `TypeScript` you can have a good type definition and no need any setup.
 
 
 ## LICENSE
