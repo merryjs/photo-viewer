@@ -46,11 +46,28 @@ here you have some choices please see [IOS link frameworks](#ios-link-frameworks
 #### IOS Link Frameworks
 
 ##### Manual link
-Add frameworks from node_modules folder
+
+For some reasons if you dont want use any package manager in your side then you can link frameworks as:
+
+- Go to your xcode project choose your project if you unsure it click (command + 1)
+- Choose target General panel find embedded binaries click + icon will display a dialog and then go to `node_modules/@merryjs/photo-viewer/ios/Carthage/Build/iOS/` folder add these frameworks into your xcode project. It should looks like below
+	![Link Frameworks](assets/20170728-110148@2x.png)
 
 ##### [CocoaPods](https://cocoapods.org/)
 
+TODO: If you want use CocoaPods you can go to these repo find out how to integrated with cocoapods, i have not try this in the example repo
+
 ##### [Carthage](https://github.com/Carthage/Carthage)
+
+If you want use Carthage in your project and then you can add these dependencies into your Cartfile
+
+```
+
+github "NYTimes/NYTPhotoViewer" "develop"
+github "rs/SDWebImage"
+
+```
+and run `carthage update` when you done this you can link it like Manual link from node_modules describes, the only difference is use your carthage file instead of ours
 
 #### Android
 
