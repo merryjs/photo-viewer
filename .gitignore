@@ -8,7 +8,7 @@
 node_modules/
 npm-debug.log
 yarn-error.log
-  
+
 
 # Xcode
 #
@@ -29,7 +29,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
-      
+
 
 # Android/IntelliJ
 #
@@ -45,4 +45,5 @@ buck-out/
 *.keystore
 
 # Carthage
-ios/Carthage/Checkouts      
+ios/Carthage/Checkouts
+example/PhotoViewerExample/ios/Carthage/
