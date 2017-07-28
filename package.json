@@ -1,6 +1,6 @@
 {
   "name": "@merryjs/photo-viewer",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.7",
   "description": "A photo viewer for react native",
   "main": "index.js",
   "scripts": {
