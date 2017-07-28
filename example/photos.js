@@ -19,7 +19,8 @@ const photos = [
     title: "Flash End-of-Life",
     summary:
       "Adobe announced its roadmap to stop supporting Flash at the end of 2020. ",
-    titleColor: "#f90",
+    // must be valid hex color or android will crashes
+    titleColor: "#f90000",
     summaryColor: "green"
   },
   {
@@ -73,9 +74,11 @@ export default class Photos extends Component {
                 ref={r => (this.r = r)}
                 onPress={() =>
                   photoViewer.show({
+                    hideStatusBar: true,
+                    swipeToDismiss: true,
+                    zooming: true,
                     data: photos,
                     initial: index,
-                    hideStatusBar: true
                   })}
               >
                 <Image style={imageStyle} source={{ uri: cat.url }} />
