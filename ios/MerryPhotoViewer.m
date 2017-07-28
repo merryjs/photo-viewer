@@ -129,7 +129,7 @@ RCT_EXPORT_METHOD(show
                                            completion:^{
                                                presented = YES;
                                            }];
-            if (merryPhotoOptions.initial) {
+            if (merryPhotoOptions.initial >= 0) {
                 [self updatePhotoAtIndex:photosViewController Index:merryPhotoOptions.initial];
             }
             if (merryPhotoOptions.hideStatusBar) {
@@ -137,7 +137,7 @@ RCT_EXPORT_METHOD(show
             }
             resolve(@"");
         } @catch (NSException* exception) {
-            reject(@"9527", @"Display photo viewer failed, please check your configurations", exception);
+            reject(@"9527", @"Display photo viewer failed, please check your configurations", nil);
         } @finally {
         }
 
@@ -159,18 +159,32 @@ RCT_EXPORT_METHOD(show
     NSString* url = d.url;
     NSURL* imageURL = [NSURL URLWithString:url];
     dispatch_async(dispatch_get_main_queue(), ^{
+        //        UIImageView *imageView =   [[UIImageView alloc ]init];
+        //
+        //        [imageView sd_setImageWithURL:imageURL
+        //                     placeholderImage: nil //[UIImage imageNamed:@"avatar-placeholder.png"]
+        //                              options:SDWebImageRefreshCached
+        //                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        //                                if(image && error == nil){
+        //                                    currentPhoto.image = image;
+        //                                    [photosViewController updatePhoto:currentPhoto];
+        //                                }
+        //                            }];
+
         SDWebImageDownloader* downloader = [SDWebImageDownloader sharedDownloader];
         [downloader
             downloadImageWithURL:imageURL
-                         options:0
-                        progress:nil
-                       completed:^(UIImage* image, NSData* data, NSError* error, BOOL finished) {
-                           //                       when downloads completed update photo
-                           if (image && finished) {
-                               currentPhoto.image = image;
-                               [photosViewController updatePhoto:currentPhoto];
-                           }
-                       }];
+            options:0
+            progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL* _Nullable targetURL) {
+                //             NSLog(@" %lu/%lu",receivedSize,expectedSize);
+            }
+            completed:^(UIImage* image, NSData* data, NSError* error, BOOL finished) {
+                //                       when downloads completed update photo
+                if (image && finished) {
+                    currentPhoto.image = image;
+                    [photosViewController updatePhoto:currentPhoto];
+                }
+            }];
 
     });
 }
@@ -228,6 +242,7 @@ RCT_EXPORT_METHOD(show
 {
     //  NSLog(@"Did Dismiss Photo Viewer: %@", photosViewController);
     presented = NO;
+    merryPhotoOptions = nil;
     if (merryPhotoOptions.hideStatusBar) {
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
     }
