@@ -47,10 +47,10 @@ here you have some choices please see [IOS link frameworks](#ios-link-frameworks
 
 ##### Manual link
 
-For some reasons if you dont want use any package manager in your side then you can link frameworks as:
+For some reasons if you dont want use any package manager in your side then you can link frameworks as:
 
 - Go to your xcode project choose your project if you unsure it click (command + 1)
-- Choose target General panel find embedded binaries click + icon will display a dialog and then go to `node_modules/@merryjs/photo-viewer/ios/Carthage/Build/iOS/` folder add these frameworks into your xcode project. It should looks like below
+- Choose target General panel find embedded binaries click + icon will display a dialog and then go to `node_modules/@merryjs/photo-viewer/ios/Carthage/Build/iOS/` folder add these frameworks into your xcode project. It should looks like below
 	![Link Frameworks](assets/20170728-110148@2x.png)
 
 ##### [CocoaPods](https://cocoapods.org/)
@@ -67,7 +67,7 @@ github "NYTimes/NYTPhotoViewer" "develop"
 github "rs/SDWebImage"
 
 ```
-and run `carthage update` when you done this you can link it like Manual link from node_modules describes, the only difference is use your carthage file instead of ours
+and run `carthage update` when you done this you can link it like Manual link from node_modules describes, the only difference is use your carthage file instead of ours
 
 #### Android
 
@@ -98,7 +98,7 @@ photoViewer.show(options)
 
 ```
 
-At this moment, only two methods you need to call
+At this moment, only two methods you need to call
 - `show` for display the photo viewer
 - `hide` for hide the photo viewer, but most case you just need `show` it.
 
@@ -125,6 +125,6 @@ limitations under the License.
 
 Due to we use some third-part softwares and both of them are licensed under Apache 2.0 so do we.
 
-- [Photo Viewer](https://github.com/merryjs/photo-viewer/blob/master/LICENSE)
+- [Photo Viewer](https://github.com/merryjs/photo-viewer/blob/master/LICENSE)
 - [NYTPhotoViewer](https://github.com/NYTimes/NYTPhotoViewer/blob/develop/LICENSE.md)
 - [FrescoImageViewer](https://github.com/stfalcon-studio/FrescoImageViewer#license)
