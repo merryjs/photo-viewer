@@ -1,7 +1,19 @@
 
 # @merryjs/photo-viewer[WIP]
 
-> A photo viewer for react native build on top of NYTPhotoViewer
+> A photo viewer for react native build on top of NYTPhotoViewer and
+- [@merryjs/photo-viewer[WIP]](#merryjs-photo-viewer-wip)
+    - [Getting started](#getting-started)
+        - [Mostly automatic installation](#mostly-automatic-installation)
+        - [Manual installation](#manual-installation)
+            - [iOS](#ios)
+            - [IOS Link Frameworks](#ios-link-frameworks)
+                - [Manual link](#manual-link)
+                - [[CocoaPods](https://cocoapods.org/)](#cocoapods-https-cocoapods-org)
+                - [[Carthage](https://github.com/Carthage/Carthage)](#carthage-https-github-com-carthage-carthage)
+            - [Android](#android)
+    - [Usage](#usage)
+    - [LICENSE](#license)
 
 ![preview](./assets/preview.gif)
 
@@ -9,9 +21,17 @@
 
 `$ npm install @merryjs/photo-viewer --save`
 
+or
+
+`$ yarn add  @merryjs/photo-viewer`
+
 ### Mostly automatic installation
 
 `$ react-native link @merryjs/photo-viewer`
+
+When you done this you still need link some frameworks into your xcode's embedded framework section,
+here you have some choices please see [IOS link frameworks](#ios-link-frameworks) for more details
+
 
 ### Manual installation
 
@@ -23,9 +43,14 @@
 3. In XCode, in the project navigator, select your project. Add `libMerryPhotoViewer.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
 4. Run your project (`Cmd+R`)<
 
-##### IOS Link Frameworks
+#### IOS Link Frameworks
 
-NOTE: TOOD
+##### Manual link
+Add frameworks from node_modules folder
+
+##### [CocoaPods](https://cocoapods.org/)
+
+##### [Carthage](https://github.com/Carthage/Carthage)
 
 #### Android
 
@@ -44,9 +69,43 @@ NOTE: TOOD
 
 
 ## Usage
-```javascript
-import MerryPhotoViewer from '@merryjs/photo-viewer';
 
-// TODO: What to do with the module?
-MerryPhotoViewer;
+The most part from this package is setup the Native side dependencies, once you have done it before,
+you can use it as below, very very easy to use:
+
+```javascript
+
+import photoViewer from '@merryjs/photo-viewer';
+
+photoViewer.show(options)
+
 ```
+
+At this moment, only two methods you need to call, `show` for display the photo viewer and `hide` for hide the photo viewer, but most case you just need `show` it.
+
+## LICENSE
+
+```
+
+Copyright 2017 Merryjs.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+```
+
+
+Due to we use some third-part softwares and both of them are licensed under Apache 2.0 so do we.
+
+- [Photo Viewer ](https://github.com/merryjs/photo-viewer/blob/master/LICENSE)
+- [NYTPhotoViewer](https://github.com/NYTimes/NYTPhotoViewer/blob/develop/LICENSE.md)
+- [FrescoImageViewer](https://github.com/stfalcon-studio/FrescoImageViewer#license)
