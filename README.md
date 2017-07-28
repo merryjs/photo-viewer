@@ -90,12 +90,12 @@ and run `carthage update` when you done this you can link it like Manual link fr
 
 When you have linked you need one more step for initialize the Fresco Library
 
-```
+```java
 @Override
     public void onCreate() {
         super.onCreate();
         SoLoader.init(this, /* native exopackage */ false);
-// If your picture very large you initialize it with thses configurations
+// If your picture very large you can initialize it with these configurations
  
 //        ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
 //                .setProgressiveJpegConfig(new SimpleProgressiveJpegConfig())
