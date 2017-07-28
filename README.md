@@ -98,7 +98,9 @@ photoViewer.show(options)
 
 ```
 
-At this moment, only two methods you need to call, `show` for display the photo viewer and `hide` for hide the photo viewer, but most case you just need `show` it.
+At this moment, only two methods you need to call
+- `show` for display the photo viewer
+- `hide` for hide the photo viewer, but most case you just need `show` it.
 
 ## LICENSE
 
@@ -121,8 +123,8 @@ limitations under the License.
 ```
 
 
-Due to we use some third-part softwares and both of them are licensed under Apache 2.0 so do we.
+Due to we use some third-part softwares and both of them are licensed under Apache 2.0 so do we.
 
-- [Photo Viewer ](https://github.com/merryjs/photo-viewer/blob/master/LICENSE)
+- [Photo Viewer](https://github.com/merryjs/photo-viewer/blob/master/LICENSE)
 - [NYTPhotoViewer](https://github.com/NYTimes/NYTPhotoViewer/blob/develop/LICENSE.md)
 - [FrescoImageViewer](https://github.com/stfalcon-studio/FrescoImageViewer#license)
