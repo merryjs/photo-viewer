@@ -55,11 +55,11 @@ For some reasons if you dont want use any package manager in your side then you 
 
 ##### [CocoaPods](https://cocoapods.org/)
 
-TODO: If you want use CocoaPods you can go to these repo find out how to integrated with cocoapods, i have not try this in the example repo
+TODO: If you want use CocoaPods you can go to these repo find out how to integrated with cocoapods, i have not try this in the example repo
 
 ##### [Carthage](https://github.com/Carthage/Carthage)
 
-If you want use Carthage in your project and then you can add these dependencies into your Cartfile
+If you want use Carthage in your project and then you can add these dependencies into your Cartfile
 
 ```
 
