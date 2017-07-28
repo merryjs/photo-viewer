@@ -195,7 +195,7 @@ RCT_EXPORT_METHOD(show
                      titleForPhoto:(id<NYTPhoto>)photo
                            atIndex:(NSInteger)photoIndex
                    totalPhotoCount:(nullable NSNumber *)totalPhotoCount {
-  return [NSString stringWithFormat:@"%lu/%lu", (unsigned long)photoIndex + 1,
+  return [NSString stringWithFormat:@"%lu / %lu", (unsigned long)photoIndex + 1,
                                     (unsigned long)totalPhotoCount.integerValue];
 }
 
@@ -213,23 +213,24 @@ RCT_EXPORT_METHOD(show
     [self updatePhotoAtIndex:photosViewController Index:photoIndex];
   }
 
-  NSLog(@"Did Navigate To Photo: %@ identifier: %lu", photo, (unsigned long)photoIndex);
+//  NSLog(@"Did Navigate To Photo: %@ identifier: %lu", photo, (unsigned long)photoIndex);
 }
-
-- (void)photosViewController:(NYTPhotosViewController *)photosViewController
-    actionCompletedWithActivityType:(NSString *)activityType {
-  NSLog(@"Action Completed With Activity Type: %@", activityType);
-}
+//
+//- (void)photosViewController:(NYTPhotosViewController *)photosViewController
+//    actionCompletedWithActivityType:(NSString *)activityType {
+//  NSLog(@"Action Completed With Activity Type: %@", activityType);
+//}
 
 - (void)photosViewControllerDidDismiss:(NYTPhotosViewController *)photosViewController {
-  NSLog(@"Did Dismiss Photo Viewer: %@", photosViewController);
+//  NSLog(@"Did Dismiss Photo Viewer: %@", photosViewController);
   presented = NO;
   if (merryPhotoOptions.hideStatusBar) {
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
   }
 }
 
-+ (NSAttributedString *)attributedTitleFromString:(NSString *)caption:(UIColor *)color {
++ (NSAttributedString *)attributedTitleFromString:(NSString *)caption
+                                                 :(UIColor *)color {
   return [[NSAttributedString alloc]
       initWithString:caption
           attributes:@{
@@ -238,7 +239,8 @@ RCT_EXPORT_METHOD(show
           }];
 }
 
-+ (NSAttributedString *)attributedSummaryFromString:(NSString *)summary:(UIColor *)color {
++ (NSAttributedString *)attributedSummaryFromString:(NSString *)
+                                            summary:(UIColor *)color {
   return [[NSAttributedString alloc]
       initWithString:summary
           attributes:@{
