@@ -12,6 +12,7 @@
                 - [[CocoaPods](https://cocoapods.org/)](#cocoapods-https-cocoapods-org)
                 - [[Carthage](https://github.com/Carthage/Carthage)](#carthage-https-github-com-carthage-carthage)
             - [Android](#android)
+            - [Android targetSdkVersion configuration](#android-targetsdkversion-configuration)
             - [Android Fresco initialize](#android-fresco-initialize)
     - [Usage](#usage)
     - [LICENSE](#license)
@@ -85,6 +86,36 @@ and run `carthage update` when you done this you can link it like Manual link fr
   	```
       compile project(':@merryjs/photo-viewer')
   	```
+#### Android targetSdkVersion configuration
+
+We use a third part library and both of them are target to `targetSdkVersion 25`, so you need update your build.gradle to the same version or you will meet a build error
+
+The configuration looks like: (`android/app/build.gradle`)
+
+```java
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+
+    defaultConfig {
+        applicationId "com.merryexamples"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
+
+        renderscriptTargetApi 25
+        renderscriptSupportModeEnabled true
+    }
+	// ...
+}
+```
+
+If we have any better solution will update this section in the future.
 
 #### Android Fresco initialize
 
@@ -109,7 +140,47 @@ Fresco.initialize(this);
 }
 ```
 
-Thats it.
+Add activity to `AndroidManifest.xml` inside application section
+
+```xml
+
+<application>
+	...
+	<activity android:name="com.merryjs.PhotoViewer.MerryPhotoViewActivity" android:theme="@style/Theme.Transparent"/>
+
+</application>
+
+```
+
+Note: if you don't want a transparent theme you can remove `android:theme="@style/Theme.Transparent"` from your activity
+otherwise you need add a style resource in you android project
+
+The full path is `android/app/res/values/styles.xml`, if the res folder doest not exist, please create one, the `styles.xml` looks like
+
+```xml
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+	<!-- Photo Viewer Transparent Theme  -->
+    <style name="Theme.Transparent" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+</resources>
+
+
+```
+
+Thats all.
 
 
 ## Usage
