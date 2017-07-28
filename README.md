@@ -88,7 +88,7 @@ and run `carthage update` when you done this you can link it like Manual link fr
   	```
 #### Android targetSdkVersion configuration
 
-We use a third part library and both of them are target to `targetSdkVersion 25`, so you need update your build.gradle to the same version or you will meet a build error
+We use a third part library and both of them are target to `targetSdkVersion 25`, so you need update your build.gradle to the same version or you will meet a build error
 
 The configuration looks like: (`android/app/build.gradle`)
 
