@@ -46,4 +46,7 @@ buck-out/
 
 # Carthage
 ios/Carthage/Checkouts
-example/PhotoViewerExample/ios/Carthage/
+example/ios/FLAnimatedImage.framework/
+example/ios/NYTPhotoViewer.framework/
+example/ios/NYTPhotoViewerCore.framework/
+example/ios/SDWebImage.framework/
