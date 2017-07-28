@@ -92,11 +92,11 @@ When you have linked you need one more step for initialize the Fresco Library
 
 ```java
 @Override
-    public void onCreate() {
-        super.onCreate();
-        SoLoader.init(this, /* native exopackage */ false);
+public void onCreate() {
+super.onCreate();
+SoLoader.init(this, /* native exopackage */ false);
 // If your picture very large you can initialize it with these configurations
- 
+
 //        ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
 //                .setProgressiveJpegConfig(new SimpleProgressiveJpegConfig())
 //                .setResizeAndRotateEnabledForNetwork(true)
@@ -104,9 +104,9 @@ When you have linked you need one more step for initialize the Fresco Library
 //                .build();
 //        Fresco.initialize(this, config);
 
-        Fresco.initialize(this);
+Fresco.initialize(this);
 
-    }
+}
 ```
 
 Thats it.
