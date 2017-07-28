@@ -3,7 +3,7 @@
 //  MerryPhotoViewer
 //
 //  Created by bang on 27/07/2017.
-//  Copyright © 2017 Facebook. All rights reserved.
+//  Copyright © 2017 Merryjs.com. All rights reserved.
 //
 //
 //	MerryPhotoOptions.m
@@ -52,11 +52,11 @@ NSString *const kMerryPhotoOptionsZooming = @"zooming";
     if(![dictionary[kMerryPhotoOptionsHideStatusBar] isKindOfClass:[NSNull class]]){
         self.hideStatusBar = [dictionary[kMerryPhotoOptionsHideStatusBar] boolValue];
     }
-    
+
     if(![dictionary[kMerryPhotoOptionsInitial] isKindOfClass:[NSNull class]]){
         self.initial = [dictionary[kMerryPhotoOptionsInitial] integerValue];
     }
-    
+
     if(![dictionary[kMerryPhotoOptionsShareText] isKindOfClass:[NSNull class]]){
         self.shareText = dictionary[kMerryPhotoOptionsShareText];
     }
@@ -66,14 +66,14 @@ NSString *const kMerryPhotoOptionsZooming = @"zooming";
     if(![dictionary[kMerryPhotoOptionsSwipeToDismiss] isKindOfClass:[NSNull class]]){
         self.swipeToDismiss = [dictionary[kMerryPhotoOptionsSwipeToDismiss] boolValue];
     }
-    
+
     if(![dictionary[kMerryPhotoOptionsTitlePagerColor] isKindOfClass:[NSNull class]]){
         self.titlePagerColor = dictionary[kMerryPhotoOptionsTitlePagerColor];
     }
     if(![dictionary[kMerryPhotoOptionsZooming] isKindOfClass:[NSNull class]]){
         self.zooming = [dictionary[kMerryPhotoOptionsZooming] boolValue];
     }
-    
+
     return self;
 }
 
@@ -108,7 +108,7 @@ NSString *const kMerryPhotoOptionsZooming = @"zooming";
     }
     dictionary[kMerryPhotoOptionsZooming] = @(self.zooming);
     return dictionary;
-    
+
 }
 
 /**
@@ -153,7 +153,7 @@ NSString *const kMerryPhotoOptionsZooming = @"zooming";
     self.titlePagerColor = [aDecoder decodeObjectForKey:kMerryPhotoOptionsTitlePagerColor];
     self.zooming = [[aDecoder decodeObjectForKey:kMerryPhotoOptionsZooming] boolValue];
     return self;
-    
+
 }
 
 /**
@@ -162,7 +162,7 @@ NSString *const kMerryPhotoOptionsZooming = @"zooming";
 - (instancetype)copyWithZone:(NSZone *)zone
 {
     MerryPhotoOptions *copy = [MerryPhotoOptions new];
-    
+
     copy.backgroundColor = [self.backgroundColor copy];
     copy.data = [self.data copy];
     copy.hideStatusBar = self.hideStatusBar;
@@ -172,7 +172,7 @@ NSString *const kMerryPhotoOptionsZooming = @"zooming";
     copy.swipeToDismiss = self.swipeToDismiss;
     copy.titlePagerColor = [self.titlePagerColor copy];
     copy.zooming = self.zooming;
-    
+
     return copy;
 }
 @end

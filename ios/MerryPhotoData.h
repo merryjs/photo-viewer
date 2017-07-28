@@ -3,7 +3,7 @@
 //  MerryPhotoViewer
 //
 //  Created by bang on 27/07/2017.
-//  Copyright © 2017 Facebook. All rights reserved.
+//  Copyright © 2017 Merryjs.com. All rights reserved.
 //
 
 #ifndef MerryPhotoData_h

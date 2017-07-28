@@ -3,7 +3,7 @@
 //  MerryPhotoViewer
 //
 //  Created by bang on 27/07/2017.
-//  Copyright © 2017 Facebook. All rights reserved.
+//  Copyright © 2017 Merryjs.com. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -76,7 +76,7 @@ NSString *const kDataUrl = @"url";
         dictionary[kDataUrl] = self.url;
     }
     return dictionary;
-    
+
 }
 
 /**
@@ -102,7 +102,7 @@ NSString *const kDataUrl = @"url";
     if(self.url != nil){
         [aCoder encodeObject:self.url forKey:kDataUrl];
     }
-    
+
 }
 
 /**
@@ -117,7 +117,7 @@ NSString *const kDataUrl = @"url";
     self.titleColor = [aDecoder decodeObjectForKey:kDataTitleColor];
     self.url = [aDecoder decodeObjectForKey:kDataUrl];
     return self;
-    
+
 }
 
 /**
@@ -126,13 +126,13 @@ NSString *const kDataUrl = @"url";
 - (instancetype)copyWithZone:(NSZone *)zone
 {
     MerryPhotoData *copy = [MerryPhotoData new];
-    
+
     copy.summary = [self.summary copy];
     copy.summaryColor = [self.summaryColor copy];
     copy.title = [self.title copy];
     copy.titleColor = [self.titleColor copy];
     copy.url = [self.url copy];
-    
+
     return copy;
 }
 @end
