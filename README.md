@@ -31,7 +31,7 @@
     - [LICENSE](#license)
 
 
-![preview](./assets/preview.gif)
+![preview](./assets/preview.gif) ![preview](./assets/android.gif)
 
 ## Getting started
 
