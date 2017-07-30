@@ -21,7 +21,6 @@
 #import <NYTPhotoViewer/NYTPhotoViewerArrayDataSource.h>
 #import <NYTPhotoViewer/NYTPhotosViewController.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <SDWebImage/FLAnimatedImageView+WebCache.h>
 
 @interface MerryPhotoViewer
     : NSObject<RCTBridgeModule, NYTPhotosViewControllerDelegate>

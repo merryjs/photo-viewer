@@ -158,6 +158,10 @@ RCT_EXPORT_METHOD(show
 
     NSString* url = d.url;
     NSURL* imageURL = [NSURL URLWithString:url];
+        // check an url is a gif image.
+        // NOTE: this check require your url have an extension.
+    BOOL isGif = [[imageURL pathExtension]  isEqual: @"gif"];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         //        UIImageView *imageView =   [[UIImageView alloc ]init];
         //
@@ -181,7 +185,11 @@ RCT_EXPORT_METHOD(show
             completed:^(UIImage* image, NSData* data, NSError* error, BOOL finished) {
                 //                       when downloads completed update photo
                 if (image && finished) {
-                    currentPhoto.image = image;
+                    if(isGif){
+                        currentPhoto.imageData = data;
+                    }else{
+                        currentPhoto.image = image;
+                    }
                     [photosViewController updatePhoto:currentPhoto];
                 }
             }];
