@@ -4,7 +4,8 @@
   "description": "A photo viewer for react native",
   "main": "index.js",
   "scripts": {
-    "start": "tsc -w"
+    "start": "tsc -w",
+    "doc": "typedoc --out ./doc index.ts --mode file --ignoreCompilerErrors --readme none --hideGenerator --excludePrivate --excludeExternals"
   },
   "keywords": ["react-native", "photo viewer", "photo zoom pan"],
   "author": "bang88",
