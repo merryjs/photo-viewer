@@ -15,6 +15,7 @@
 @implementation MerryPhotoViewer {
     BOOL presented;
     MerryPhotoOptions* merryPhotoOptions;
+    SDWebImageDownloader* downloader;
 }
 
 // tell React we want export this module
@@ -158,36 +159,34 @@ RCT_EXPORT_METHOD(show
 
     NSString* url = d.url;
     NSURL* imageURL = [NSURL URLWithString:url];
-        // check an url is a gif image.
-        // NOTE: this check require your url have an extension.
-    BOOL isGif = [[imageURL pathExtension]  isEqual: @"gif"];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        //        UIImageView *imageView =   [[UIImageView alloc ]init];
-        //
-        //        [imageView sd_setImageWithURL:imageURL
-        //                     placeholderImage: nil //[UIImage imageNamed:@"avatar-placeholder.png"]
-        //                              options:SDWebImageRefreshCached
-        //                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        //                                if(image && error == nil){
-        //                                    currentPhoto.image = image;
-        //                                    [photosViewController updatePhoto:currentPhoto];
-        //                                }
-        //                            }];
+    // check an url is a gif image.
+    // NOTE: this check require your url have an extension.
+    BOOL isGif = [[imageURL pathExtension] isEqual:@"gif"];
 
-        SDWebImageDownloader* downloader = [SDWebImageDownloader sharedDownloader];
+    downloader = [SDWebImageDownloader sharedDownloader];
+
+    //      Limit only one photo will be download
+    [downloader setMaxConcurrentDownloads:1];
+    // cancel all downloads
+    [downloader cancelAllDownloads];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+
         [downloader
             downloadImageWithURL:imageURL
             options:0
             progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL* _Nullable targetURL) {
-                //             NSLog(@" %lu/%lu",receivedSize,expectedSize);
+                // dispatch_sync(dispatch_get_main_queue(), ^{
+                //     float progress = (float)receivedSize / expectedSize;
+                //     NSLog(@" %lu/%lu", receivedSize, expectedSize);
+                // });
             }
             completed:^(UIImage* image, NSData* data, NSError* error, BOOL finished) {
                 //                       when downloads completed update photo
                 if (image && finished) {
-                    if(isGif){
+                    if (isGif) {
                         currentPhoto.imageData = data;
-                    }else{
+                    } else {
                         currentPhoto.image = image;
                     }
                     [photosViewController updatePhoto:currentPhoto];
@@ -198,7 +197,10 @@ RCT_EXPORT_METHOD(show
 }
 
 #pragma mark - NYTPhotosViewControllerDelegate
-
+- (UIView*)photosViewController:(NYTPhotosViewController*)photosViewController loadingViewForPhoto:(id<NYTPhoto>)photo
+{
+    return nil;
+}
 - (UIView*)photosViewController:(NYTPhotosViewController*)photosViewController
           referenceViewForPhoto:(id<NYTPhoto>)photo
 {
@@ -253,6 +255,9 @@ RCT_EXPORT_METHOD(show
     merryPhotoOptions = nil;
     if (merryPhotoOptions.hideStatusBar) {
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
+    }
+    if (downloader) {
+        [downloader cancelAllDownloads];
     }
 }
 

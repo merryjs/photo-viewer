@@ -8,10 +8,12 @@ import {
   Button,
   Image,
   TouchableOpacity,
-  Dimensions
+	Dimensions,
+	processColor,
+	NativeModules
 } from "react-native";
 
-import photoViewer from "@merryjs/photo-viewer";
+import photoViewer from "./photo-viewer";
 
 const photos = [
   {
@@ -44,7 +46,13 @@ const photos = [
   {
     url:
       "https://images.pexels.com/photos/248261/pexels-photo-248261.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
-  }
+	},
+		{
+			url:'https://media.giphy.com/media/xT39CSUZtc1T1iKgc8/giphy.gif'
+		},
+		{
+			url:'https://media.giphy.com/media/3o6vXWzHtGfMR3XoXu/giphy.gif'
+		}
 ];
 export default class Photos extends Component {
   static navigationOptions = {
