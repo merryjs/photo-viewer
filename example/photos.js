@@ -8,12 +8,13 @@ import {
   Button,
   Image,
   TouchableOpacity,
-	Dimensions,
-	processColor,
-	NativeModules
+  Dimensions,
+  processColor,
+  NativeModules
 } from "react-native";
 
 import photoViewer from "./photo-viewer";
+import MerryPhotoViewView from "./MerryPhotoViewNativeView";
 
 const photos = [
   {
@@ -22,8 +23,8 @@ const photos = [
     summary:
       "Adobe announced its roadmap to stop supporting Flash at the end of 2020. ",
     // must be valid hex color or android will crashes
-    titleColor: "#f90000",
-    summaryColor: "green"
+    titleColor: processColor("#f90000"),
+    summaryColor: processColor("green")
   },
   {
     url: "https://c1.staticflickr.com/6/5598/14934282524_577a904d2b_k.jpg"
@@ -46,13 +47,13 @@ const photos = [
   {
     url:
       "https://images.pexels.com/photos/248261/pexels-photo-248261.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
-	},
-		{
-			url:'https://media.giphy.com/media/xT39CSUZtc1T1iKgc8/giphy.gif'
-		},
-		{
-			url:'https://media.giphy.com/media/3o6vXWzHtGfMR3XoXu/giphy.gif'
-		}
+  },
+  {
+    url: "https://media.giphy.com/media/xT39CSUZtc1T1iKgc8/giphy.gif"
+  },
+  {
+    url: "https://media.giphy.com/media/3o6vXWzHtGfMR3XoXu/giphy.gif"
+  }
 ];
 export default class Photos extends Component {
   static navigationOptions = {
@@ -69,10 +70,19 @@ export default class Photos extends Component {
       width: imageSize,
       height: imageSize
     };
-
     return (
       <View style={styles.container}>
         <Text style={styles.h1}>Photo Viewer</Text>
+        <MerryPhotoViewView
+          exampleProp="xx"
+          options={{
+            hideStatusBar: true,
+            swipeToDismiss: true,
+            zooming: true,
+            data: photos,
+            initial: 0
+          }}
+        />
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.photoContainer}>
             {photos.map((cat, index) =>
@@ -86,7 +96,7 @@ export default class Photos extends Component {
                     swipeToDismiss: true,
                     zooming: true,
                     data: photos,
-                    initial: index,
+                    initial: index
                   })}
               >
                 <Image style={imageStyle} source={{ uri: cat.url }} />
