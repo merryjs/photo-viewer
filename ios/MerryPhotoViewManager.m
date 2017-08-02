@@ -28,6 +28,9 @@ RCT_EXPORT_MODULE();
 }
 
 RCT_EXPORT_VIEW_PROPERTY(options, NSDictionary)
-
+RCT_EXPORT_VIEW_PROPERTY(initial, NSInteger)
+RCT_EXPORT_VIEW_PROPERTY(hideStatusBar, BOOL)
+RCT_EXPORT_VIEW_PROPERTY(onDismiss, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onChange, RCTBubblingEventBlock)
 
 @end

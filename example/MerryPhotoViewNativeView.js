@@ -12,7 +12,7 @@ const RNMerryPhotoView = requireNativeComponent(
 export default class MerryPhotoView extends Component {
   componentDidMount() {}
   render() {
-    if (!this.props.visiable) {
+    if (!this.props.visible) {
       return null;
     }
     return <RNMerryPhotoView {...this.props} />;
@@ -20,9 +20,12 @@ export default class MerryPhotoView extends Component {
 }
 
 MerryPhotoView.propTypes = {
-  exampleProp: PropTypes.string,
-  visiable: PropTypes.bool
+  visible: PropTypes.bool,
+  initial: PropTypes.number,
+  hideStatusBar: PropTypes.bool,
+  onDismiss: PropTypes.func,
+  onChange: PropTypes.func
 };
 MerryPhotoView.defaultProps = {
-  visiable: false
+  visible: false
 };

@@ -59,10 +59,9 @@ export default class Photos extends Component {
   static navigationOptions = {
     title: "Photo Viewer"
   };
-
-  async componentDidMount() {
-    // await MerryPhotoViewer.config({ data: photos });
-  }
+  state = {
+    visible: true
+  };
   render() {
     const imageSize = Dimensions.get("window").width / 3;
 
@@ -74,13 +73,17 @@ export default class Photos extends Component {
       <View style={styles.container}>
         <Text style={styles.h1}>Photo Viewer</Text>
         <MerryPhotoViewView
-          exampleProp="xx"
+          visible={this.state.visible}
           options={{
-            hideStatusBar: true,
             swipeToDismiss: true,
             zooming: true,
-            data: photos,
-            initial: 0
+            data: photos
+          }}
+          hideStatusBar={true}
+          initial={1}
+          onChange={() => {}}
+          onDismiss={(e) => {
+            this.setState({ visible: false });
           }}
         />
         <ScrollView showsVerticalScrollIndicator={false}>

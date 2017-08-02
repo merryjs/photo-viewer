@@ -32,8 +32,6 @@
     if (self.options) {
         [self showViewer:self.options];
     }
-
-    NSLog(@"View loaded");
 }
 - (void)removeFromSuperview
 {
@@ -120,13 +118,14 @@
 
     self.photos = msPhotos;
     self.dataSource = [NYTPhotoViewerArrayDataSource dataSourceWithPhotos:self.photos];
+    NSInteger initialPhoto = self.initial;
 
     dispatch_async(dispatch_get_main_queue(), ^{
 
         @try {
             NYTPhotosViewController* photosViewController = [[NYTPhotosViewController alloc]
                 initWithDataSource:self.dataSource
-                      initialPhoto:[self.photos objectAtIndex:merryPhotoOptions.initial]
+                      initialPhoto:[self.photos objectAtIndex:initialPhoto]
                           delegate:self];
 
             [[self getRootView] presentViewController:photosViewController
@@ -134,10 +133,10 @@
                                            completion:^{
                                                presented = YES;
                                            }];
-            if (merryPhotoOptions.initial >= 0) {
-                [self updatePhotoAtIndex:photosViewController Index:merryPhotoOptions.initial];
+            if (initialPhoto >= 0) {
+                [self updatePhotoAtIndex:photosViewController Index:initialPhoto];
             }
-            if (merryPhotoOptions.hideStatusBar) {
+            if (self.hideStatusBar) {
                 [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
             }
             //            resolve(@"");
@@ -243,7 +242,13 @@
     if (!photo.image && !photo.imageData) {
         [self updatePhotoAtIndex:photosViewController Index:photoIndex];
     }
-
+    NSNumber* index = [[NSNumber alloc] initWithLong:photoIndex];
+    if (self.onChange) {
+        self.onChange(@{
+            @"index" : index,
+            @"photo" : photo
+        });
+    }
     //  NSLog(@"Did Navigate To Photo: %@ identifier: %lu", photo, (unsigned long)photoIndex);
 }
 //
@@ -257,11 +262,14 @@
     //  NSLog(@"Did Dismiss Photo Viewer: %@", photosViewController);
     presented = NO;
     merryPhotoOptions = nil;
-    if (merryPhotoOptions.hideStatusBar) {
+    if (self.hideStatusBar) {
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
     }
     if (downloader) {
         [downloader cancelAllDownloads];
+    }
+    if (self.onDismiss) {
+        self.onDismiss(nil);
     }
 }
 - (BOOL)photosViewController:(NYTPhotosViewController*)photosViewController handleActionButtonTappedForPhoto:(id<NYTPhoto>)photo
