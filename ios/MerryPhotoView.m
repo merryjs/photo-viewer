@@ -37,7 +37,10 @@
 {
     [self hideViewer];
 }
-
+- (void)invalidate
+{
+    [self hideViewer];
+}
 /**
  Get root view
 
@@ -254,11 +257,12 @@
     }
     //  NSLog(@"Did Navigate To Photo: %@ identifier: %lu", photo, (unsigned long)photoIndex);
 }
-//
-//- (void)photosViewController:(NYTPhotosViewController *)photosViewController
-//    actionCompletedWithActivityType:(NSString *)activityType {
-//  NSLog(@"Action Completed With Activity Type: %@", activityType);
-//}
+
+- (void)photosViewController:(NYTPhotosViewController*)photosViewController
+    actionCompletedWithActivityType:(NSString*)activityType
+{
+    NSLog(@"Action Completed With Activity Type: %@", activityType);
+}
 
 - (void)photosViewControllerDidDismiss:(NYTPhotosViewController*)photosViewController
 {
@@ -277,17 +281,13 @@
 }
 - (BOOL)photosViewController:(NYTPhotosViewController*)photosViewController handleActionButtonTappedForPhoto:(id<NYTPhoto>)photo
 {
-    return YES;
+    return NO;
 }
 - (BOOL)photosViewController:(NYTPhotosViewController*)photosViewController handleLongPressForPhoto:(id<NYTPhoto>)photo withGestureRecognizer:(UILongPressGestureRecognizer*)longPressGestureRecognizer
 {
-    return YES;
+    return NO;
 }
-- (void)photosViewController:(NYTPhotosViewController*)photosViewController actionCompletedWithActivityType:(NSString*)activityType
-{
 
-    NSLog(@"%@", activityType);
-}
 + (NSAttributedString*)attributedTitleFromString:(NSString*)caption
                                                 :(UIColor*)color
 {

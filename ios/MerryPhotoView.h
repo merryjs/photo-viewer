@@ -12,6 +12,7 @@
 #import “React / RCTBridge.h” // Required when used as a Pod in a Swift project
 #endif
 #import <React/RCTComponent.h>
+#import <React/RCTInvalidating.h>
 
 #import <NYTPhotoViewer/NYTPhotoViewerArrayDataSource.h>
 #import <NYTPhotoViewer/NYTPhotosViewController.h>
@@ -22,7 +23,7 @@
 
 @class RCTEventDispatcher;
 
-@interface MerryPhotoView : UIView <NYTPhotosViewControllerDelegate>
+@interface MerryPhotoView : UIView <NYTPhotosViewControllerDelegate, RCTInvalidating>
 // Define view properties here with @property
 @property (nonatomic) NSInteger initial;
 @property (nonatomic) NSDictionary* options;
