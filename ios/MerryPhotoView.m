@@ -243,10 +243,13 @@
         [self updatePhotoAtIndex:photosViewController Index:photoIndex];
     }
     NSNumber* index = [[NSNumber alloc] initWithLong:photoIndex];
-    if (self.onChange) {
-        self.onChange(@{
-            @"index" : index,
-            @"photo" : photo
+    if (self.onNavigateToPhoto) {
+        self.onNavigateToPhoto(@{
+            @"currentPhoto" : @{
+                @"index" : index,
+                @"photo" : photo
+            }
+
         });
     }
     //  NSLog(@"Did Navigate To Photo: %@ identifier: %lu", photo, (unsigned long)photoIndex);

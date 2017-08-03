@@ -28,7 +28,7 @@
 @property (nonatomic) NSDictionary* options;
 @property (nonatomic) BOOL hideStatusBar;
 @property (nonatomic, copy) RCTBubblingEventBlock onDismiss;
-@property (nonatomic, copy) RCTBubblingEventBlock onChange;
+@property (nonatomic, copy) RCTBubblingEventBlock onNavigateToPhoto;
 
 // Initializing with the event dispatcher allows us to communicate with JS
 - (instancetype)initWithEventDispatcher:(RCTEventDispatcher*)eventDispatcher NS_DESIGNATED_INITIALIZER;

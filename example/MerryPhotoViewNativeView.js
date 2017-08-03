@@ -6,16 +6,31 @@ import PropTypes from "prop-types";
 
 const RNMerryPhotoView = requireNativeComponent(
   "MerryPhotoView",
-  MerryPhotoView
+  MerryPhotoView,
+  {
+    nativeOnly: {
+      onNavigateToPhoto: true
+    }
+  }
 );
 
 export default class MerryPhotoView extends Component {
   componentDidMount() {}
+  onChange(e) {
+    if (this.props.onChange) {
+      this.props.onChange(e.nativeEvent.currentPhoto);
+    }
+  }
   render() {
     if (!this.props.visible) {
       return null;
     }
-    return <RNMerryPhotoView {...this.props} />;
+    return (
+      <RNMerryPhotoView
+        {...this.props}
+        onNavigateToPhoto={e => this.onChange(e)}
+      />
+    );
   }
 }
 

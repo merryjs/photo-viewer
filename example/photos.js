@@ -81,7 +81,9 @@ export default class Photos extends Component {
           }}
           hideStatusBar={true}
           initial={1}
-          onChange={() => {}}
+          onChange={(data) => {
+						console.log(data)
+					}}
           onDismiss={(e) => {
             this.setState({ visible: false });
           }}
