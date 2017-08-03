@@ -1,51 +1,51 @@
-
 buildscript {
-    repositories {
-        jcenter()
-    }
+	repositories {
+		jcenter()
+	}
 
-    dependencies {
-        classpath 'com.android.tools.build:gradle:1.3.1'
-    }
+	dependencies {
+		classpath 'com.android.tools.build:gradle:1.3.1'
+	}
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+	compileSdkVersion 25
+	buildToolsVersion "25.0.3"
 
-    defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
-    }
-    lintOptions {
-        abortOnError false
-    }
+	defaultConfig {
+		minSdkVersion 16
+		targetSdkVersion 25
+		versionCode 1
+		versionName "1.0"
+	}
+	lintOptions {
+		abortOnError false
+	}
 }
 
 repositories {
-    jcenter()
-    mavenCentral()
+	jcenter()
+	mavenCentral()
 }
 
 
 ext {
-    supportVersion = '25.1.1'
-    frescoVersion = '1.4.0'
+	supportVersion = '25.1.1'
+	frescoVersion = '1.3.0'
 }
 
 dependencies {
 
-    compile "com.facebook.react:react-native:+"  // From node_modules
-    compile 'com.github.stfalcon:frescoimageviewer:0.5.0'
-    // compile "com.android.support:design:$supportVersion"
-    // compile "com.android.support:appcompat-v7:$supportVersion"
-    // compile "com.android.support:support-v4:$supportVersion"
-    // compile "com.android.support:cardview-v7:$supportVersion"
-    compile "com.facebook.fresco:fresco:$frescoVersion"
+	compile "com.facebook.react:react-native:+"  // From node_modules
+	// compile "com.android.support:design:$supportVersion"
+	// compile "com.android.support:appcompat-v7:$supportVersion"
+	// compile "com.android.support:support-v4:$supportVersion"
+	// compile "com.android.support:cardview-v7:$supportVersion"
+	compile 'com.github.merryjs:FrescoImageViewer:-SNAPSHOT'
+	compile "com.facebook.fresco:fresco:$frescoVersion"
+	compile "com.facebook.fresco:animated-gif:$frescoVersion"
 	compile "com.google.code.gson:gson:2.8.1"
 
 }
