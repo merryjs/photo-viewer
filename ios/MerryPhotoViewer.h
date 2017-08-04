@@ -20,6 +20,8 @@
 #import <Foundation/Foundation.h>
 #import <NYTPhotoViewer/NYTPhotoViewerArrayDataSource.h>
 #import <NYTPhotoViewer/NYTPhotosViewController.h>
+#import <NYTPhotoViewer/NYTPhotosOverlayView.h>
+
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MerryPhotoViewer
@@ -28,6 +30,7 @@
 @property(nonatomic) NSMutableArray *photos;
 
 @property(nonatomic) NYTPhotoViewerArrayDataSource *dataSource;
+@property (nonatomic) UIPopoverController *activityPopoverController;
 
 @end
 

@@ -124,6 +124,11 @@ RCT_EXPORT_METHOD(show
                 initWithDataSource:self.dataSource
                       initialPhoto:[self.photos objectAtIndex:merryPhotoOptions.initial]
                           delegate:self];
+            //   TODO add options for:
+            // hide left bar button
+            photosViewController.leftBarButtonItem = nil;
+            // hide right bar button
+            photosViewController.rightBarButtonItem = nil;
 
             [[self getRootView] presentViewController:photosViewController
                                              animated:YES
@@ -242,12 +247,36 @@ RCT_EXPORT_METHOD(show
 
     //  NSLog(@"Did Navigate To Photo: %@ identifier: %lu", photo, (unsigned long)photoIndex);
 }
-//
-//- (void)photosViewController:(NYTPhotosViewController *)photosViewController
-//    actionCompletedWithActivityType:(NSString *)activityType {
-//  NSLog(@"Action Completed With Activity Type: %@", activityType);
-//}
 
+- (void)photosViewController:(NYTPhotosViewController*)photosViewController
+    actionCompletedWithActivityType:(NSString*)activityType
+{
+    NSLog(@"Action Completed With Activity Type: %@", activityType);
+}
+
+- (void)displayActivityViewController:(UIActivityViewController*)controller animated:(BOOL)animated
+{
+
+    [[self getRootView] presentViewController:controller animated:animated completion:nil];
+}
+- (BOOL)photosViewController:(NYTPhotosViewController*)photosViewController handleLongPressForPhoto:(id<NYTPhoto>)photo withGestureRecognizer:(UILongPressGestureRecognizer*)longPressGestureRecognizer
+{
+
+    if ((photosViewController.currentlyDisplayedPhoto.image || photosViewController.currentlyDisplayedPhoto.imageData)) {
+        UIImage* image = photosViewController.currentlyDisplayedPhoto.image ? photosViewController.currentlyDisplayedPhoto.image : [UIImage imageWithData:photosViewController.currentlyDisplayedPhoto.imageData];
+        UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[ image ] applicationActivities:nil];
+
+        activityViewController.completionWithItemsHandler = ^(NSString* __nullable activityType, BOOL completed, NSArray* __nullable returnedItems, NSError* __nullable activityError) {
+            if (completed && [photosViewController.delegate respondsToSelector:@selector(photosViewController:actionCompletedWithActivityType:)]) {
+                [photosViewController.delegate photosViewController:photosViewController actionCompletedWithActivityType:activityType];
+            }
+        };
+
+        [self displayActivityViewController:activityViewController animated:YES];
+    }
+    NSLog(@"You press me. %@", photo);
+    return YES;
+}
 - (void)photosViewControllerDidDismiss:(NYTPhotosViewController*)photosViewController
 {
     //  NSLog(@"Did Dismiss Photo Viewer: %@", photosViewController);
