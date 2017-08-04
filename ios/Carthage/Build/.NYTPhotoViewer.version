@@ -1,0 +1,22 @@
+{
+  "iOS" : [
+    {
+      "hash" : "21814b26db306da3ef7efafcce1c618e7658ed3a8337d916b31b9775d42f35f3",
+      "name" : "NYTPhotoViewer"
+    },
+    {
+      "hash" : "faed78cdd8a8a391f6c3a46c01547a5781c1bc9cfaa237dad8edc941807a6ce2",
+      "name" : "NYTPhotoViewerCore"
+    }
+  ],
+  "commitish" : "74e1245135847d613b6e651212581c259427f149",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "Mac" : [
+
+  ]
+}

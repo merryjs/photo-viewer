@@ -1,0 +1,724 @@
+BCSymbolMap Version: 1.0
+OBJC_CLASS_NAME_
+l_OBJC_METACLASS_RO_$_PodsDummy_MBCircularProgressBar
+l_OBJC_CLASS_RO_$_PodsDummy_MBCircularProgressBar
+OBJC_LABEL_CLASS_$
+Apple LLVM version 7.0.2 (clang-700.1.81)
+/Users/mati.bot/Library/Developer/Xcode/DerivedData/ModuleCache/29Q3LDNBRGAWV/ObjectiveC-2CD0WTQVXITO7.pcm
+ObjectiveC
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/include/objc
+/Users/mati.bot/Library/Developer/Xcode/DerivedData/ModuleCache/29Q3LDNBRGAWV/Foundation-A3SOD99KJ0S9.pcm
+Foundation
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/Foundation.framework
+/Users/mati.bot/Library/Developer/Xcode/DerivedData/ModuleCache/29Q3LDNBRGAWV/UIKit-2LM3EQU7VVY4O.pcm
+UIKit
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/UIKit.framework
+/Users/mati.bot/Private Reps/MBCircularProgressBar.git/Example/Pods/Target Support Files/MBCircularProgressBar/MBCircularProgressBar-dummy.m
+/Users/mati.bot/Private Reps/MBCircularProgressBar.git/Example/Pods
+-[MBCircularProgressBarLayer drawInContext:]
+-[MBCircularProgressBarLayer drawEmptyBar:context:]
+-[MBCircularProgressBarLayer drawProgressBar:context:]
+-[MBCircularProgressBarLayer drawText:context:]
++[MBCircularProgressBarLayer needsDisplayForKey:]
+-[MBCircularProgressBarLayer actionForKey:]
+-[MBCircularProgressBarLayer animationDuration]
+-[MBCircularProgressBarLayer setAnimationDuration:]
+-[MBCircularProgressBarLayer animated]
+-[MBCircularProgressBarLayer setAnimated:]
+OBJC_CLASSLIST_SUP_REFS_$_
+OBJC_METH_VAR_NAME_
+OBJC_SELECTOR_REFERENCES_
+OBJC_METH_VAR_NAME_1
+OBJC_SELECTOR_REFERENCES_2
+OBJC_METH_VAR_NAME_3
+OBJC_SELECTOR_REFERENCES_4
+OBJC_METH_VAR_NAME_5
+OBJC_SELECTOR_REFERENCES_6
+OBJC_METH_VAR_NAME_7
+OBJC_SELECTOR_REFERENCES_8
+OBJC_METH_VAR_NAME_9
+OBJC_SELECTOR_REFERENCES_10
+OBJC_METH_VAR_NAME_11
+OBJC_SELECTOR_REFERENCES_12
+OBJC_METH_VAR_NAME_13
+OBJC_SELECTOR_REFERENCES_14
+OBJC_METH_VAR_NAME_15
+OBJC_SELECTOR_REFERENCES_16
+OBJC_METH_VAR_NAME_17
+OBJC_SELECTOR_REFERENCES_18
+OBJC_METH_VAR_NAME_19
+OBJC_SELECTOR_REFERENCES_20
+OBJC_METH_VAR_NAME_21
+OBJC_SELECTOR_REFERENCES_22
+OBJC_METH_VAR_NAME_23
+OBJC_SELECTOR_REFERENCES_24
+OBJC_METH_VAR_NAME_25
+OBJC_SELECTOR_REFERENCES_26
+OBJC_METH_VAR_NAME_27
+OBJC_SELECTOR_REFERENCES_28
+OBJC_METH_VAR_NAME_29
+OBJC_SELECTOR_REFERENCES_30
+OBJC_METH_VAR_NAME_31
+OBJC_SELECTOR_REFERENCES_32
+OBJC_CLASSLIST_REFERENCES_$_
+OBJC_METH_VAR_NAME_33
+OBJC_SELECTOR_REFERENCES_34
+OBJC_METH_VAR_NAME_35
+OBJC_SELECTOR_REFERENCES_36
+OBJC_METH_VAR_NAME_37
+OBJC_SELECTOR_REFERENCES_38
+OBJC_METH_VAR_NAME_39
+OBJC_SELECTOR_REFERENCES_40
+OBJC_CLASSLIST_REFERENCES_$_41
+OBJC_METH_VAR_NAME_42
+OBJC_SELECTOR_REFERENCES_43
+OBJC_METH_VAR_NAME_44
+OBJC_SELECTOR_REFERENCES_45
+OBJC_METH_VAR_NAME_46
+OBJC_SELECTOR_REFERENCES_47
+OBJC_CLASSLIST_REFERENCES_$_48
+OBJC_METH_VAR_NAME_49
+OBJC_SELECTOR_REFERENCES_50
+OBJC_CLASSLIST_REFERENCES_$_51
+OBJC_METH_VAR_NAME_52
+OBJC_SELECTOR_REFERENCES_53
+OBJC_CLASSLIST_REFERENCES_$_54
+.str
+_unnamed_cfstring_
+OBJC_METH_VAR_NAME_55
+OBJC_SELECTOR_REFERENCES_56
+OBJC_METH_VAR_NAME_57
+OBJC_SELECTOR_REFERENCES_58
+OBJC_CLASSLIST_REFERENCES_$_59
+OBJC_METH_VAR_NAME_60
+OBJC_SELECTOR_REFERENCES_61
+OBJC_METH_VAR_NAME_62
+OBJC_SELECTOR_REFERENCES_63
+OBJC_METH_VAR_NAME_64
+OBJC_SELECTOR_REFERENCES_65
+OBJC_METH_VAR_NAME_66
+OBJC_SELECTOR_REFERENCES_67
+.str68
+_unnamed_cfstring_69
+OBJC_METH_VAR_NAME_70
+OBJC_SELECTOR_REFERENCES_71
+OBJC_METH_VAR_NAME_72
+OBJC_SELECTOR_REFERENCES_73
+OBJC_METH_VAR_NAME_74
+OBJC_SELECTOR_REFERENCES_75
+OBJC_METH_VAR_NAME_76
+OBJC_SELECTOR_REFERENCES_77
+OBJC_METH_VAR_NAME_78
+OBJC_SELECTOR_REFERENCES_79
+OBJC_METH_VAR_NAME_80
+OBJC_SELECTOR_REFERENCES_81
+OBJC_METH_VAR_NAME_82
+OBJC_SELECTOR_REFERENCES_83
+.str84
+_unnamed_cfstring_85
+OBJC_METH_VAR_NAME_86
+OBJC_SELECTOR_REFERENCES_87
+OBJC_METH_VAR_NAME_88
+OBJC_SELECTOR_REFERENCES_89
+OBJC_METH_VAR_NAME_90
+OBJC_SELECTOR_REFERENCES_91
+OBJC_METH_VAR_NAME_92
+OBJC_SELECTOR_REFERENCES_93
+.str94
+_unnamed_cfstring_95
+OBJC_METH_VAR_NAME_96
+OBJC_SELECTOR_REFERENCES_97
+OBJC_CLASSLIST_SUP_REFS_$_98
+OBJC_METH_VAR_NAME_99
+OBJC_SELECTOR_REFERENCES_100
+OBJC_METH_VAR_NAME_101
+OBJC_SELECTOR_REFERENCES_102
+OBJC_METH_VAR_NAME_103
+OBJC_SELECTOR_REFERENCES_104
+OBJC_CLASSLIST_REFERENCES_$_105
+OBJC_METH_VAR_NAME_106
+OBJC_SELECTOR_REFERENCES_107
+OBJC_METH_VAR_NAME_108
+OBJC_SELECTOR_REFERENCES_109
+OBJC_METH_VAR_NAME_110
+OBJC_SELECTOR_REFERENCES_111
+OBJC_METH_VAR_NAME_112
+OBJC_SELECTOR_REFERENCES_113
+OBJC_METH_VAR_NAME_114
+OBJC_SELECTOR_REFERENCES_115
+OBJC_METH_VAR_NAME_116
+OBJC_SELECTOR_REFERENCES_117
+OBJC_IVAR_$_MBCircularProgressBarLayer._animationDuration
+OBJC_IVAR_$_MBCircularProgressBarLayer._animated
+OBJC_METH_VAR_TYPE_
+l_OBJC_$_CLASS_METHODS_MBCircularProgressBarLayer
+l_OBJC_METACLASS_RO_$_MBCircularProgressBarLayer
+OBJC_METH_VAR_TYPE_118
+OBJC_METH_VAR_TYPE_119
+OBJC_METH_VAR_TYPE_120
+OBJC_METH_VAR_TYPE_121
+OBJC_METH_VAR_NAME_122
+OBJC_METH_VAR_TYPE_123
+OBJC_METH_VAR_TYPE_124
+OBJC_METH_VAR_NAME_125
+OBJC_METH_VAR_TYPE_126
+l_OBJC_$_INSTANCE_METHODS_MBCircularProgressBarLayer
+OBJC_METH_VAR_NAME_127
+OBJC_METH_VAR_TYPE_128
+OBJC_METH_VAR_NAME_129
+OBJC_METH_VAR_TYPE_130
+l_OBJC_$_INSTANCE_VARIABLES_MBCircularProgressBarLayer
+OBJC_PROP_NAME_ATTR_
+OBJC_PROP_NAME_ATTR_131
+OBJC_PROP_NAME_ATTR_132
+OBJC_PROP_NAME_ATTR_133
+OBJC_PROP_NAME_ATTR_134
+OBJC_PROP_NAME_ATTR_135
+OBJC_PROP_NAME_ATTR_136
+OBJC_PROP_NAME_ATTR_137
+OBJC_PROP_NAME_ATTR_138
+OBJC_PROP_NAME_ATTR_139
+OBJC_PROP_NAME_ATTR_140
+OBJC_PROP_NAME_ATTR_141
+OBJC_PROP_NAME_ATTR_142
+OBJC_PROP_NAME_ATTR_143
+OBJC_PROP_NAME_ATTR_144
+OBJC_PROP_NAME_ATTR_145
+OBJC_PROP_NAME_ATTR_146
+OBJC_PROP_NAME_ATTR_147
+OBJC_PROP_NAME_ATTR_148
+OBJC_PROP_NAME_ATTR_149
+OBJC_PROP_NAME_ATTR_150
+OBJC_PROP_NAME_ATTR_151
+OBJC_PROP_NAME_ATTR_152
+OBJC_PROP_NAME_ATTR_153
+OBJC_PROP_NAME_ATTR_154
+OBJC_PROP_NAME_ATTR_155
+OBJC_PROP_NAME_ATTR_156
+OBJC_PROP_NAME_ATTR_157
+OBJC_PROP_NAME_ATTR_158
+OBJC_PROP_NAME_ATTR_159
+OBJC_PROP_NAME_ATTR_160
+OBJC_PROP_NAME_ATTR_161
+l_OBJC_$_PROP_LIST_MBCircularProgressBarLayer
+l_OBJC_CLASS_RO_$_MBCircularProgressBarLayer
+/Users/mati.bot/Library/Developer/Xcode/DerivedData/ModuleCache/29Q3LDNBRGAWV/QuartzCore-3I7S0M4UEAD0U.pcm
+QuartzCore
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/QuartzCore.framework
+/Users/mati.bot/Library/Developer/Xcode/DerivedData/ModuleCache/29Q3LDNBRGAWV/CoreGraphics-1YQ59ILDR3NYI.pcm
+CoreGraphics
+CGPointMake
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGGeometry.h
+NSMakeRange
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSRange.h
+-[MBCircularProgressBarLayer setAnimated:]
+/Users/mati.bot/Private Reps/MBCircularProgressBar.git/Pod/Classes/MBCircularProgressBarLayer.h
+-[MBCircularProgressBarLayer animated]
+-[MBCircularProgressBarLayer setAnimationDuration:]
+-[MBCircularProgressBarLayer animationDuration]
+-[MBCircularProgressBarLayer actionForKey:]
+/Users/mati.bot/Private Reps/MBCircularProgressBar.git/Pod/Classes/MBCircularProgressBarLayer.m
++[MBCircularProgressBarLayer needsDisplayForKey:]
+-[MBCircularProgressBarLayer drawText:context:]
+-[MBCircularProgressBarLayer drawProgressBar:context:]
+-[MBCircularProgressBarLayer drawEmptyBar:context:]
+-[MBCircularProgressBarLayer drawInContext:]
+-[MBCircularProgressBarView initWithCoder:]
+-[MBCircularProgressBarView init]
+-[MBCircularProgressBarView initWithFrame:]
+-[MBCircularProgressBarView initView:]
+-[MBCircularProgressBarView setShowValueString:]
+-[MBCircularProgressBarView showValueString]
+-[MBCircularProgressBarView setValue:]
+-[MBCircularProgressBarView value]
+-[MBCircularProgressBarView setMaxValue:]
+-[MBCircularProgressBarView maxValue]
+-[MBCircularProgressBarView setProgressLineWidth:]
+-[MBCircularProgressBarView progressLineWidth]
+-[MBCircularProgressBarView setEmptyLineWidth:]
+-[MBCircularProgressBarView emptyLineWidth]
+-[MBCircularProgressBarView setProgressColor:]
+-[MBCircularProgressBarView progressColor]
+-[MBCircularProgressBarView setUnitFontSize:]
+-[MBCircularProgressBarView unitFontSize]
+-[MBCircularProgressBarView setValueFontSize:]
+-[MBCircularProgressBarView valueFontSize]
+-[MBCircularProgressBarView setUnitString:]
+-[MBCircularProgressBarView unitString]
+-[MBCircularProgressBarView setFontColor:]
+-[MBCircularProgressBarView fontColor]
+-[MBCircularProgressBarView setProgressStrokeColor:]
+-[MBCircularProgressBarView progressStrokeColor]
+-[MBCircularProgressBarView setEmptyLineColor:]
+-[MBCircularProgressBarView emptyLineColor]
+-[MBCircularProgressBarView setProgressAngle:]
+-[MBCircularProgressBarView progressAngle]
+-[MBCircularProgressBarView setProgressRotationAngle:]
+-[MBCircularProgressBarView progressRootationAngle]
+-[MBCircularProgressBarView setProgressCapType:]
+-[MBCircularProgressBarView progressCapType]
+-[MBCircularProgressBarView setEmptyCapType:]
+-[MBCircularProgressBarView EmptyCapType]
+-[MBCircularProgressBarView safeCapType:]
+-[MBCircularProgressBarView setDecimalPlaces:]
+-[MBCircularProgressBarView decimalPlaces]
+-[MBCircularProgressBarView setValueDecimalFontSize:]
+-[MBCircularProgressBarView valueDecimalFontSize]
+-[MBCircularProgressBarView setUnitFontName:]
+-[MBCircularProgressBarView unitFontName]
+-[MBCircularProgressBarView setValueFontName:]
+-[MBCircularProgressBarView valueFontName]
+-[MBCircularProgressBarView setShowUnitString:]
+-[MBCircularProgressBarView showUnitString]
+-[MBCircularProgressBarView setTextOffset:]
+-[MBCircularProgressBarView textOffset]
+-[MBCircularProgressBarView progressLayer]
++[MBCircularProgressBarView layerClass]
+-[MBCircularProgressBarView setValue:animateWithDuration:]
+-[MBCircularProgressBarView progressRotationAngle]
+-[MBCircularProgressBarView emptyCapType]
+OBJC_CLASSLIST_REFERENCES_$_23
+OBJC_METH_VAR_NAME_24
+OBJC_SELECTOR_REFERENCES_25
+OBJC_METH_VAR_NAME_26
+OBJC_SELECTOR_REFERENCES_27
+OBJC_METH_VAR_NAME_28
+OBJC_SELECTOR_REFERENCES_29
+OBJC_METH_VAR_NAME_30
+OBJC_SELECTOR_REFERENCES_31
+OBJC_METH_VAR_NAME_32
+OBJC_SELECTOR_REFERENCES_33
+OBJC_METH_VAR_NAME_34
+OBJC_SELECTOR_REFERENCES_35
+OBJC_METH_VAR_NAME_36
+OBJC_SELECTOR_REFERENCES_37
+OBJC_METH_VAR_NAME_38
+OBJC_SELECTOR_REFERENCES_39
+OBJC_METH_VAR_NAME_40
+OBJC_SELECTOR_REFERENCES_41
+OBJC_METH_VAR_NAME_48
+OBJC_SELECTOR_REFERENCES_49
+OBJC_METH_VAR_NAME_50
+OBJC_SELECTOR_REFERENCES_51
+OBJC_METH_VAR_NAME_54
+OBJC_SELECTOR_REFERENCES_55
+OBJC_METH_VAR_NAME_56
+OBJC_SELECTOR_REFERENCES_57
+.str58
+_unnamed_cfstring_59
+OBJC_METH_VAR_NAME_68
+OBJC_SELECTOR_REFERENCES_69
+OBJC_METH_VAR_NAME_84
+OBJC_SELECTOR_REFERENCES_85
+OBJC_METH_VAR_NAME_94
+OBJC_SELECTOR_REFERENCES_95
+OBJC_METH_VAR_NAME_98
+OBJC_SELECTOR_REFERENCES_99
+OBJC_METH_VAR_NAME_100
+OBJC_SELECTOR_REFERENCES_101
+OBJC_METH_VAR_NAME_102
+OBJC_SELECTOR_REFERENCES_103
+OBJC_METH_VAR_NAME_104
+OBJC_SELECTOR_REFERENCES_105
+OBJC_METH_VAR_NAME_118
+OBJC_SELECTOR_REFERENCES_119
+OBJC_METH_VAR_NAME_120
+OBJC_SELECTOR_REFERENCES_121
+OBJC_CLASSLIST_REFERENCES_$_122
+OBJC_METH_VAR_NAME_123
+OBJC_SELECTOR_REFERENCES_124
+OBJC_SELECTOR_REFERENCES_126
+OBJC_IVAR_$_MBCircularProgressBarView._progressRotationAngle
+OBJC_IVAR_$_MBCircularProgressBarView._emptyCapType
+l_OBJC_$_CLASS_METHODS_MBCircularProgressBarView
+l_OBJC_METACLASS_RO_$_MBCircularProgressBarView
+OBJC_METH_VAR_TYPE_129
+OBJC_METH_VAR_TYPE_131
+OBJC_METH_VAR_TYPE_132
+OBJC_METH_VAR_TYPE_133
+OBJC_METH_VAR_TYPE_134
+OBJC_METH_VAR_TYPE_135
+OBJC_METH_VAR_TYPE_136
+OBJC_METH_VAR_NAME_137
+OBJC_METH_VAR_TYPE_138
+OBJC_METH_VAR_TYPE_139
+OBJC_METH_VAR_NAME_140
+OBJC_METH_VAR_TYPE_141
+OBJC_METH_VAR_TYPE_142
+OBJC_METH_VAR_TYPE_143
+OBJC_METH_VAR_NAME_144
+OBJC_METH_VAR_TYPE_145
+l_OBJC_$_INSTANCE_METHODS_MBCircularProgressBarView
+OBJC_METH_VAR_NAME_146
+OBJC_METH_VAR_TYPE_147
+OBJC_METH_VAR_NAME_148
+OBJC_METH_VAR_TYPE_149
+l_OBJC_$_INSTANCE_VARIABLES_MBCircularProgressBarView
+OBJC_PROP_NAME_ATTR_162
+OBJC_PROP_NAME_ATTR_163
+OBJC_PROP_NAME_ATTR_164
+OBJC_PROP_NAME_ATTR_165
+OBJC_PROP_NAME_ATTR_166
+OBJC_PROP_NAME_ATTR_167
+OBJC_PROP_NAME_ATTR_168
+OBJC_PROP_NAME_ATTR_169
+OBJC_PROP_NAME_ATTR_170
+OBJC_PROP_NAME_ATTR_171
+OBJC_PROP_NAME_ATTR_172
+OBJC_PROP_NAME_ATTR_173
+OBJC_PROP_NAME_ATTR_174
+OBJC_PROP_NAME_ATTR_175
+OBJC_PROP_NAME_ATTR_176
+OBJC_PROP_NAME_ATTR_177
+OBJC_PROP_NAME_ATTR_178
+l_OBJC_$_PROP_LIST_MBCircularProgressBarView
+l_OBJC_CLASS_RO_$_MBCircularProgressBarView
+-[MBCircularProgressBarView emptyCapType]
+/Users/mati.bot/Private Reps/MBCircularProgressBar.git/Pod/Classes/MBCircularProgressBarView.h
+-[MBCircularProgressBarView progressRotationAngle]
+-[MBCircularProgressBarView setValue:animateWithDuration:]
+/Users/mati.bot/Private Reps/MBCircularProgressBar.git/Pod/Classes/MBCircularProgressBarView.m
++[MBCircularProgressBarView layerClass]
+-[MBCircularProgressBarView progressLayer]
+-[MBCircularProgressBarView textOffset]
+-[MBCircularProgressBarView setTextOffset:]
+-[MBCircularProgressBarView showUnitString]
+-[MBCircularProgressBarView setShowUnitString:]
+-[MBCircularProgressBarView valueFontName]
+-[MBCircularProgressBarView setValueFontName:]
+-[MBCircularProgressBarView unitFontName]
+-[MBCircularProgressBarView setUnitFontName:]
+-[MBCircularProgressBarView valueDecimalFontSize]
+-[MBCircularProgressBarView setValueDecimalFontSize:]
+-[MBCircularProgressBarView decimalPlaces]
+-[MBCircularProgressBarView setDecimalPlaces:]
+-[MBCircularProgressBarView safeCapType:]
+-[MBCircularProgressBarView EmptyCapType]
+-[MBCircularProgressBarView setEmptyCapType:]
+-[MBCircularProgressBarView progressCapType]
+-[MBCircularProgressBarView setProgressCapType:]
+-[MBCircularProgressBarView progressRootationAngle]
+-[MBCircularProgressBarView setProgressRotationAngle:]
+-[MBCircularProgressBarView progressAngle]
+-[MBCircularProgressBarView setProgressAngle:]
+-[MBCircularProgressBarView emptyLineColor]
+-[MBCircularProgressBarView setEmptyLineColor:]
+-[MBCircularProgressBarView progressStrokeColor]
+-[MBCircularProgressBarView setProgressStrokeColor:]
+-[MBCircularProgressBarView fontColor]
+-[MBCircularProgressBarView setFontColor:]
+-[MBCircularProgressBarView unitString]
+-[MBCircularProgressBarView setUnitString:]
+-[MBCircularProgressBarView valueFontSize]
+-[MBCircularProgressBarView setValueFontSize:]
+-[MBCircularProgressBarView unitFontSize]
+-[MBCircularProgressBarView setUnitFontSize:]
+-[MBCircularProgressBarView progressColor]
+-[MBCircularProgressBarView setProgressColor:]
+-[MBCircularProgressBarView emptyLineWidth]
+-[MBCircularProgressBarView setEmptyLineWidth:]
+-[MBCircularProgressBarView progressLineWidth]
+-[MBCircularProgressBarView setProgressLineWidth:]
+-[MBCircularProgressBarView maxValue]
+-[MBCircularProgressBarView setMaxValue:]
+-[MBCircularProgressBarView value]
+-[MBCircularProgressBarView setValue:]
+-[MBCircularProgressBarView showValueString]
+-[MBCircularProgressBarView setShowValueString:]
+-[MBCircularProgressBarView initView:]
+-[MBCircularProgressBarView initWithFrame:]
+-[MBCircularProgressBarView init]
+-[MBCircularProgressBarView initWithCoder:]
+/Users/mati.bot/Library/Developer/Xcode/DerivedData/MBCircularProgressBar-gddnnjvefxvqjjeigryzvcssljso/Build/Intermediates/Pods.build/Release-iphoneos/MBCircularProgressBar.build/DerivedSources/MBCircularProgressBar_vers.c
+_ZL15__ARCLite__loadv
+_ZL30add_image_hook_autoreleasepoolPK11mach_headerl
+_ZL34__arclite_objc_autoreleasePoolPushv
+_ZL33__arclite_objc_autoreleasePoolPopPv
+_ZL19patch_lazy_pointersPK11mach_headerP7patch_tm
+_ZL42__arclite_NSArray_objectAtIndexedSubscriptP7NSArrayP13objc_selectorj
+_ZL53__arclite_NSMutableArray_setObject_atIndexedSubscriptP14NSMutableArrayP13objc_selectorP11objc_objectj
+_ZL46__arclite_NSDictionary_objectForKeyedSubscriptP12NSDictionaryP13objc_selectorP11objc_object
+_ZL47__arclite_NSOrderedSet_objectAtIndexedSubscriptP12NSOrderedSetP13objc_selectorj
+_ZL58__arclite_NSMutableOrderedSet_setObject_atIndexedSubscriptP19NSMutableOrderedSetP13objc_selectorP11objc_objectj
+_ZL58__arclite_NSMutableDictionary__setObject_forKeyedSubscriptP19NSMutableDictionaryP13objc_selectorP11objc_objectS4_
+_ZL18add_image_hook_ARCPK11mach_headerl
+_ZL36__arclite_object_setInstanceVariableP11objc_objectPKcPv
+_ZL24__arclite_object_setIvarP11objc_objectP9objc_ivarS0_
+_ZL21__arclite_object_copyP11objc_objectm
+_ZL21__arclite_objc_retainP11objc_object
+_ZL26__arclite_objc_retainBlockP11objc_object
+_ZL22__arclite_objc_releaseP11objc_object
+_ZL26__arclite_objc_autoreleaseP11objc_object
+_ZL32__arclite_objc_retainAutoreleaseP11objc_object
+_ZL37__arclite_objc_autoreleaseReturnValueP11objc_object
+_ZL43__arclite_objc_retainAutoreleaseReturnValueP11objc_object
+_ZL44__arclite_objc_retainAutoreleasedReturnValueP11objc_object
+_ZL26__arclite_objc_storeStrongPP11objc_objectS0_
+_ZL22add_image_hook_swiftV1PK11mach_headerl
+_ZL42__arclite_NSUndoManagerProxy_isKindOfClassP11objc_objectP13objc_selectorP10objc_class
+_ZL13replaceMethodP10objc_classP13objc_selectorPFP11objc_objectS4_S2_zEPS6_
+_ZL30__arclite_NSManagedObject_initP11objc_objectP13objc_selector
+_ZL41__arclite_NSManagedObject_allocWithEntityP11objc_objectP13objc_selectorS0_
+_ZL36__arclite_NSManagedObject_allocBatchP11objc_objectP13objc_selectorPS0_S0_j
+_ZL37__arclite_NSKKMS_fastIndexForKnownKeyP11objc_objectP13objc_selectorS0_
+_ZL28__arclite_NSKKMS_indexForKeyP11objc_objectP13objc_selectorS0_
+_ZL29__arclite_NSKKsD_objectForKeyP11objc_objectP13objc_selectorS0_
+_ZL35__arclite_NSKKsD_removeObjectForKeyP11objc_objectP13objc_selectorS0_
+_ZL33__arclite_NSKKsD_setObject_forKeyP11objc_objectP13objc_selectorS0_S0_
+_ZL41__arclite_NSKKsD_addEntriesFromDictionaryP11objc_objectP13objc_selectorP12NSDictionary
+_ZL28__arclite_objc_readClassPairP10objc_classPK15objc_image_info
+_ZL32__arclite_objc_allocateClassPairP10objc_classPKcm
+_ZL32__arclite_object_getIndexedIvarsP11objc_object
+_ZL23__arclite_objc_getClassPKc
+_ZL27__arclite_objc_getMetaClassPKc
+_ZL31__arclite_objc_getRequiredClassPKc
+_ZL26__arclite_objc_lookUpClassPKc
+_ZL26__arclite_objc_getProtocolPKc
+_ZL23__arclite_class_getNameP10objc_class
+_ZL26__arclite_protocol_getNameP8Protocol
+_ZL37__arclite_objc_copyClassNamesForImagePKcPj
+_ZL17transcribeMethodsP10objc_classP15glue_class_ro_t
+_ZL19transcribeProtocolsP10objc_classP15glue_class_ro_t
+_ZL20transcribePropertiesP10objc_classP15glue_class_ro_t
+_ZL14initialize_impP11objc_objectP13objc_selector
+_ZL18allocateMaybeSwiftP18glue_swift_class_tm
+_ZL22copySwiftV1MangledNamePKcb
+_ZL13demangledNamePKcb
+_ZL16scanMangledFieldRPKcS0_S1_Ri
+_ZL30arclite_uninitialized_functionv
+_ZL12cxxConstructP11objc_object
+_ZL20fixStringForCoreDataP11objc_object
+OBJC_METACLASS_$___ARCLite__
+_ZL24OBJC_CLASS_$___ARCLite__
+_ZL31OBJC_METACLASS_RO_$___ARCLite__
+_non_lazy_classes
+_ZL27OBJC_CLASS_RO_$___ARCLite__
+_ZL11_class_name
+_ZL32OBJC_$_CLASS_METHODS___ARCLite__
+_ZL17_load_method_name
+_ZL17_load_method_type
+_ZL23NSAutoreleasePool_class
+_ZZL30add_image_hook_autoreleasepoolPK11mach_headerlE7patches
+_ZGVZL30add_image_hook_autoreleasepoolPK11mach_headerlE7patches
+.str1
+.str2
+.str5
+.str6
+.str7
+OBJC_METH_VAR_NAME_8
+OBJC_SELECTOR_REFERENCES_9
+.str10
+.str13
+OBJC_METH_VAR_NAME_14
+OBJC_SELECTOR_REFERENCES_15
+.str16
+.str17
+OBJC_METH_VAR_NAME_18
+OBJC_SELECTOR_REFERENCES_19
+OBJC_METH_VAR_TYPE_20
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS___ARCLiteIndexedSubscripting__
+l_OBJC_$_PROTOCOL_METHOD_TYPES___ARCLiteIndexedSubscripting__
+l_OBJC_PROTOCOL_$___ARCLiteIndexedSubscripting__
+l_OBJC_LABEL_PROTOCOL_$___ARCLiteIndexedSubscripting__
+l_OBJC_PROTOCOL_REFERENCE_$___ARCLiteIndexedSubscripting__
+OBJC_METH_VAR_TYPE_29
+OBJC_METH_VAR_TYPE_31
+OBJC_CLASS_NAME_32
+l_OBJC_$_PROTOCOL_INSTANCE_METHODS___ARCLiteKeyedSubscripting__
+l_OBJC_$_PROTOCOL_METHOD_TYPES___ARCLiteKeyedSubscripting__
+l_OBJC_PROTOCOL_$___ARCLiteKeyedSubscripting__
+l_OBJC_LABEL_PROTOCOL_$___ARCLiteKeyedSubscripting__
+l_OBJC_PROTOCOL_REFERENCE_$___ARCLiteKeyedSubscripting__
+.str35
+_ZZL18add_image_hook_ARCPK11mach_headerlE7patches
+_ZGVZL18add_image_hook_ARCPK11mach_headerlE7patches
+.str41
+.str42
+.str43
+.str44
+.str45
+.str46
+.str47
+.str48
+.str49
+.str50
+.str51
+.str52
+OBJC_METH_VAR_NAME_53
+OBJC_SELECTOR_REFERENCES_54
+.str59
+.str60
+_ZL30NSUndoManagerProxy_targetClass
+OBJC_METH_VAR_NAME_61
+OBJC_SELECTOR_REFERENCES_62
+.str63
+.str64
+OBJC_METH_VAR_NAME_65
+OBJC_SELECTOR_REFERENCES_66
+_ZL29original_NSManagedObject_init
+OBJC_METH_VAR_NAME_67
+OBJC_SELECTOR_REFERENCES_68
+_ZL40original_NSManagedObject_allocWithEntity
+OBJC_METH_VAR_NAME_69
+OBJC_SELECTOR_REFERENCES_70
+_ZL35original_NSManagedObject_allocBatch
+_ZL25NSMutableDictionary_class
+.str71
+_ZL22NSConstantString_class
+.str72
+_ZL14NSString_class
+.str73
+_ZL36original_NSKKMS_fastIndexForKnownKey
+_ZL27original_NSKKMS_indexForKey
+.str78
+_ZL28original_NSKKsD_objectForKey
+_ZL34original_NSKKsD_removeObjectForKey
+_ZL32original_NSKKsD_setObject_forKey
+OBJC_METH_VAR_NAME_79
+OBJC_SELECTOR_REFERENCES_80
+_ZL40original_NSKKsD_addEntriesFromDictionary
+_ZZL22add_image_hook_swiftV1PK11mach_headerlE7patches
+_ZGVZL22add_image_hook_swiftV1PK11mach_headerlE7patches
+.str81
+.str82
+_ZL31original_objc_allocateClassPair
+.str83
+_ZL31original_object_getIndexedIvars
+_ZL22original_objc_getClass
+.str85
+_ZL26original_objc_getMetaClass
+.str86
+_ZL30original_objc_getRequiredClass
+.str87
+_ZL25original_objc_lookUpClass
+.str88
+_ZL25original_objc_getProtocol
+.str89
+_ZL22original_class_getName
+.str90
+_ZL25original_protocol_getName
+.str91
+_ZL36original_objc_copyClassNamesForImage
+.str96
+.str97
+.str98
+.str99
+.str100
+.str101
+.str102
+.str103
+_ZL12demangleLock
+_ZL9Demangled
+.str104
+.str105
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c++ -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c++11 -Wno-trigraphs -fno-exceptions -fno-rtti -mpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-arc-repeated-use-of-weak -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -Wno-c++11-extensions -D NDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.Internal.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -Winvalid-offsetof -miphoneos-version-min=4.3 -g -fno-threadsafe-statics -Wno-sign-conversion -fembed-bitcode -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~37/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-generated-files.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~37/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-own-target-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~37/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-all-target-headers.hmap -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~37/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-project-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~37/Symbols/BuiltProducts/include -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~37/Objects/arclite.build/arclite_iOS.build/DerivedSources/armv7 -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~37/Objects/arclite.build/arclite_iOS.build/DerivedSources -F/Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~37/Symbols/BuiltProducts -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.Internal.sdk/System/Library/PrivateFrameworks -Wall -Wextra -Wno-gcc-compat -fgnu-inline-asm -MMD -MT dependencies -MF /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~37/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.d --serialize-diagnostics /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~37/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.dia -c /Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-65/source/arclite.mm -o /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~37/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.o -mlinker-version=253.9 -march=armv7a
+__arclite_NSKKsD_addEntriesFromDictionary
+/Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-65/source/arclite.mm
+/Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-65
+__arclite_NSKKsD_setObject_forKey
+__arclite_NSKKsD_removeObjectForKey
+__arclite_NSKKsD_objectForKey
+__arclite_NSKKMS_indexForKey
+fixStringForCoreData
+__arclite_NSKKMS_fastIndexForKnownKey
+__arclite_NSManagedObject_allocBatch
+__arclite_NSManagedObject_allocWithEntity
+cxxConstruct
+__arclite_NSManagedObject_init
+arclite_uninitialized_function
+replaceMethod
+__arclite_NSUndoManagerProxy_isKindOfClass
+patch_t<const char **(const char *, unsigned int *)>
+__arclite_objc_copyClassNamesForImage
+patch_t<const char *(Protocol *)>
+__arclite_protocol_getName
+patch_t<const char *(Class)>
+__isctype
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.Internal.sdk/usr/include/ctype.h
+isdigit
+scanMangledField
+copySwiftV1DemangledName
+demangledName
+__arclite_class_getName
+patch_t<Protocol *(const char *)>
+__arclite_objc_getProtocol
+__arclite_objc_lookUpClass
+__arclite_objc_getRequiredClass
+__arclite_objc_getMetaClass
+patch_t<Class (const char *)>
+copySwiftV1MangledName
+__arclite_objc_getClass
+patch_t<void *(id)>
+word_align
+__arclite_object_getIndexedIvars
+patch_t<Class (Class, const char *, unsigned long)>
+allocateMaybeSwift
+isSwift
+metaclass
+__arclite_objc_allocateClassPair
+patch_t<Class (Class, const objc_image_info *)>
+initialize_imp
+property_list_nth
+transcribeProperties
+transcribeProtocols
+method_list_nth
+transcribeMethods
+alignment
+max
+ivar_list_nth
+transcribeIvars
+fastFlags
+ro
+__arclite_objc_readClassPair
+add_image_hook_swiftV1
+install_swiftV1
+patch_t<void (id *, id)>
+__arclite_objc_storeStrong
+__arclite_objc_retainAutoreleasedReturnValue
+__arclite_objc_retainAutoreleaseReturnValue
+__arclite_objc_autoreleaseReturnValue
+__arclite_objc_retainAutorelease
+__arclite_objc_autorelease
+patch_t<void (id)>
+__arclite_objc_release
+__arclite_objc_retainBlock
+patch_t<id (id)>
+__arclite_objc_retain
+patch_t<id (id, unsigned long)>
+fixupCopiedReferences
+classOrSuperClassesUseARR
+__arclite_object_copy
+patch_t<void (id, objc_ivar *, id)>
+isScannedOffset
+alignedInstanceStart
+_class_getInstanceStart
+data
+__arclite_class_usesAutomaticRetainRelease
+_ivar_getClass
+__arclite_object_setIvar
+patch_t<objc_ivar *(id, const char *, void *)>
+__arclite_object_setInstanceVariable
+add_image_hook_ARC
+install_ARC
+objc_collectingEnabled
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.Internal.sdk/usr/include/objc/objc-auto.h
+__arclite_NSMutableDictionary__setObject_forKeyedSubscript
+addOrReplaceMethod
+install_dict_nil_value
+__arclite_NSMutableOrderedSet_setObject_atIndexedSubscript
+__arclite_NSOrderedSet_objectAtIndexedSubscript
+keyedGetter
+__arclite_NSDictionary_objectForKeyedSubscript
+__arclite_NSMutableArray_setObject_atIndexedSubscript
+indexedGetter
+__arclite_NSArray_objectAtIndexedSubscript
+addMethod
+install_subscripting
+patch_lazy_pointers
+patch_t<void (void *)>
+__arclite_objc_autoreleasePoolPop
+patch_t<void *()>
+__arclite_objc_autoreleasePoolPush
+add_image_hook_autoreleasepool
+install_autoreleasepool
+__ARCLite__load

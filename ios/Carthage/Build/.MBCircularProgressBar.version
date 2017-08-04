@@ -1,0 +1,18 @@
+{
+  "iOS" : [
+    {
+      "hash" : "34cae46be6dd83514ab24c86da6e189c41d4b653d7de639ffae7a1c868e81dec",
+      "name" : "MBCircularProgressBar"
+    }
+  ],
+  "commitish" : "0.3.4",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "Mac" : [
+
+  ]
+}
