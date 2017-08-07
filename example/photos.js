@@ -60,7 +60,8 @@ export default class Photos extends Component {
     title: "Photo Viewer"
   };
   state = {
-    visible: true
+    visible: false,
+    initial: 0
   };
   render() {
     const imageSize = Dimensions.get("window").width / 3;
@@ -80,11 +81,11 @@ export default class Photos extends Component {
             data: photos
           }}
           hideStatusBar={true}
-          initial={1}
-          onChange={(data) => {
-						console.log(data)
-					}}
-          onDismiss={(e) => {
+          initial={this.state.initial}
+          onChange={data => {
+            console.log(data);
+          }}
+          onDismiss={e => {
             this.setState({ visible: false });
           }}
         />
@@ -95,14 +96,7 @@ export default class Photos extends Component {
                 key={index}
                 style={[imageStyle, {}]}
                 ref={r => (this.r = r)}
-                onPress={() =>
-                  photoViewer.show({
-                    hideStatusBar: true,
-                    swipeToDismiss: true,
-                    zooming: true,
-                    data: photos,
-                    initial: index
-                  })}
+                onPress={() => this.setState({ visible: true, initial: index })}
               >
                 <Image style={imageStyle} source={{ uri: cat.url }} />
               </TouchableOpacity>
