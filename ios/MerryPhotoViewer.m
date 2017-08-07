@@ -27,7 +27,10 @@ RCT_EXPORT_MODULE();
     }
     return self;
 }
-
+- (void)invalidate
+{
+    [self hide];
+}
 /**
    we want to auto generate some getters and setters for our bridge.
  */

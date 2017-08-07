@@ -11,7 +11,7 @@
 // React
 #if __has_include("RCTBridgeModule.h")
 #import "RCTBridgeModule.h"
- #import "RCTConvert"
+#import "RCTConvert"
 #else
 #import <React/RCTBridgeModule.h>
 #import <React/RCTConvert.h>
@@ -19,18 +19,19 @@
 // NYT
 #import <Foundation/Foundation.h>
 #import <NYTPhotoViewer/NYTPhotoViewerArrayDataSource.h>
-#import <NYTPhotoViewer/NYTPhotosViewController.h>
 #import <NYTPhotoViewer/NYTPhotosOverlayView.h>
+#import <NYTPhotoViewer/NYTPhotosViewController.h>
+#import <React/RCTInvalidating.h>
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MerryPhotoViewer
-    : NSObject<RCTBridgeModule, NYTPhotosViewControllerDelegate>
+    : NSObject <RCTBridgeModule, NYTPhotosViewControllerDelegate, RCTInvalidating>
 
-@property(nonatomic) NSMutableArray *photos;
+@property (nonatomic) NSMutableArray* photos;
 
-@property(nonatomic) NYTPhotoViewerArrayDataSource *dataSource;
-@property (nonatomic) UIPopoverController *activityPopoverController;
+@property (nonatomic) NYTPhotoViewerArrayDataSource* dataSource;
+@property (nonatomic) UIPopoverController* activityPopoverController;
 
 @end
 
