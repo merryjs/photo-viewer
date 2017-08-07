@@ -38,6 +38,8 @@ MerryPhotoView.propTypes = {
   visible: PropTypes.bool,
   initial: PropTypes.number,
   hideStatusBar: PropTypes.bool,
+  hideCloseButton: PropTypes.bool,
+  hideShareButton: PropTypes.bool,
   onDismiss: PropTypes.func,
   onChange: PropTypes.func
 };

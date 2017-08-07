@@ -128,9 +128,13 @@
                           delegate:self];
             //   TODO add options for:
             // hide left bar button
-            photosViewController.leftBarButtonItem = nil;
+            if (self.hideCloseButton) {
+                photosViewController.leftBarButtonItem = nil;
+            }
             // hide right bar button
-            photosViewController.rightBarButtonItem = nil;
+            if (self.hideShareButton) {
+                photosViewController.rightBarButtonItem = nil;
+            }
 
             self.nytPhotosViewController = photosViewController;
 
@@ -247,11 +251,13 @@
         [self updatePhotoAtIndex:photosViewController Index:photoIndex];
     }
     NSNumber* index = [[NSNumber alloc] initWithLong:photoIndex];
+
+    // TODO: post photo data back maybe useless.
     if (self.onNavigateToPhoto) {
         self.onNavigateToPhoto(@{
             @"currentPhoto" : @{
                 @"index" : index,
-                @"photo" : photo
+                //                @"photo" : photo
             }
 
         });

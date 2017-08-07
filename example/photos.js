@@ -72,6 +72,8 @@ export default class Photos extends Component {
             data: photos
           }}
           hideStatusBar={true}
+					hideCloseButton
+					hideShareButton
           initial={this.state.initial}
           onChange={data => {
             console.log(data);
