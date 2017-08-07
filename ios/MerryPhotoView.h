@@ -36,4 +36,5 @@
 
 @property (nonatomic) NSMutableArray* photos;
 @property (nonatomic) NYTPhotoViewerArrayDataSource* dataSource;
+@property (nonatomic) NYTPhotosViewController* nytPhotosViewController;
 @end

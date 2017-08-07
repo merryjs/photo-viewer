@@ -14,7 +14,6 @@
 
 @implementation MerryPhotoView : UIView {
     RCTEventDispatcher* _eventDispatcher;
-    BOOL presented;
     MerryPhotoOptions* merryPhotoOptions;
     SDWebImageDownloader* downloader;
 }
@@ -40,6 +39,15 @@
 - (void)invalidate
 {
     [self hideViewer];
+}
+- (void)clean
+{
+    self.nytPhotosViewController = nil;
+    self.dataSource = nil;
+    self.photos = nil;
+    self.options = nil;
+    merryPhotoOptions = nil;
+    downloader = nil;
 }
 /**
  Get root view
@@ -79,26 +87,14 @@
 
 - (void)hideViewer
 {
-    if (!presented) {
-        return;
-    }
-    dispatch_async(dispatch_get_main_queue(), ^{
-
-        [[self getRootView] dismissViewControllerAnimated:YES
-                                               completion:^{
-                                                   presented = NO;
-                                               }];
-
-    });
+    [self.nytPhotosViewController dismissViewControllerAnimated:YES completion:nil];
+    [self clean];
 }
 
 - (void)showViewer:(NSDictionary*)options
 {
     merryPhotoOptions = [[MerryPhotoOptions alloc] initWithDictionary:options];
 
-    if (presented) {
-        return;
-    }
     if (!merryPhotoOptions) {
         //        reject(@"9527", @"Display photo viewer failed, please config it first", nil);
         return;
@@ -136,11 +132,11 @@
             // hide right bar button
             photosViewController.rightBarButtonItem = nil;
 
+            self.nytPhotosViewController = photosViewController;
+
             [[self getRootView] presentViewController:photosViewController
                                              animated:YES
-                                           completion:^{
-                                               presented = YES;
-                                           }];
+                                           completion:nil];
             if (initialPhoto >= 0) {
                 [self updatePhotoAtIndex:photosViewController Index:initialPhoto];
             }
@@ -294,9 +290,7 @@
 }
 - (void)photosViewControllerDidDismiss:(NYTPhotosViewController*)photosViewController
 {
-    //  NSLog(@"Did Dismiss Photo Viewer: %@", photosViewController);
-    presented = NO;
-    merryPhotoOptions = nil;
+
     if (self.hideStatusBar) {
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
     }
@@ -306,6 +300,7 @@
     if (self.onDismiss) {
         self.onDismiss(nil);
     }
+    [self clean];
 }
 
 + (NSAttributedString*)attributedTitleFromString:(NSString*)caption

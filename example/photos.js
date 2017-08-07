@@ -18,23 +18,14 @@ import MerryPhotoViewView from "./MerryPhotoViewNativeView";
 
 const photos = [
   {
-    url: "https://c1.staticflickr.com/8/7625/16631849053_db25684173_k.jpg",
+    url:
+      "https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
     title: "Flash End-of-Life",
     summary:
       "Adobe announced its roadmap to stop supporting Flash at the end of 2020. ",
     // must be valid hex color or android will crashes
     titleColor: processColor("#f90000"),
     summaryColor: processColor("green")
-  },
-  {
-    url: "https://c1.staticflickr.com/6/5598/14934282524_577a904d2b_k.jpg"
-  },
-  {
-    url: "https://c1.staticflickr.com/8/7596/17021131801_fbd8f2b71a_k.jpg"
-  },
-  {
-    url:
-      "https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
   },
   {
     url:
