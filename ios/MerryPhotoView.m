@@ -182,37 +182,57 @@
     // NOTE: this check require your url have an extension.
     BOOL isGif = [[imageURL pathExtension] isEqual:@"gif"];
 
-    downloader = [SDWebImageDownloader sharedDownloader];
+    // handle local image
 
-    // Limit only one photo will be download
-    [downloader setMaxConcurrentDownloads:1];
-    // cancel all downloads
-    [downloader cancelAllDownloads];
+    BOOL isLocalImage = [imageURL isFileURL] || [url isAbsolutePath];
 
-    dispatch_async(dispatch_get_main_queue(), ^{
+    if (isLocalImage) {
 
-        [downloader
-            downloadImageWithURL:imageURL
-            options:0
-            progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL* _Nullable targetURL) {
-//                dispatch_sync(dispatch_get_main_queue(), ^{
-//                    float progress = (float)receivedSize / expectedSize;
-//                    NSLog(@" %lu/%lu", receivedSize, expectedSize);
-//                });
-            }
-            completed:^(UIImage* image, NSData* data, NSError* error, BOOL finished) {
-                //                       when downloads completed update photo
-                if (image && finished) {
-                    if (isGif) {
-                        currentPhoto.imageData = data;
-                    } else {
-                        currentPhoto.image = image;
-                    }
-                    [photosViewController updatePhoto:currentPhoto];
+        NSData* imageData = [NSData dataWithContentsOfFile:url];
+
+        if (isGif) {
+            currentPhoto.imageData = imageData;
+        } else {
+            UIImage* image = [UIImage imageWithData:imageData];
+            currentPhoto.image = image;
+        }
+
+        [photosViewController updatePhoto:currentPhoto];
+
+    } else {
+
+        downloader = [SDWebImageDownloader sharedDownloader];
+
+        // Limit only one photo will be download
+        [downloader setMaxConcurrentDownloads:1];
+        // cancel all downloads
+        [downloader cancelAllDownloads];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+            [downloader
+                downloadImageWithURL:imageURL
+                options:0
+                progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL* _Nullable targetURL) {
+                    //                dispatch_sync(dispatch_get_main_queue(), ^{
+                    //                    float progress = (float)receivedSize / expectedSize;
+                    //                    NSLog(@" %lu/%lu", receivedSize, expectedSize);
+                    //                });
                 }
-            }];
+                completed:^(UIImage* image, NSData* data, NSError* error, BOOL finished) {
+                    //                       when downloads completed update photo
+                    if (image && finished) {
+                        if (isGif) {
+                            currentPhoto.imageData = data;
+                        } else {
+                            currentPhoto.image = image;
+                        }
+                        [photosViewController updatePhoto:currentPhoto];
+                    }
+                }];
 
-    });
+        });
+    }
 }
 
 #pragma mark - NYTPhotosViewControllerDelegate

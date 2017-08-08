@@ -15,6 +15,10 @@ import {
 
 import PhotoView from "./photo-viewer";
 
+const resolveAssetSource = require("react-native/Libraries/Image/resolveAssetSource");
+
+const cat = require("./cat-2575694_1920.jpg");
+
 const photos = [
   {
     url:
@@ -26,6 +30,11 @@ const photos = [
     titleColor: "#f90000",
     summaryColor: "green"
   },
+  {
+    url: resolveAssetSource(cat).uri,
+    title: "Local image"
+  },
+
   {
     url:
       "https://images.pexels.com/photos/142615/pexels-photo-142615.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
@@ -43,10 +52,7 @@ const photos = [
   },
   {
     url: "https://media.giphy.com/media/3o6vXWzHtGfMR3XoXu/giphy.gif"
-	},
-	{
-		url: 'https://github.com/merryjs/photo-viewer/blob/master/assets/preview.gif'
-	}
+  },
 ];
 export default class Photos extends Component {
   static navigationOptions = {
@@ -68,7 +74,7 @@ export default class Photos extends Component {
         <Text style={styles.h1}>Photo Viewer</Text>
         <PhotoView
           visible={this.state.visible}
-					data={photos}
+          data={photos}
           hideStatusBar={true}
           initial={this.state.initial}
           onDismiss={e => {
