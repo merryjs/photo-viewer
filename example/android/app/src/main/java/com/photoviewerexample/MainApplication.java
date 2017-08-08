@@ -7,7 +7,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.facebook.imagepipeline.decoder.SimpleProgressiveJpegConfig;
 import com.facebook.react.ReactApplication;
-import com.merryjs.PhotoViewer.MerryPhotoViewerPackage;
+import com.merryjs.PhotoViewer.MerryPhotoViewPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -28,7 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
         protected List<ReactPackage> getPackages() {
             return Arrays.<ReactPackage>asList(
                     new MainReactPackage(),
-                    new MerryPhotoViewerPackage()
+                    new MerryPhotoViewPackage()
             );
         }
     };
@@ -47,9 +47,10 @@ public class MainApplication extends Application implements ReactApplication {
                 .setResizeAndRotateEnabledForNetwork(true)
                 .setDownsampleEnabled(true)
                 .build();
-        DraweeConfig draweeConfig = DraweeConfig.newBuilder()
-                .setDrawDebugOverlay(true)
-                .build();
-        Fresco.initialize(this, config, draweeConfig);
+//        debug
+//        DraweeConfig draweeConfig = DraweeConfig.newBuilder()
+//                .setDrawDebugOverlay(true)
+//                .build();
+        Fresco.initialize(this, config);
     }
 }

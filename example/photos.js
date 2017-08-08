@@ -44,7 +44,10 @@ const photos = [
   },
   {
     url: "https://media.giphy.com/media/3o6vXWzHtGfMR3XoXu/giphy.gif"
-  }
+	},
+	{
+		url: 'https://github.com/merryjs/photo-viewer/blob/master/assets/preview.gif'
+	}
 ];
 export default class Photos extends Component {
   static navigationOptions = {
@@ -66,11 +69,7 @@ export default class Photos extends Component {
         <Text style={styles.h1}>Photo Viewer</Text>
         <MerryPhotoViewView
           visible={this.state.visible}
-          options={{
-            swipeToDismiss: true,
-            zooming: true,
-            data: photos
-          }}
+					data={photos}
           hideStatusBar={true}
 					hideCloseButton
 					hideShareButton

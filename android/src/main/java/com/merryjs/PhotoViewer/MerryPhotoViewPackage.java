@@ -1,6 +1,5 @@
-//  Created by react-native-create-bridge
+package com.merryjs.PhotoViewer;
 
-package com.@merryjs/photo-viewer.merryphotoview;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
@@ -11,6 +10,7 @@ import com.facebook.react.uimanager.ViewManager;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 
 public class MerryPhotoViewPackage implements ReactPackage {
     @Override
@@ -27,7 +27,8 @@ public class MerryPhotoViewPackage implements ReactPackage {
         // Register your native component's view manager
         // https://facebook.github.io/react-native/docs/native-components-android.html#4-register-the-viewmanager
         return Arrays.<ViewManager>asList(
-            new MerryPhotoViewManager()
+                new MerryPhotoViewManager()
         );
     }
 }
+
