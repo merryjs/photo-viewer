@@ -104,7 +104,7 @@
 					<div class="tsd-signature tsd-kind-icon">summary<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/e86bd8b/index.tsx#L15">index.tsx:15</a></li>
+							<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/961aff3/index.tsx#L42">index.tsx:42</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -114,7 +114,7 @@
 					<div class="tsd-signature tsd-kind-icon">summary<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/e86bd8b/index.tsx#L17">index.tsx:17</a></li>
+							<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/961aff3/index.tsx#L44">index.tsx:44</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -124,7 +124,7 @@
 					<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/e86bd8b/index.tsx#L14">index.tsx:14</a></li>
+							<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/961aff3/index.tsx#L41">index.tsx:41</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -134,7 +134,7 @@
 					<div class="tsd-signature tsd-kind-icon">title<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/e86bd8b/index.tsx#L16">index.tsx:16</a></li>
+							<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/961aff3/index.tsx#L43">index.tsx:43</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -144,9 +144,37 @@
 					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/e86bd8b/index.tsx#L13">index.tsx:13</a></li>
+							<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/961aff3/index.tsx#L40">index.tsx:40</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Photo url support both local path and remote url:</p>
+							<ul>
+								<li><strong>remote url</strong> eg: <a href="http://path/to/photo.png">http://path/to/photo.png</a> if you want support gif make sure your url contains the <code>.gif</code> extension.</li>
+								<li><strong>local image</strong> you need use <code>resolveAssetSource</code></li>
+							</ul>
+						</div>
+						<pre><code class="lang-js">
+<span class="hljs-keyword">const</span> resolveAssetSource = <span class="hljs-built_in">require</span>(<span class="hljs-string">"react-native/Libraries/Image/resolveAssetSource"</span>);
+<span class="hljs-keyword">const</span> cat = <span class="hljs-built_in">require</span>(<span class="hljs-string">"./cat-2575694_1920.jpg"</span>);
+<span class="hljs-keyword">const</span> localPhotos = [{
+<span class="hljs-comment">// get uri</span>
+url: resolveAssetSource(cat).uri,
+<span class="hljs-attr">title</span>: <span class="hljs-string">"Local image"</span>
+}]
+</code></pre>
+						<ul>
+							<li><strong>for photo library image</strong>:  when you get an image object it should contains the uri property, just use it directly</li>
+						</ul>
+						<pre><code class="lang-js">
+<span class="hljs-keyword">const</span> localPhotos = [{
+<span class="hljs-comment">// get uri</span>
+url: imageObjectFromPhotoLibrary.uri,
+<span class="hljs-attr">title</span>: <span class="hljs-string">"Photo library image"</span>
+}]
+</code></pre>
+					</div>
 				</section>
 			</section>
 		</div>

@@ -48,7 +48,7 @@ MerryPhotoView.propTypes = {
         title: PropTypes.string,
         summary: PropTypes.string,
         titleColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        summaryColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        summaryColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     })).isRequired,
     visible: PropTypes.bool,
     initial: PropTypes.number.isRequired,
