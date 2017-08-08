@@ -44,7 +44,7 @@ export interface Photo {
   summaryColor?: string | number;
 }
 
-export interface PhotoViewerPorps {
+export interface MerryPhotoViewPorps {
   /**
 	 * Photos for view
 	 */
@@ -66,10 +66,6 @@ export interface PhotoViewerPorps {
 	 * Display or hide the viewer
 	 */
   visible: boolean;
-  /**
-	 * When a photo has changed not implemented in Android yet. useless
-	 */
-  onChange?: (current: object) => void;
   /**
 	 * When viewer has dismissed but you still needs to update the visible state
 	 */
@@ -107,7 +103,7 @@ const RNMerryPhotoView = requireNativeComponent(
 );
 
 export default class MerryPhotoView extends React.Component<
-  PhotoViewerPorps,
+  MerryPhotoViewPorps,
   any
 > {
   static propTypes = {
@@ -135,27 +131,16 @@ export default class MerryPhotoView extends React.Component<
     visible: false
   };
 
-  componentDidMount() {}
-  onChange(e: NativeSyntheticEvent<any>) {
-    if (this.props.onChange) {
-      this.props.onChange(e.nativeEvent.currentPhoto);
-    }
-  }
+	componentDidMount() {}
   onDismiss() {}
   render() {
-    const { visible, onChange, data, ...props } = this.props;
+    const { visible, data, ...props } = this.props;
 
     if (visible === false) {
       return null;
     }
     const transformData = processor(data);
 
-    return (
-      <RNMerryPhotoView
-        {...props}
-        data={transformData}
-        onNavigateToPhoto={(e: NativeSyntheticEvent<any>) => this.onChange(e)}
-      />
-    );
+    return <RNMerryPhotoView {...props} data={transformData} />;
   }
 }

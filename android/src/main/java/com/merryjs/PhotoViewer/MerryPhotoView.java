@@ -5,7 +5,10 @@ import android.graphics.Color;
 import android.view.View;
 
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 //import com.merryjs.PhotoViewer.CircleProgressBarDrawable;
 import com.merryjs.PhotoViewer.MerryPhotoData;
@@ -99,7 +102,7 @@ public class MerryPhotoView extends View {
 			@Override
 			public void onImageChange(int position) {
 
-				MerryPhotoData merryPhotoData = getData()[position];
+				final MerryPhotoData merryPhotoData = getData()[position];
 				String url = merryPhotoData.url;
 //                default use url
 				overlayView.setShareContext(url);
@@ -127,6 +130,14 @@ public class MerryPhotoView extends View {
 					summaryColor = merryPhotoData.summaryColor;
 				}
 				overlayView.setDescriptionTextColor(summaryColor);
+
+
+				// onChange event from js side
+//				WritableMap map = Arguments.createMap();
+//
+//				map.putString("currentPhoto", "");
+//
+//				onNavigateToPhoto(map);
 //
 //                if (options.shareTextColor != null) {
 //                    overlayView.setShareTextColor(options.shareTextColor);
@@ -144,6 +155,17 @@ public class MerryPhotoView extends View {
 			((ReactContext) context).getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onDismiss", null);
 		}
 	}
+
+	/**
+	 * on photo change
+	 * @param merryPhotoData
+	 */
+//	protected void onNavigateToPhoto(WritableMap map) {
+//		final Context context = getContext();
+//		if (context instanceof ReactContext) {
+//			((ReactContext) context).getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onNavigateToPhoto", map);
+//		}
+//	}
 
 	//
 	private ImageViewer.OnDismissListener getDismissListener() {

@@ -34,6 +34,6 @@ RCT_EXPORT_VIEW_PROPERTY(hideCloseButton, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(hideShareButton, BOOL)
 
 RCT_EXPORT_VIEW_PROPERTY(onDismiss, RCTBubblingEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onNavigateToPhoto, RCTBubblingEventBlock)
+// RCT_EXPORT_VIEW_PROPERTY(onNavigateToPhoto, RCTBubblingEventBlock)
 
 @end

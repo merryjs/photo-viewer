@@ -278,25 +278,14 @@
     if (!photo.image || !photo.imageData) {
         [self updatePhotoAtIndex:photosViewController Index:photoIndex];
     }
-    NSNumber* index = [[NSNumber alloc] initWithLong:photoIndex];
-
-    // TODO: post photo data back maybe useless.
-    if (self.onNavigateToPhoto) {
-        self.onNavigateToPhoto(@{
-            @"currentPhoto" : @{
-                @"index" : index,
-                //                @"photo" : photo
-            }
-
-        });
-    }
-    //  NSLog(@"Did Navigate To Photo: %@ identifier: %lu", photo, (unsigned long)photoIndex);
-}
-
-- (void)photosViewController:(NYTPhotosViewController*)photosViewController
-    actionCompletedWithActivityType:(NSString*)activityType
-{
-    NSLog(@"Action Completed With Activity Type: %@", activityType);
+// NOTE: onChange are useless so we don't plan to implementing it.
+//    MerryPhotoData* current = [self.reactPhotos objectAtIndex:photoIndex];
+//
+//    if (self.onNavigateToPhoto) {
+//        self.onNavigateToPhoto(@{
+//            @"currentPhoto" : current
+//        });
+//    }
 }
 
 - (void)displayActivityViewController:(UIActivityViewController*)controller animated:(BOOL)animated
@@ -319,7 +308,6 @@
 
         [self displayActivityViewController:activityViewController animated:YES];
     }
-    NSLog(@"You press me. %@", photo);
     return YES;
 }
 - (void)photosViewControllerDidDismiss:(NYTPhotosViewController*)photosViewController

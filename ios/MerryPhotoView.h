@@ -30,7 +30,7 @@
 @property (nonatomic) NSArray* data;
 @property (nonatomic) BOOL hideStatusBar;
 @property (nonatomic, copy) RCTBubblingEventBlock onDismiss;
-@property (nonatomic, copy) RCTBubblingEventBlock onNavigateToPhoto;
+// @property (nonatomic, copy) RCTBubblingEventBlock onNavigateToPhoto;
 @property (nonatomic) BOOL hideCloseButton;
 @property (nonatomic) BOOL hideShareButton;
 

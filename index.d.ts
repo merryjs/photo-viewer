@@ -1,6 +1,5 @@
 /// <reference types="react" />
 import * as React from "react";
-import { NativeSyntheticEvent } from "react-native";
 import * as PropTypes from "prop-types";
 /**
  * Photo data
@@ -39,7 +38,7 @@ export interface Photo {
     titleColor?: string | number;
     summaryColor?: string | number;
 }
-export interface PhotoViewerPorps {
+export interface MerryPhotoViewPorps {
     /**
        * Photos for view
        */
@@ -62,15 +61,11 @@ export interface PhotoViewerPorps {
        */
     visible: boolean;
     /**
-       * When a photo has changed not implemented in Android yet. useless
-       */
-    onChange?: (current: object) => void;
-    /**
        * When viewer has dismissed but you still needs to update the visible state
        */
     onDismiss: () => void;
 }
-export default class MerryPhotoView extends React.Component<PhotoViewerPorps, any> {
+export default class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
     static propTypes: {
         data: PropTypes.Validator<any>;
         visible: PropTypes.Requireable<any>;
@@ -85,7 +80,6 @@ export default class MerryPhotoView extends React.Component<PhotoViewerPorps, an
         visible: boolean;
     };
     componentDidMount(): void;
-    onChange(e: NativeSyntheticEvent<any>): void;
     onDismiss(): void;
     render(): JSX.Element | null;
 }

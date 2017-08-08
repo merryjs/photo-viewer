@@ -27,19 +27,14 @@ const RNMerryPhotoView = requireNativeComponent("MerryPhotoView", MerryPhotoView
 });
 export default class MerryPhotoView extends React.Component {
     componentDidMount() { }
-    onChange(e) {
-        if (this.props.onChange) {
-            this.props.onChange(e.nativeEvent.currentPhoto);
-        }
-    }
     onDismiss() { }
     render() {
-        const { visible, onChange, data, ...props } = this.props;
+        const { visible, data, ...props } = this.props;
         if (visible === false) {
             return null;
         }
         const transformData = processor(data);
-        return (<RNMerryPhotoView {...props} data={transformData} onNavigateToPhoto={(e) => this.onChange(e)}/>);
+        return <RNMerryPhotoView {...props} data={transformData}/>;
     }
 }
 MerryPhotoView.propTypes = {
