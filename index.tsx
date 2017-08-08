@@ -58,8 +58,8 @@ export interface PhotoViewerPorps {
 	 */
   hideStatusBar?: boolean;
   /**
-	 * Android only
-	 * Set share text the default text is SHARE
+	 * **Android only**
+	 * Set share text the default text is `SHARE`
 	 */
   shareText?: string;
   /**
