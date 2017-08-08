@@ -22,8 +22,8 @@
             - [iOS](#ios)
             - [IOS Link Frameworks](#ios-link-frameworks)
                 - [Manual link](#manual-link)
-                - [[CocoaPods](https://cocoapods.org/)](#cocoapods-https-cocoapods-org)
-                - [[Carthage](https://github.com/Carthage/Carthage)](#carthage-https-github-com-carthage-carthage)
+                - [[CocoaPods](https://cocoapods.org/)](#cocoapodshttpscocoapodsorg)
+                - [[Carthage](https://github.com/Carthage/Carthage)](#carthagehttpsgithubcomcarthagecarthage)
             - [Android](#android)
             - [Android targetSdkVersion configuration](#android-targetsdkversion-configuration)
             - [Android Fresco initialize](#android-fresco-initialize)
@@ -154,46 +154,6 @@ Fresco.initialize(this);
 }
 ```
 
-Add activity to `AndroidManifest.xml` inside application section
-
-```xml
-
-<application>
-	...
-	<activity android:name="com.merryjs.PhotoViewer.MerryPhotoViewActivity" android:theme="@style/Theme.Transparent"/>
-
-</application>
-
-```
-
-Note: if you don't want a transparent theme you can remove `android:theme="@style/Theme.Transparent"` from your activity
-otherwise you need add a style resource in you android project
-
-The full path is `android/app/res/values/styles.xml`, if the res folder doest not exist, please create one, the `styles.xml` looks like
-
-```xml
-<resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-    </style>
-
-	<!-- Photo Viewer Transparent Theme  -->
-    <style name="Theme.Transparent" parent="AppTheme">
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:backgroundDimEnabled">false</item>
-    </style>
-
-</resources>
-
-
-```
-
 Thats all.
 
 
@@ -204,82 +164,40 @@ you can use it as below, very very easy to use:
 
 ```javascript
 
-import photoViewer from '@merryjs/photo-viewer';
+import PhotoView from '@merryjs/photo-viewer';
 
-photoViewer.show(options) // Promise
+const photos = [
+  {
+    url:
+      "https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+    title: "Flash End-of-Life",
+    summary:
+      "Adobe announced its roadmap to stop supporting Flash at the end of 2020. ",
+    // must be valid hex color or android will crashes
+    titleColor: "#f90000",
+    summaryColor: "green"
+  },
+  {
+    url: "https://media.giphy.com/media/xT39CSUZtc1T1iKgc8/giphy.gif"
+  },
+  {
+    url: "https://media.giphy.com/media/3o6vXWzHtGfMR3XoXu/giphy.gif"
+  }
+];
 
-```
-
-At this moment, only two methods you need to call
-- `show` for display the photo viewer
-- `hide` for hide the photo viewer, but most case you just need `show` it.
-
-For more info please [see the js file](https://github.com/merryjs/photo-viewer/blob/master/index.js), its very simple, and if you use `TypeScript` you can have a good type definition and no need any setup.
-
-All options list below `index.d.ts`
-
-```ts
-/**
- * Photo data
- */
-export interface Photo {
-    url: string;
-    title?: string;
-    summary?: string;
-    titleColor?: string | number;
-    summaryColor?: string | number;
-}
-export interface PhotoViewerOptions {
-    /**
-       * Pictures for view
-       */
-    data: Photo[];
-    /**
-       * Start position
-       */
-    initial: number;
-    /**
-       * Set overlay background color
-       */
-    backgroundColor?: string;
-    /**
-       * Hide status bar
-       */
-    hideStatusBar: boolean;
-    /**
-       * Android only
-       */
-    swipeToDismiss?: boolean;
-    /**
-       * Android only
-       */
-    zooming?: boolean;
-    /**
-       * Android only
-       * Set share text the default text is SHARE
-       */
-    shareText?: string;
-    /**
-     * Android only
-     * Share text color
-     */
-    shareTextColor?: string;
-    /**
-     * Android only
-     * 1 / 2 Page text color
-     */
-    titlePagerColor?: string;
-}
-/**
- * Photo viewer
- */
-declare const photoViewer: {
-    show(options: PhotoViewerOptions): Promise<void>;
-    hide(): void;
-};
-export default photoViewer;
+<PhotoView
+	visible={this.state.visible}
+	data={photos}
+	hideStatusBar={true}
+	initial={this.state.initial}
+	onDismiss={e => {
+		// dont forgot set state back.
+		this.setState({ visible: false });
+	}}
+/>
 
 ```
+
 
 ## LICENSE
 
