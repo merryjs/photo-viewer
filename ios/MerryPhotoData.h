@@ -12,15 +12,13 @@
 
 @interface MerryPhotoData : NSObject
 
-@property (nonatomic, strong) NSString * summary;
-@property (nonatomic, strong) NSString * summaryColor;
-@property (nonatomic, strong) NSString * title;
-@property (nonatomic, strong) NSString * titleColor;
-@property (nonatomic, strong) NSString * url;
+@property (nonatomic, strong) NSString* summary;
+@property (nonatomic, strong) NSString* summaryColor;
+@property (nonatomic, strong) NSString* title;
+@property (nonatomic, strong) NSString* titleColor;
+@property (nonatomic, strong) NSString* url;
 
--(instancetype)initWithDictionary:(NSDictionary *)dictionary;
-
--(NSDictionary *)toDictionary;
+- (instancetype)initWithDictionary:(NSDictionary*)dictionary;
 @end
 
 #endif /* MerryPhotoData_h */

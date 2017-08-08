@@ -27,7 +27,7 @@ RCT_EXPORT_MODULE();
     return [[MerryPhotoView alloc] initWithEventDispatcher:self.bridge.eventDispatcher];
 }
 
-RCT_EXPORT_VIEW_PROPERTY(options, NSDictionary)
+RCT_EXPORT_VIEW_PROPERTY(data, NSArray)
 RCT_EXPORT_VIEW_PROPERTY(initial, NSInteger)
 RCT_EXPORT_VIEW_PROPERTY(hideStatusBar, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(hideCloseButton, BOOL)

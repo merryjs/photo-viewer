@@ -14,7 +14,6 @@
 
 @implementation MerryPhotoView : UIView {
     RCTEventDispatcher* _eventDispatcher;
-    MerryPhotoOptions* merryPhotoOptions;
     SDWebImageDownloader* downloader;
 }
 
@@ -28,8 +27,8 @@
 }
 - (void)didMoveToWindow
 {
-    if (self.options) {
-        [self showViewer:self.options];
+    if (self.data) {
+        [self showViewer:self.data];
     }
 }
 - (void)removeFromSuperview
@@ -45,8 +44,8 @@
     self.nytPhotosViewController = nil;
     self.dataSource = nil;
     self.photos = nil;
-    self.options = nil;
-    merryPhotoOptions = nil;
+    self.data = nil;
+    self.reactPhotos = nil;
     downloader = nil;
 }
 /**
@@ -91,17 +90,21 @@
     [self clean];
 }
 
-- (void)showViewer:(NSDictionary*)options
+- (void)showViewer:(NSArray*)data
 {
-    merryPhotoOptions = [[MerryPhotoOptions alloc] initWithDictionary:options];
 
-    if (!merryPhotoOptions) {
+    if (!data) {
         //        reject(@"9527", @"Display photo viewer failed, please config it first", nil);
         return;
     }
 
     NSMutableArray* msPhotos = [NSMutableArray array];
-    for (MerryPhotoData* d in merryPhotoOptions.data) {
+    NSMutableArray* rsPhotos = [NSMutableArray array];
+
+    for (NSDictionary* dic in data) {
+
+        MerryPhotoData* d = [[MerryPhotoData alloc] initWithDictionary:dic];
+
         MerryPhoto* merryPhoto = [MerryPhoto new];
 
         merryPhoto.image = nil;
@@ -112,10 +115,15 @@
         if (d.summary) {
             merryPhoto.attributedCaptionSummary = [MerryPhotoView attributedSummaryFromString:d.summary:d.summaryColor ? [RCTConvert UIColor:d.summaryColor] : [UIColor lightGrayColor]];
         }
+
         [msPhotos addObject:merryPhoto];
+
+        [rsPhotos addObject:d];
     }
 
     self.photos = msPhotos;
+    self.reactPhotos = rsPhotos;
+
     self.dataSource = [NYTPhotoViewerArrayDataSource dataSourceWithPhotos:self.photos];
     NSInteger initialPhoto = self.initial;
 
@@ -166,7 +174,7 @@
 {
     NSInteger current = (unsigned long)photoIndex;
     MerryPhoto* currentPhoto = [self.dataSource.photos objectAtIndex:current];
-    MerryPhotoData* d = merryPhotoOptions.data[current];
+    MerryPhotoData* d = self.reactPhotos[current];
 
     NSString* url = d.url;
     NSURL* imageURL = [NSURL URLWithString:url];
@@ -176,7 +184,7 @@
 
     downloader = [SDWebImageDownloader sharedDownloader];
 
-    //      Limit only one photo will be download
+    // Limit only one photo will be download
     [downloader setMaxConcurrentDownloads:1];
     // cancel all downloads
     [downloader cancelAllDownloads];
@@ -187,10 +195,10 @@
             downloadImageWithURL:imageURL
             options:0
             progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL* _Nullable targetURL) {
-                // dispatch_sync(dispatch_get_main_queue(), ^{
-                //     float progress = (float)receivedSize / expectedSize;
-                //     NSLog(@" %lu/%lu", receivedSize, expectedSize);
-                // });
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    float progress = (float)receivedSize / expectedSize;
+                    NSLog(@" %lu/%lu", receivedSize, expectedSize);
+                });
             }
             completed:^(UIImage* image, NSData* data, NSError* error, BOOL finished) {
                 //                       when downloads completed update photo
@@ -247,7 +255,7 @@
           didNavigateToPhoto:(id<NYTPhoto>)photo
                      atIndex:(NSUInteger)photoIndex
 {
-    if (!photo.image && !photo.imageData) {
+    if (!photo.image || !photo.imageData) {
         [self updatePhotoAtIndex:photosViewController Index:photoIndex];
     }
     NSNumber* index = [[NSNumber alloc] initWithLong:photoIndex];

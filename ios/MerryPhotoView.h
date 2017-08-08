@@ -19,25 +19,27 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 #import "MerryPhoto.h"
-#import "MerryPhotoOptions.h"
+#import "MerryPhotoData.h"
 
 @class RCTEventDispatcher;
 
 @interface MerryPhotoView : UIView <NYTPhotosViewControllerDelegate, RCTInvalidating>
+
 // Define view properties here with @property
 @property (nonatomic) NSInteger initial;
-@property (nonatomic) NSDictionary* options;
+@property (nonatomic) NSArray* data;
 @property (nonatomic) BOOL hideStatusBar;
 @property (nonatomic, copy) RCTBubblingEventBlock onDismiss;
 @property (nonatomic, copy) RCTBubblingEventBlock onNavigateToPhoto;
 @property (nonatomic) BOOL hideCloseButton;
 @property (nonatomic) BOOL hideShareButton;
 
-
 // Initializing with the event dispatcher allows us to communicate with JS
 - (instancetype)initWithEventDispatcher:(RCTEventDispatcher*)eventDispatcher NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic) NSMutableArray* photos;
+@property (nonatomic) NSMutableArray* reactPhotos;
+
 @property (nonatomic) NYTPhotoViewerArrayDataSource* dataSource;
 @property (nonatomic) NYTPhotosViewController* nytPhotosViewController;
 @end
