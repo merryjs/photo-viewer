@@ -50,8 +50,8 @@ public class MerryPhotoOverlay extends RelativeLayout {
         tvDescription.setText(description);
     }
 
-    public void setDescriptionTextColor(String color) {
-        tvDescription.setTextColor(Color.parseColor(color));
+    public void setDescriptionTextColor(int color) {
+        tvDescription.setTextColor(color);
     }
 
     public void setShareText(String text) {
@@ -66,8 +66,8 @@ public class MerryPhotoOverlay extends RelativeLayout {
         tvShare.setTextColor(Color.parseColor(color));
     }
 
-    public void setTitleTextColor(String color) {
-        tvTitle.setTextColor(Color.parseColor(color));
+    public void setTitleTextColor(int color) {
+        tvTitle.setTextColor(color);
     }
 
     public void setTitleText(String text) {
