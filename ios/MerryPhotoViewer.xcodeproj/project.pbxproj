@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		361B2EB31F19CEE400C0608B /* MerryPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B2EB21F19CEE400C0608B /* MerryPhoto.m */; };
-		362819551F23C35D00DD3CE1 /* MerryPhotoViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = 362819541F23C35D00DD3CE1 /* MerryPhotoViewer.m */; };
 		362CC0121F2A40D400B4BAE0 /* MerryPhotoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 362CC0111F2A40D400B4BAE0 /* MerryPhotoData.m */; };
-		36ED2E011F29F30300240ACC /* MerryPhotoOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 36ED2E001F29F30300240ACC /* MerryPhotoOptions.m */; };
+		36FBF38E1F31A7D0007CC215 /* MerryPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FBF38B1F31A7D0007CC215 /* MerryPhotoView.m */; };
+		36FBF38F1F31A7D0007CC215 /* MerryPhotoViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FBF38D1F31A7D0007CC215 /* MerryPhotoViewManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,12 +29,12 @@
 		134814201AA4EA6300B7C361 /* libMerryPhotoViewer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMerryPhotoViewer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		361B2EB21F19CEE400C0608B /* MerryPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerryPhoto.m; sourceTree = "<group>"; };
 		361B2EB41F19CEF600C0608B /* MerryPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerryPhoto.h; sourceTree = "<group>"; };
-		36205A2F1F1F83870014EBC7 /* MerryPhotoViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerryPhotoViewer.h; sourceTree = "<group>"; };
-		362819541F23C35D00DD3CE1 /* MerryPhotoViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerryPhotoViewer.m; sourceTree = "<group>"; };
 		362CC0111F2A40D400B4BAE0 /* MerryPhotoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerryPhotoData.m; sourceTree = "<group>"; };
 		362CC0131F2A40E600B4BAE0 /* MerryPhotoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerryPhotoData.h; sourceTree = "<group>"; };
-		36ED2E001F29F30300240ACC /* MerryPhotoOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerryPhotoOptions.m; sourceTree = "<group>"; };
-		36ED2E021F29F31600240ACC /* MerryPhotoOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerryPhotoOptions.h; sourceTree = "<group>"; };
+		36FBF38A1F31A7D0007CC215 /* MerryPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerryPhotoView.h; sourceTree = "<group>"; };
+		36FBF38B1F31A7D0007CC215 /* MerryPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerryPhotoView.m; sourceTree = "<group>"; };
+		36FBF38C1F31A7D0007CC215 /* MerryPhotoViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerryPhotoViewManager.h; sourceTree = "<group>"; };
+		36FBF38D1F31A7D0007CC215 /* MerryPhotoViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerryPhotoViewManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,12 +66,12 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				36FBF38A1F31A7D0007CC215 /* MerryPhotoView.h */,
+				36FBF38B1F31A7D0007CC215 /* MerryPhotoView.m */,
+				36FBF38C1F31A7D0007CC215 /* MerryPhotoViewManager.h */,
+				36FBF38D1F31A7D0007CC215 /* MerryPhotoViewManager.m */,
 				362CC0131F2A40E600B4BAE0 /* MerryPhotoData.h */,
 				362CC0111F2A40D400B4BAE0 /* MerryPhotoData.m */,
-				36ED2E021F29F31600240ACC /* MerryPhotoOptions.h */,
-				36ED2E001F29F30300240ACC /* MerryPhotoOptions.m */,
-				362819541F23C35D00DD3CE1 /* MerryPhotoViewer.m */,
-				36205A2F1F1F83870014EBC7 /* MerryPhotoViewer.h */,
 				361B2EB41F19CEF600C0608B /* MerryPhoto.h */,
 				361B2EB21F19CEE400C0608B /* MerryPhoto.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
@@ -135,10 +135,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				362819551F23C35D00DD3CE1 /* MerryPhotoViewer.m in Sources */,
 				361B2EB31F19CEE400C0608B /* MerryPhoto.m in Sources */,
 				362CC0121F2A40D400B4BAE0 /* MerryPhotoData.m in Sources */,
-				36ED2E011F29F30300240ACC /* MerryPhotoOptions.m in Sources */,
+				36FBF38F1F31A7D0007CC215 /* MerryPhotoViewManager.m in Sources */,
+				36FBF38E1F31A7D0007CC215 /* MerryPhotoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

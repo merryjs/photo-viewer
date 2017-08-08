@@ -1,13 +1,13 @@
-import { NativeModules, processColor, Platform } from "react-native";
-const { MerryPhotoViewer } = NativeModules;
-const isIos = Platform.OS === "ios";
+import * as React from "react";
+import { requireNativeComponent, processColor } from "react-native";
+import * as PropTypes from "prop-types";
 /**
- * Handle UIColor conversions for ios
- * @param options PhotoViewerOptions
+ * Handle UIColor conversions
+ * @param data Photo[]
  */
-const processor = (options) => {
-    if (options && options.data && options.data.length) {
-        options.data = options.data.map(o => {
+const processor = (data) => {
+    if (data && data.length) {
+        return data.map(o => {
             if (typeof o.summaryColor === "string") {
                 o.summaryColor = processColor(o.summaryColor);
             }
@@ -17,29 +17,49 @@ const processor = (options) => {
             return o;
         });
     }
-    return options;
+    return data;
 };
-/**
- * Photo viewer
- */
-const photoViewer = {
-    /**
-       * Display the Photo Viewer
-       * @param options PhotoViewerOptions
-       */
-    show(options) {
-        let o = Object.assign({}, options);
-        // IOS color process
-        if (isIos) {
-            o = processor(o);
-        }
-        return MerryPhotoViewer.show(o);
-    },
-    /**
-       * Hide Photo Viewer
-       */
-    hide() {
-        MerryPhotoViewer.hide();
+//  Created by react-native-create-bridge
+const RNMerryPhotoView = requireNativeComponent("MerryPhotoView", MerryPhotoView, {
+    nativeOnly: {
+        onNavigateToPhoto: true
     }
+});
+export default class MerryPhotoView extends React.Component {
+    componentDidMount() { }
+    onChange(e) {
+        if (this.props.onChange) {
+            this.props.onChange(e.nativeEvent.currentPhoto);
+        }
+    }
+    onDismiss() { }
+    render() {
+        const { visible, onChange, data, ...props } = this.props;
+        if (visible === false) {
+            return null;
+        }
+        const transformData = processor(data);
+        return (<RNMerryPhotoView {...props} data={transformData} onNavigateToPhoto={(e) => this.onChange(e)}/>);
+    }
+}
+MerryPhotoView.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        title: PropTypes.string,
+        summary: PropTypes.string,
+        titleColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        summaryColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    })).isRequired,
+    visible: PropTypes.bool,
+    initial: PropTypes.number.isRequired,
+    hideStatusBar: PropTypes.bool,
+    // IOS only
+    hideCloseButton: PropTypes.bool,
+    // IOS only
+    hideShareButton: PropTypes.bool,
+    onDismiss: PropTypes.func.isRequired,
+    onChange: PropTypes.func
 };
-export default photoViewer;
+MerryPhotoView.defaultProps = {
+    visible: false
+};

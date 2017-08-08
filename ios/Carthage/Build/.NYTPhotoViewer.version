@@ -1,0 +1,13 @@
+{
+  "commitish" : "74e1245135847d613b6e651212581c259427f149",
+  "iOS" : [
+    {
+      "hash" : "b70217b9bd33fc7b208ca22b84e117828471b0b86209fe4a574557dbd5dc0e96",
+      "name" : "NYTPhotoViewer"
+    },
+    {
+      "hash" : "68fa075c588cecea5d2a9d65b744d3c323d4983012b6f0758467e487b0354079",
+      "name" : "NYTPhotoViewerCore"
+    }
+  ]
+}
