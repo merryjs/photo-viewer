@@ -67,7 +67,7 @@ and initialize Fresco Library please see [Android Fresco initialize](#android-fr
 For some reasons if you dont want use any package manager in your side then you can link frameworks as:
 
 - Go to your xcode project choose your project if you unsure it click (command + 1)
-- Choose target General panel find embedded binaries click + icon will display a dialog and then go to `node_modules/@merryjs/photo-viewer/ios/Carthage/Build/iOS/` folder add these frameworks into your xcode project. make sure checked copy items if need and then It should looks like below,
+- Choose target General panel find embedded binaries click + icon will display a dialog and then go to `node_modules/@merryjs/photo-viewer/ios/Carthage/Build/iOS/` folder add these frameworks into your xcode project. make sure `checked` **copy items if needed** and then It should looks like below,
 	![Link Frameworks](assets/20170728-110148@2x.png)
 
 ##### [CocoaPods](https://cocoapods.org/)
@@ -191,13 +191,13 @@ const photos = [
 	hideStatusBar={true}
 	initial={this.state.initial}
 	onDismiss={e => {
-		// dont forgot set state back.
+		// don't forgot set state back.
 		this.setState({ visible: false });
 	}}
 />
 
 ```
-
+For complete documentation please see https://merryjs.github.io/photo-viewer/interfaces/photoviewerporps.html
 
 ## LICENSE
 
