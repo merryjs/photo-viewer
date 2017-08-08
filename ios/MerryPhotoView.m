@@ -195,10 +195,10 @@
             downloadImageWithURL:imageURL
             options:0
             progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL* _Nullable targetURL) {
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                    float progress = (float)receivedSize / expectedSize;
-                    NSLog(@" %lu/%lu", receivedSize, expectedSize);
-                });
+//                dispatch_sync(dispatch_get_main_queue(), ^{
+//                    float progress = (float)receivedSize / expectedSize;
+//                    NSLog(@" %lu/%lu", receivedSize, expectedSize);
+//                });
             }
             completed:^(UIImage* image, NSData* data, NSError* error, BOOL finished) {
                 //                       when downloads completed update photo

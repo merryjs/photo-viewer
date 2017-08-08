@@ -1,3 +1,7 @@
+/// <reference types="react" />
+import * as React from "react";
+import { NativeSyntheticEvent } from "react-native";
+import * as PropTypes from "prop-types";
 /**
  * Photo data
  */
@@ -8,9 +12,9 @@ export interface Photo {
     titleColor?: string | number;
     summaryColor?: string | number;
 }
-export interface PhotoViewerOptions {
+export interface PhotoViewerPorps {
     /**
-       * Pictures for view
+       * Photos for view
        */
     data: Photo[];
     /**
@@ -18,42 +22,43 @@ export interface PhotoViewerOptions {
        */
     initial: number;
     /**
-       * Set overlay background color
-       */
-    backgroundColor?: string;
-    /**
        * Hide status bar
        */
-    hideStatusBar: boolean;
-    /**
-       * Android only
-       */
-    swipeToDismiss?: boolean;
-    /**
-       * Android only
-       */
-    zooming?: boolean;
+    hideStatusBar?: boolean;
     /**
        * Android only
        * Set share text the default text is SHARE
        */
     shareText?: string;
     /**
-     * Android only
-     * Share text color
-     */
-    shareTextColor?: string;
+       * Display or hide the viewer
+       */
+    visible: boolean;
     /**
-     * Android only
-     * 1 / 2 Page text color
-     */
-    titlePagerColor?: string;
+       * When a photo has changed not implemented in Android yet. useless
+       */
+    onChange?: (current: object) => void;
+    /**
+       * When viewer has dismissed but you still needs to update the visible state
+       */
+    onDismiss: () => void;
 }
-/**
- * Photo viewer
- */
-declare const photoViewer: {
-    show(options: PhotoViewerOptions): Promise<void>;
-    hide(): void;
-};
-export default photoViewer;
+export default class MerryPhotoView extends React.Component<PhotoViewerPorps, any> {
+    static propTypes: {
+        data: PropTypes.Validator<any>;
+        visible: PropTypes.Requireable<any>;
+        initial: PropTypes.Validator<any>;
+        hideStatusBar: PropTypes.Requireable<any>;
+        hideCloseButton: PropTypes.Requireable<any>;
+        hideShareButton: PropTypes.Requireable<any>;
+        onDismiss: PropTypes.Validator<any>;
+        onChange: PropTypes.Requireable<any>;
+    };
+    static defaultProps: {
+        visible: boolean;
+    };
+    componentDidMount(): void;
+    onChange(e: NativeSyntheticEvent<any>): void;
+    onDismiss(): void;
+    render(): JSX.Element | null;
+}

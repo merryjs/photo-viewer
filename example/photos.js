@@ -13,8 +13,7 @@ import {
   NativeModules
 } from "react-native";
 
-import photoViewer from "./photo-viewer";
-import MerryPhotoViewView from "./MerryPhotoViewNativeView";
+import PhotoView from "./photo-viewer";
 
 const photos = [
   {
@@ -24,8 +23,8 @@ const photos = [
     summary:
       "Adobe announced its roadmap to stop supporting Flash at the end of 2020. ",
     // must be valid hex color or android will crashes
-    titleColor: processColor("#f90000"),
-    summaryColor: processColor("green")
+    titleColor: "#f90000",
+    summaryColor: "green"
   },
   {
     url:
@@ -67,12 +66,10 @@ export default class Photos extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.h1}>Photo Viewer</Text>
-        <MerryPhotoViewView
+        <PhotoView
           visible={this.state.visible}
 					data={photos}
           hideStatusBar={true}
-					hideCloseButton
-					hideShareButton
           initial={this.state.initial}
           onChange={data => {
             console.log(data);

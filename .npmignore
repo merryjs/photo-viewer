@@ -46,8 +46,8 @@ buck-out/
 
 # Carthage
 ios/Carthage/Checkouts
-
-index.ts
+!ios/Carthage/Build
+index.tsx
 assets/
 tsconfig.json
 .vscode
