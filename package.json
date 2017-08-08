@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "tsc -w",
-    "doc": "typedoc --out ./doc index.ts --mode file --ignoreCompilerErrors --readme none --hideGenerator --excludePrivate --excludeExternals"
+    "doc": "typedoc --out ./docs index.ts --mode file --ignoreCompilerErrors --readme none --hideGenerator --excludePrivate --excludeExternals"
   },
   "keywords": [
     "react-native",

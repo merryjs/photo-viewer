@@ -38,8 +38,6 @@
 							</div>
 							<input type="checkbox" id="tsd-filter-inherited" checked />
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
 							<input type="checkbox" id="tsd-filter-only-exported" />
 							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
@@ -68,17 +66,22 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Classes</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-class"><a href="classes/merryphotoview.html" class="tsd-kind-icon">Merry<wbr>Photo<wbr>View</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface"><a href="interfaces/photo.html" class="tsd-kind-icon">Photo</a></li>
-								<li class="tsd-kind-interface"><a href="interfaces/photovieweroptions.html" class="tsd-kind-icon">Photo<wbr>Viewer<wbr>Options</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/photoviewerporps.html" class="tsd-kind-icon">Photo<wbr>Viewer<wbr>Porps</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-is-not-exported"><a href="index.html#merryphotoviewer" class="tsd-kind-icon">Merry<wbr>Photo<wbr>Viewer</a></li>
-								<li class="tsd-kind-variable tsd-is-not-exported"><a href="index.html#isios" class="tsd-kind-icon">is<wbr>Ios</a></li>
+								<li class="tsd-kind-variable tsd-is-not-exported"><a href="index.html#rnmerryphotoview" class="tsd-kind-icon">RNMerry<wbr>Photo<wbr>View</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-not-exported">
@@ -87,34 +90,18 @@
 								<li class="tsd-kind-function tsd-is-not-exported"><a href="index.html#processor" class="tsd-kind-icon">processor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section ">
-							<h3>Object literals</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-object-literal"><a href="index.html#photoviewer" class="tsd-kind-icon">photo<wbr>Viewer</a></li>
-							</ul>
-						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Variables</h2>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
-					<a name="merryphotoviewer" class="tsd-anchor"></a>
-					<h3>Merry<wbr>Photo<wbr>Viewer</h3>
-					<div class="tsd-signature tsd-kind-icon">Merry<wbr>Photo<wbr>Viewer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<a name="rnmerryphotoview" class="tsd-anchor"></a>
+					<h3>RNMerry<wbr>Photo<wbr>View</h3>
+					<div class="tsd-signature tsd-kind-icon">RNMerry<wbr>Photo<wbr>View<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ComponentClass</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;requireNativeComponent(&quot;MerryPhotoView&quot;,MerryPhotoView,{nativeOnly: {onNavigateToPhoto: true}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/3c20dcd/index.ts#L3">index.ts:3</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
-					<a name="isios" class="tsd-anchor"></a>
-					<h3>is<wbr>Ios</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Ios<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;Platform.OS &#x3D;&#x3D;&#x3D; &quot;ios&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/3c20dcd/index.ts#L56">index.ts:56</a></li>
+							<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/e86bd8b/index.tsx#L72">index.tsx:72</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -125,105 +112,34 @@
 					<a name="processor" class="tsd-anchor"></a>
 					<h3>processor</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">processor<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="interfaces/photovieweroptions.html" class="tsd-signature-type">PhotoViewerOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/photovieweroptions.html" class="tsd-signature-type">PhotoViewerOptions</a></li>
+						<li class="tsd-signature tsd-kind-icon">processor<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><a href="interfaces/photo.html" class="tsd-signature-type">Photo</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/photo.html" class="tsd-signature-type">Photo</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/3c20dcd/index.ts#L62">index.ts:62</a></li>
+									<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/e86bd8b/index.tsx#L56">index.tsx:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Handle UIColor conversions for ios</p>
+									<p>Handle UIColor conversions</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>options: <a href="interfaces/photovieweroptions.html" class="tsd-signature-type">PhotoViewerOptions</a></h5>
+									<h5>data: <a href="interfaces/photo.html" class="tsd-signature-type">Photo</a><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>PhotoViewerOptions</p>
+											<p>Photo[]</p>
 										</div>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="interfaces/photovieweroptions.html" class="tsd-signature-type">PhotoViewerOptions</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/photo.html" class="tsd-signature-type">Photo</a><span class="tsd-signature-symbol">[]</span></h4>
 						</li>
 					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Object literals</h2>
-				<section class="tsd-panel tsd-member tsd-kind-object-literal">
-					<a name="photoviewer" class="tsd-anchor"></a>
-					<h3>photo<wbr>Viewer</h3>
-					<div class="tsd-signature tsd-kind-icon">photo<wbr>Viewer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/3c20dcd/index.ts#L79">index.ts:79</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Photo viewer</p>
-						</div>
-					</div>
-					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
-						<a name="photoviewer.hide" class="tsd-anchor"></a>
-						<h3>hide</h3>
-						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
-							<li class="tsd-signature tsd-kind-icon">hide<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-						</ul>
-						<ul class="tsd-descriptions">
-							<li class="tsd-description">
-								<aside class="tsd-sources">
-									<ul>
-										<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/3c20dcd/index.ts#L95">index.ts:95</a></li>
-									</ul>
-								</aside>
-								<div class="tsd-comment tsd-typography">
-									<div class="lead">
-										<p>Hide Photo Viewer</p>
-									</div>
-								</div>
-								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-							</li>
-						</ul>
-					</section>
-					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
-						<a name="photoviewer.show" class="tsd-anchor"></a>
-						<h3>show</h3>
-						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
-							<li class="tsd-signature tsd-kind-icon">show<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="interfaces/photovieweroptions.html" class="tsd-signature-type">PhotoViewerOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-						</ul>
-						<ul class="tsd-descriptions">
-							<li class="tsd-description">
-								<aside class="tsd-sources">
-									<ul>
-										<li>Defined in <a href="https://github.com/merryjs/photo-viewer/blob/3c20dcd/index.ts#L84">index.ts:84</a></li>
-									</ul>
-								</aside>
-								<div class="tsd-comment tsd-typography">
-									<div class="lead">
-										<p>Display the Photo Viewer</p>
-									</div>
-								</div>
-								<h4 class="tsd-parameters-title">Parameters</h4>
-								<ul class="tsd-parameters">
-									<li>
-										<h5>options: <a href="interfaces/photovieweroptions.html" class="tsd-signature-type">PhotoViewerOptions</a></h5>
-										<div class="tsd-comment tsd-typography">
-											<p>PhotoViewerOptions</p>
-										</div>
-									</li>
-								</ul>
-								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							</li>
-						</ul>
-					</section>
 				</section>
 			</section>
 		</div>
@@ -237,23 +153,20 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/merryphotoview.html" class="tsd-kind-icon">Merry<wbr>Photo<wbr>View</a>
+					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/photo.html" class="tsd-kind-icon">Photo</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/photovieweroptions.html" class="tsd-kind-icon">Photo<wbr>Viewer<wbr>Options</a>
+						<a href="interfaces/photoviewerporps.html" class="tsd-kind-icon">Photo<wbr>Viewer<wbr>Porps</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="index.html#merryphotoviewer" class="tsd-kind-icon">Merry<wbr>Photo<wbr>Viewer</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="index.html#isios" class="tsd-kind-icon">is<wbr>Ios</a>
+						<a href="index.html#rnmerryphotoview" class="tsd-kind-icon">RNMerry<wbr>Photo<wbr>View</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="index.html#processor" class="tsd-kind-icon">processor</a>
-					</li>
-					<li class=" tsd-kind-object-literal">
-						<a href="index.html#photoviewer" class="tsd-kind-icon">photo<wbr>Viewer</a>
 					</li>
 				</ul>
 			</nav>
