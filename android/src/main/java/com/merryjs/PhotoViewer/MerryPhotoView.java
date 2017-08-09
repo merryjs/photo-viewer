@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.view.View;
 
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
+import com.facebook.imagepipeline.request.ImageRequest;
+import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableMap;
@@ -14,6 +16,7 @@ import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.merryjs.PhotoViewer.MerryPhotoData;
 import com.merryjs.PhotoViewer.MerryPhotoOverlay;
 import com.stfalcon.frescoimageviewer.ImageViewer;
+import com.facebook.react.views.imagehelper.ImageSource;
 
 /**
  * Created by bang on 07/08/2017.
@@ -91,11 +94,20 @@ public class MerryPhotoView extends View {
 		builder.setImageChangeListener(getImageChangeListener());
 		builder.setStartPosition(getInitial());
 		builder.hideStatusBar(isHideStatusBar());
+		builder.setCustomImageRequestBuilder(getLocalImage());
 //        builder.setCustomDraweeHierarchyBuilder(progressBarDrawableBuilder());
 
 		return builder;
 	}
 
+	private ImageRequestBuilder getLocalImage(){
+		final Context context = getContext();
+
+		ImageSource imageSource = new ImageSource(context, "cat-2575694_1920");
+
+		ImageRequestBuilder imageRequestBuilder =  ImageRequestBuilder.newBuilderWithSource(imageSource.getUri());
+		return  imageRequestBuilder;
+	}
 
 	private ImageViewer.OnImageChangeListener getImageChangeListener() {
 		return new ImageViewer.OnImageChangeListener() {

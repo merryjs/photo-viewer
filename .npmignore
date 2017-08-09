@@ -52,3 +52,4 @@ assets/
 tsconfig.json
 .vscode
 example/
+docs/

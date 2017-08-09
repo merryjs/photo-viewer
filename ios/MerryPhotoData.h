@@ -10,6 +10,8 @@
 #define MerryPhotoData_h
 #import <UIKit/UIKit.h>
 
+#import "MerryCommonHeader.h"
+
 @interface MerryPhotoData : NSObject
 
 @property (nonatomic, strong) NSString* summary;
@@ -17,7 +19,7 @@
 @property (nonatomic, strong) NSString* title;
 @property (nonatomic, strong) NSString* titleColor;
 @property (nonatomic, strong) NSString* url;
-
+@property (nonatomic, strong) RCTImageSource* source;
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary;
 @end
 

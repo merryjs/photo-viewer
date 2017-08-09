@@ -2,25 +2,33 @@
 #import "MerryPhotoView.h"
 #import <Foundation/Foundation.h>
 
-// import RCTEventDispatcher
-#if __has_include(<React/RCTEventDispatcher.h>)
-#import <React/RCTConvert.h>
-#import <React/RCTEventDispatcher.h>
-#elif __has_include(“RCTEventDispatcher.h”)
-#import “RCTEventDispatcher.h”
-#else
-#import “React / RCTEventDispatcher.h” // Required when used as a Pod in a Swift project
-#endif
+@implementation MerryPhotoView {
 
-@implementation MerryPhotoView : UIView {
-    RCTEventDispatcher* _eventDispatcher;
+    __weak RCTBridge* _bridge;
+
     SDWebImageDownloader* downloader;
-}
+    // The image source that's currently displayed
+    RCTImageSource* _imageSource;
 
-- (instancetype)initWithEventDispatcher:(RCTEventDispatcher*)eventDispatcher
+    // The image source that's being loaded from the network
+    RCTImageSource* _pendingImageSource;
+
+    // Size of the image loaded / being loaded, so we can determine when to issue
+    // a reload to accomodate a changing size.
+    CGSize _targetSize;
+
+    /**
+     * A block that can be invoked to cancel the most recent call to -reloadImage,
+     * if any.
+     */
+    RCTImageLoaderCancellationBlock _reloadImageCancellationBlock;
+}
+//@synthesize bridge = _bridge;
+
+- (instancetype)initWithBridge:(RCTBridge*)bridge
 {
     if ((self = [super init])) {
-        _eventDispatcher = eventDispatcher;
+        _bridge = bridge;
     }
 
     return self;
@@ -163,7 +171,23 @@
 
     });
 }
-
++ (NSString *)contentTypeForImageData:(NSData *)data {
+    uint8_t c;
+    [data getBytes:&c length:1];
+    
+    switch (c) {
+        case 0xFF:
+            return @"jpeg";
+        case 0x89:
+            return @"png";
+        case 0x47:
+            return @"gif";
+        case 0x49:
+        case 0x4D:
+            return @"tiff";
+    }
+    return nil;
+}
 /**
  Update Photo
  @param photosViewController <#photosViewController description#>
@@ -175,64 +199,97 @@
     NSInteger current = (unsigned long)photoIndex;
     MerryPhoto* currentPhoto = [self.dataSource.photos objectAtIndex:current];
     MerryPhotoData* d = self.reactPhotos[current];
+    
+    
+    
+        //
+            NSString* url = d.url;
+            NSURL* imageURL = [NSURL URLWithString:url];
+    
+        // check an url is a gif image.
+        // NOTE: this check require your url have an extension.
+            BOOL isGif = [[imageURL pathExtension] isEqual:@"gif"];
+    
+    [_bridge.imageLoader loadImageWithURLRequest:d.source.request
+        size:d.source.size
+        scale:d.source.scale
+        clipped:NO
+        resizeMode:RCTResizeModeStretch
+        progressBlock:^(int64_t progress, int64_t total) {
+            NSLog(@"%lld %lld", progress,total);
+        }
+        partialLoadBlock:nil
+        completionBlock:^(NSError* error, UIImage* image) {
+            if (image) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    NSData *data = UIImagePNGRepresentation(image);
+//                    NSString* ext = [MerryPhotoView contentTypeForImageData:data];
+//                    BOOL isGif = ext && [ext isEqualToString:@"gif"];
+                    
+                    if(isGif){
+                        currentPhoto.imageData = data;
+                    }else{
+                        currentPhoto.image = image;
+                    }
 
-    NSString* url = d.url;
-    NSURL* imageURL = [NSURL URLWithString:url];
-    // check an url is a gif image.
-    // NOTE: this check require your url have an extension.
-    BOOL isGif = [[imageURL pathExtension] isEqual:@"gif"];
+                    [photosViewController updatePhoto:currentPhoto];
+
+                });
+            }
+        }];
+
 
     // handle local image
 
-    BOOL isLocalImage = [imageURL isFileURL] || [url isAbsolutePath];
+    //    BOOL isLocalImage = [imageURL isFileURL] || [url isAbsolutePath] || [[imageURL scheme] isEqualToString:@"assets-library" ];
 
-    if (isLocalImage) {
-
-        NSData* imageData = [NSData dataWithContentsOfFile:url];
-
-        if (isGif) {
-            currentPhoto.imageData = imageData;
-        } else {
-            UIImage* image = [UIImage imageWithData:imageData];
-            currentPhoto.image = image;
-        }
-
-        [photosViewController updatePhoto:currentPhoto];
-
-    } else {
-
-        downloader = [SDWebImageDownloader sharedDownloader];
-
-        // Limit only one photo will be download
-        [downloader setMaxConcurrentDownloads:1];
-        // cancel all downloads
-        [downloader cancelAllDownloads];
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-
-            [downloader
-                downloadImageWithURL:imageURL
-                options:0
-                progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL* _Nullable targetURL) {
-                    //                dispatch_sync(dispatch_get_main_queue(), ^{
-                    //                    float progress = (float)receivedSize / expectedSize;
-                    //                    NSLog(@" %lu/%lu", receivedSize, expectedSize);
-                    //                });
-                }
-                completed:^(UIImage* image, NSData* data, NSError* error, BOOL finished) {
-                    //                       when downloads completed update photo
-                    if (image && finished) {
-                        if (isGif) {
-                            currentPhoto.imageData = data;
-                        } else {
-                            currentPhoto.image = image;
-                        }
-                        [photosViewController updatePhoto:currentPhoto];
-                    }
-                }];
-
-        });
-    }
+    //    if (isLocalImage) {
+    //                NSData* imageData = [NSData dataWithContentsOfFile:url];
+    //
+    //        if (isGif) {
+    //            currentPhoto.imageData = imageData;
+    //        } else {
+    //            UIImage* image = [UIImage imageWithData:imageData];
+    //            currentPhoto.image = image;
+    //        }
+    //
+    //        [photosViewController updatePhoto:currentPhoto];
+    //
+    //    } else {
+    //
+    //        downloader = [SDWebImageDownloader sharedDownloader];
+    //
+    //        // Limit only one photo will be download
+    //        [downloader setMaxConcurrentDownloads:1];
+    //        // cancel all downloads
+    //        [downloader cancelAllDownloads];
+    //
+    //        dispatch_async(dispatch_get_main_queue(), ^{
+    //
+    //            [downloader
+    //                downloadImageWithURL:imageURL
+    //                options:0
+    //                progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL* _Nullable targetURL) {
+    //                    //                dispatch_sync(dispatch_get_main_queue(), ^{
+    //                    //                    float progress = (float)receivedSize / expectedSize;
+    //                    //                    NSLog(@" %lu/%lu", receivedSize, expectedSize);
+    //                    //                });
+    //                }
+    //                completed:^(UIImage* image, NSData* data, NSError* error, BOOL finished) {
+    //                    //                       when downloads completed update photo
+    //                    if (image && finished) {
+    //                        if (isGif) {
+    //                            currentPhoto.imageData = data;
+    //                        } else {
+    //                            currentPhoto.image = image;
+    //                        }
+    //                        [photosViewController updatePhoto:currentPhoto];
+    //                    }
+    //                }];
+    //
+    //        });
+    //    }
 }
 
 #pragma mark - NYTPhotosViewControllerDelegate
@@ -278,14 +335,14 @@
     if (!photo.image || !photo.imageData) {
         [self updatePhotoAtIndex:photosViewController Index:photoIndex];
     }
-// NOTE: onChange are useless so we don't plan to implementing it.
-//    MerryPhotoData* current = [self.reactPhotos objectAtIndex:photoIndex];
-//
-//    if (self.onNavigateToPhoto) {
-//        self.onNavigateToPhoto(@{
-//            @"currentPhoto" : current
-//        });
-//    }
+    // NOTE: onChange are useless so we don't plan to implementing it.
+    //    MerryPhotoData* current = [self.reactPhotos objectAtIndex:photoIndex];
+    //
+    //    if (self.onNavigateToPhoto) {
+    //        self.onNavigateToPhoto(@{
+    //            @"currentPhoto" : current
+    //        });
+    //    }
 }
 
 - (void)displayActivityViewController:(UIActivityViewController*)controller animated:(BOOL)animated
