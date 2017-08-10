@@ -10,7 +10,6 @@
 
 #import <NYTPhotoViewer/NYTPhotoViewerArrayDataSource.h>
 #import <NYTPhotoViewer/NYTPhotosViewController.h>
-#import <SDWebImage/UIImageView+WebCache.h>
 
 #import "MerryCommonHeader.h"
 

@@ -2,7 +2,7 @@
   "commitish" : "1.0.12",
   "iOS" : [
     {
-      "hash" : "dff54725088dbefff87d5230051068358b2237b666c6d115fb14204e99e6c5f0",
+      "hash" : "a5552fab28f273af2f4dd2524bfc66e3319cdf173f3d862fcf015040a3347a29",
       "name" : "FLAnimatedImage"
     }
   ]

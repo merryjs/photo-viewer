@@ -6,22 +6,6 @@
 
     __weak RCTBridge* _bridge;
 
-    SDWebImageDownloader* downloader;
-    // The image source that's currently displayed
-    RCTImageSource* _imageSource;
-
-    // The image source that's being loaded from the network
-    RCTImageSource* _pendingImageSource;
-
-    // Size of the image loaded / being loaded, so we can determine when to issue
-    // a reload to accomodate a changing size.
-    CGSize _targetSize;
-
-    /**
-     * A block that can be invoked to cancel the most recent call to -reloadImage,
-     * if any.
-     */
-    RCTImageLoaderCancellationBlock _reloadImageCancellationBlock;
 }
 //@synthesize bridge = _bridge;
 
@@ -54,7 +38,6 @@
     self.photos = nil;
     self.data = nil;
     self.reactPhotos = nil;
-    downloader = nil;
 }
 /**
  Get root view
@@ -238,58 +221,6 @@
                 });
             }
         }];
-
-
-    // handle local image
-
-    //    BOOL isLocalImage = [imageURL isFileURL] || [url isAbsolutePath] || [[imageURL scheme] isEqualToString:@"assets-library" ];
-
-    //    if (isLocalImage) {
-    //                NSData* imageData = [NSData dataWithContentsOfFile:url];
-    //
-    //        if (isGif) {
-    //            currentPhoto.imageData = imageData;
-    //        } else {
-    //            UIImage* image = [UIImage imageWithData:imageData];
-    //            currentPhoto.image = image;
-    //        }
-    //
-    //        [photosViewController updatePhoto:currentPhoto];
-    //
-    //    } else {
-    //
-    //        downloader = [SDWebImageDownloader sharedDownloader];
-    //
-    //        // Limit only one photo will be download
-    //        [downloader setMaxConcurrentDownloads:1];
-    //        // cancel all downloads
-    //        [downloader cancelAllDownloads];
-    //
-    //        dispatch_async(dispatch_get_main_queue(), ^{
-    //
-    //            [downloader
-    //                downloadImageWithURL:imageURL
-    //                options:0
-    //                progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL* _Nullable targetURL) {
-    //                    //                dispatch_sync(dispatch_get_main_queue(), ^{
-    //                    //                    float progress = (float)receivedSize / expectedSize;
-    //                    //                    NSLog(@" %lu/%lu", receivedSize, expectedSize);
-    //                    //                });
-    //                }
-    //                completed:^(UIImage* image, NSData* data, NSError* error, BOOL finished) {
-    //                    //                       when downloads completed update photo
-    //                    if (image && finished) {
-    //                        if (isGif) {
-    //                            currentPhoto.imageData = data;
-    //                        } else {
-    //                            currentPhoto.image = image;
-    //                        }
-    //                        [photosViewController updatePhoto:currentPhoto];
-    //                    }
-    //                }];
-    //
-    //        });
-    //    }
 }
 
 #pragma mark - NYTPhotosViewControllerDelegate
@@ -373,9 +304,7 @@
     if (self.hideStatusBar) {
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
     }
-    if (downloader) {
-        [downloader cancelAllDownloads];
-    }
+    
     if (self.onDismiss) {
         self.onDismiss(nil);
     }
