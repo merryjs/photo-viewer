@@ -56,7 +56,7 @@ const photos = [
   {
     url: "https://media.giphy.com/media/xT39CSUZtc1T1iKgc8/giphy.gif",
     source: {
-      uri: "https://media.giphy.com/media/xT39CSUZtc1T1iKgc8/giphy.gif"
+      uri: "http://127.0.0.1:8082/Kapture%202017-08-09%20at%2016.32.12.gif"
     },
     title: "gif 1"
   },
