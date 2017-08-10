@@ -22,12 +22,10 @@ const cat = require("./cat-2575694_1920.jpg");
 
 const photos = [
   {
-    url:
-      "https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-    source: resolveAssetSource({
+    source:{
       uri:
         "https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
-    }),
+    },
     title: "Flash End-of-Life",
     summary:
       "Adobe announced its roadmap to stop supporting Flash at the end of 2020. ",
@@ -36,8 +34,7 @@ const photos = [
     summaryColor: "green"
   },
   {
-    url: "",
-    source: resolveAssetSource(cat),
+    source: cat,
     title: "Local image"
   },
 
@@ -54,14 +51,12 @@ const photos = [
   //     "https://images.pexels.com/photos/248261/pexels-photo-248261.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
   // },
   {
-    url: "https://media.giphy.com/media/xT39CSUZtc1T1iKgc8/giphy.gif",
     source: {
       uri: "http://127.0.0.1:8082/Kapture%202017-08-09%20at%2016.32.12.gif"
     },
     title: "gif 1"
   },
   {
-    url: "https://media.giphy.com/media/3o6vXWzHtGfMR3XoXu/giphy.gif",
     source: {
       uri: "https://media.giphy.com/media/3o6vXWzHtGfMR3XoXu/giphy.gif"
     },

@@ -1,54 +1,59 @@
 import * as React from "react";
 import { requireNativeComponent, processColor } from "react-native";
 import * as PropTypes from "prop-types";
-/**
- * Handle UIColor conversions
- * @param data Photo[]
- */
-const processor = (data) => {
-    if (data && data.length) {
-        return data.map(o => {
-            if (typeof o.summaryColor === "string") {
-                o.summaryColor = processColor(o.summaryColor);
+const resolveAssetSource = require("react-native/Libraries/Image/resolveAssetSource");
+const ImageSourcePropType = require("react-native/Libraries/Image/ImageSourcePropType");
+class MerryPhotoView extends React.Component {
+    constructor() {
+        super(...arguments);
+        /**
+           * Handle UIColor conversions
+           * @param data Photo[]
+           */
+        this.processor = (data) => {
+            if (data && data.length) {
+                return data.map(o => {
+                    const d = { ...o };
+                    if (typeof o.summaryColor === "string") {
+                        d.summaryColor = processColor(o.summaryColor);
+                    }
+                    if (typeof o.titleColor === "string") {
+                        d.titleColor = processColor(o.titleColor);
+                    }
+                    // resolve assets
+                    d.source = resolveAssetSource(o.source);
+                    return d;
+                });
             }
-            if (typeof o.titleColor === "string") {
-                o.titleColor = processColor(o.titleColor);
-            }
-            return o;
-        });
+            return data;
+        };
     }
-    return data;
-};
-//  Created by react-native-create-bridge
-const RNMerryPhotoView = requireNativeComponent("MerryPhotoView", MerryPhotoView, {
-    nativeOnly: {
-        onNavigateToPhoto: true
-    }
-});
-export default class MerryPhotoView extends React.Component {
-    componentDidMount() { }
-    onChange(e) {
-        if (this.props.onChange) {
-            this.props.onChange(e.nativeEvent.currentPhoto);
-        }
-    }
-    onDismiss() { }
     render() {
-        const { visible, onChange, data, ...props } = this.props;
-        if (visible === false) {
+        // nothing
+        if (this.props.visible === false) {
             return null;
         }
-        const transformData = processor(data);
-        return (<RNMerryPhotoView {...props} data={transformData} onNavigateToPhoto={(e) => this.onChange(e)}/>);
+        const { visible, data, initial, ...props } = this.props;
+        const dataCopy = [...data];
+        const transformData = this.processor(dataCopy);
+        // initial
+        let startPosition = initial;
+        if (initial < 0) {
+            startPosition = 0;
+        }
+        if (initial > dataCopy.length) {
+            startPosition = dataCopy.length;
+        }
+        return (<RNMerryPhotoView {...props} initial={startPosition} data={transformData}/>);
     }
 }
 MerryPhotoView.propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape({
-        url: PropTypes.string.isRequired,
+        source: ImageSourcePropType,
         title: PropTypes.string,
         summary: PropTypes.string,
         titleColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        summaryColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        summaryColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     })).isRequired,
     visible: PropTypes.bool,
     initial: PropTypes.number.isRequired,
@@ -63,3 +68,10 @@ MerryPhotoView.propTypes = {
 MerryPhotoView.defaultProps = {
     visible: false
 };
+//  Created by react-native-create-bridge
+var RNMerryPhotoView = requireNativeComponent("MerryPhotoView", MerryPhotoView, {
+    nativeOnly: {
+        onNavigateToPhoto: true
+    }
+});
+export default MerryPhotoView;

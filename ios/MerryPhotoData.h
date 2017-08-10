@@ -18,8 +18,7 @@
 @property (nonatomic, strong) NSString* summaryColor;
 @property (nonatomic, strong) NSString* title;
 @property (nonatomic, strong) NSString* titleColor;
-@property (nonatomic, strong) NSString* url;
-@property (nonatomic, strong) RCTImageSource* source;
+@property (nonatomic) RCTImageSource* source;
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary;
 @end
 

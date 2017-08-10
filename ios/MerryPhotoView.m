@@ -5,7 +5,6 @@
 @implementation MerryPhotoView {
 
     __weak RCTBridge* _bridge;
-
 }
 //@synthesize bridge = _bridge;
 
@@ -154,20 +153,21 @@
 
     });
 }
-+ (NSString *)contentTypeForImageData:(NSData *)data {
++ (NSString*)contentTypeForImageData:(NSData*)data
+{
     uint8_t c;
     [data getBytes:&c length:1];
-    
+
     switch (c) {
-        case 0xFF:
-            return @"jpeg";
-        case 0x89:
-            return @"png";
-        case 0x47:
-            return @"gif";
-        case 0x49:
-        case 0x4D:
-            return @"tiff";
+    case 0xFF:
+        return @"jpeg";
+    case 0x89:
+        return @"png";
+    case 0x47:
+        return @"gif";
+    case 0x49:
+    case 0x4D:
+        return @"tiff";
     }
     return nil;
 }
@@ -182,39 +182,39 @@
     NSInteger current = (unsigned long)photoIndex;
     MerryPhoto* currentPhoto = [self.dataSource.photos objectAtIndex:current];
     MerryPhotoData* d = self.reactPhotos[current];
-    
-    
-    
-        //
-            NSString* url = d.url;
-            NSURL* imageURL = [NSURL URLWithString:url];
-    
-        // check an url is a gif image.
-        // NOTE: this check require your url have an extension.
-            BOOL isGif = [[imageURL pathExtension] isEqual:@"gif"];
-    
+
+    //
+    //            NSString* url = d.url;
+    //            NSURL* imageURL = [NSURL URLWithString:url];
+
+    // check an url is a gif image.
+    // NOTE: this check require your url have an extension.
+    //            BOOL isGif = [[imageURL pathExtension] isEqual:@"gif"];
+
     [_bridge.imageLoader loadImageWithURLRequest:d.source.request
         size:d.source.size
         scale:d.source.scale
-        clipped:NO
+        clipped:YES
         resizeMode:RCTResizeModeStretch
         progressBlock:^(int64_t progress, int64_t total) {
-            NSLog(@"%lld %lld", progress,total);
+            NSLog(@"%lld %lld", progress, total);
         }
         partialLoadBlock:nil
         completionBlock:^(NSError* error, UIImage* image) {
             if (image) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                    NSData *data = UIImagePNGRepresentation(image);
-//                    NSString* ext = [MerryPhotoView contentTypeForImageData:data];
-//                    BOOL isGif = ext && [ext isEqualToString:@"gif"];
-                    
-                    if(isGif){
-                        currentPhoto.imageData = data;
-                    }else{
-                        currentPhoto.image = image;
-                    }
+
+                    //                    NSData *data = UIImagePNGRepresentation(image);
+                    //                    NSString* ext = [MerryPhotoView contentTypeForImageData:data];
+                    //                    BOOL isGif = ext && [ext isEqualToString:@"gif"];
+
+                    //                    if(isGif){
+                    //                        currentPhoto.imageData = data;
+                    //                    }else{
+                    //                        currentPhoto.image = image;
+                    //                    }
+                    //
+                    currentPhoto.image = image;
 
                     [photosViewController updatePhoto:currentPhoto];
 
@@ -304,7 +304,7 @@
     if (self.hideStatusBar) {
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
     }
-    
+
     if (self.onDismiss) {
         self.onDismiss(nil);
     }

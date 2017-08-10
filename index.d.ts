@@ -1,38 +1,12 @@
 /// <reference types="react" />
 import * as React from "react";
+import { ImageURISource } from "react-native";
 import * as PropTypes from "prop-types";
 /**
  * Photo data
  */
 export interface Photo {
-    /**
-       * Photo url support both local path and remote url:
-       * - **remote url** eg: http://path/to/photo.png if you want support gif make sure your url contains the `.gif` extension.
-       * - **local image** you need use `resolveAssetSource`
-  
-          ```js
-  
-                      const resolveAssetSource = require("react-native/Libraries/Image/resolveAssetSource");
-                      const cat = require("./cat-2575694_1920.jpg");
-                      const localPhotos = [{
-                              // get uri
-                              url: resolveAssetSource(cat).uri,
-                              title: "Local image"
-                      }]
-          ```
-       * - **for photo library image**:  when you get an image object it should contains the uri property, just use it directly
-  
-          ```js
-  
-                      const localPhotos = [{
-                          // get uri
-                          url: imageObjectFromPhotoLibrary.uri,
-                          title: "Photo library image"
-                      }]
-  
-          ```
-       */
-    url: string;
+    source: ImageURISource;
     title?: string;
     summary?: string;
     titleColor?: string | number;
@@ -65,7 +39,7 @@ export interface MerryPhotoViewPorps {
        */
     onDismiss: () => void;
 }
-export default class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
+declare class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
     static propTypes: {
         data: PropTypes.Validator<any>;
         visible: PropTypes.Requireable<any>;
@@ -79,7 +53,11 @@ export default class MerryPhotoView extends React.Component<MerryPhotoViewPorps,
     static defaultProps: {
         visible: boolean;
     };
-    componentDidMount(): void;
-    onDismiss(): void;
+    /**
+       * Handle UIColor conversions
+       * @param data Photo[]
+       */
+    processor: (data: Photo[]) => Photo[];
     render(): JSX.Element | null;
 }
+export default MerryPhotoView;
