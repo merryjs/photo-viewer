@@ -1,5 +1,5 @@
 import * as React from "react";
-import { requireNativeComponent, processColor } from "react-native";
+import { requireNativeComponent, processColor, Platform } from "react-native";
 import * as PropTypes from "prop-types";
 const resolveAssetSource = require("react-native/Libraries/Image/resolveAssetSource");
 const ImageSourcePropType = require("react-native/Libraries/Image/ImageSourcePropType");
@@ -49,7 +49,22 @@ class MerryPhotoView extends React.Component {
 }
 MerryPhotoView.propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape({
-        source: ImageSourcePropType,
+        source: Platform.OS === "ios"
+            ? ImageSourcePropType
+            : PropTypes.oneOfType([
+                PropTypes.shape({
+                    uri: PropTypes.string,
+                    headers: PropTypes.objectOf(PropTypes.string)
+                }),
+                // Opaque type returned by require('./image.jpg')
+                PropTypes.number,
+                // Multiple sources
+                PropTypes.arrayOf(PropTypes.shape({
+                    uri: PropTypes.string,
+                    width: PropTypes.number,
+                    height: PropTypes.number
+                }))
+            ]),
         title: PropTypes.string,
         summary: PropTypes.string,
         titleColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -69,9 +84,5 @@ MerryPhotoView.defaultProps = {
     visible: false
 };
 //  Created by react-native-create-bridge
-var RNMerryPhotoView = requireNativeComponent("MerryPhotoView", MerryPhotoView, {
-    nativeOnly: {
-        onNavigateToPhoto: true
-    }
-});
+var RNMerryPhotoView = requireNativeComponent("MerryPhotoView", MerryPhotoView);
 export default MerryPhotoView;

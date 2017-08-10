@@ -151,7 +151,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.facebook.react:react-native:+'
     // From node_modules
-    compile 'com.github.merryjs:FrescoImageViewer:-SNAPSHOT'
+    // compile 'com.github.merryjs:FrescoImageViewer:-SNAPSHOT'
 
 }
 

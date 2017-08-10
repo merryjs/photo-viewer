@@ -3,7 +3,8 @@ import {
   requireNativeComponent,
   processColor,
   NativeSyntheticEvent,
-  ImageURISource
+  ImageURISource,
+  Platform
 } from "react-native";
 import * as PropTypes from "prop-types";
 const resolveAssetSource = require("react-native/Libraries/Image/resolveAssetSource");
@@ -52,7 +53,25 @@ class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
   static propTypes = {
     data: PropTypes.arrayOf(
       PropTypes.shape({
-        source: ImageSourcePropType,
+        source:
+          Platform.OS === "ios"
+            ? ImageSourcePropType
+            : PropTypes.oneOfType([
+                PropTypes.shape({
+                  uri: PropTypes.string,
+                  headers: PropTypes.objectOf(PropTypes.string)
+                }),
+                // Opaque type returned by require('./image.jpg')
+                PropTypes.number,
+                // Multiple sources
+                PropTypes.arrayOf(
+                  PropTypes.shape({
+                    uri: PropTypes.string,
+                    width: PropTypes.number,
+                    height: PropTypes.number
+                  })
+                )
+              ]),
         title: PropTypes.string,
         summary: PropTypes.string,
         titleColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
