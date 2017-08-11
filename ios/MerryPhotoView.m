@@ -197,7 +197,7 @@
         clipped:YES
         resizeMode:RCTResizeModeStretch
         progressBlock:^(int64_t progress, int64_t total) {
-            NSLog(@"%lld %lld", progress, total);
+//            NSLog(@"%lld %lld", progress, total);
         }
         partialLoadBlock:nil
         completionBlock:^(NSError* error, UIImage* image) {
