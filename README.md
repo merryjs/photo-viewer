@@ -196,7 +196,7 @@ const photos = [
 />
 
 ```
-For complete documentation please see https://merryjs.github.io/photo-viewer/interfaces/photoviewerporps.html
+For complete documentation please see https://merryjs.github.io/photo-viewer/interfaces/merryphotoviewporps.html
 
 ## LICENSE
 
