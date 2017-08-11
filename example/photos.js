@@ -22,7 +22,7 @@ const cat = require("./cat-2575694_1920.jpg");
 
 const photos = [
   {
-    source:{
+    source: {
       uri:
         "https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
     },
@@ -38,23 +38,23 @@ const photos = [
     title: "Local image"
   },
 
-  // {
-  //   url:
-  //     "https://images.pexels.com/photos/142615/pexels-photo-142615.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
-  // },
-  // {
-  //   url:
-  //     "https://images.pexels.com/photos/82072/cat-82072.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
-  // },
-  // {
-  //   url:
-  //     "https://images.pexels.com/photos/248261/pexels-photo-248261.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
-  // },
   {
     source: {
-      uri: "http://192.168.45.103:8082/Kapture%202017-08-09%20at%2016.32.12.gif"
-    },
-    title: "gif 1"
+      uri:
+        "https://images.pexels.com/photos/142615/pexels-photo-142615.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+    }
+  },
+  {
+    source: {
+      uri:
+        "https://images.pexels.com/photos/82072/cat-82072.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+    }
+  },
+  {
+    source: {
+      uri:
+        "https://images.pexels.com/photos/248261/pexels-photo-248261.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+    }
   },
   {
     source: {

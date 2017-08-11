@@ -31,16 +31,14 @@ public class MerryPhotoViewManager extends SimpleViewManager<MerryPhotoView> {
 
 	@Override
 	public String getName() {
-		// Tell React the name of the module
-		// https://facebook.github.io/react-native/docs/native-components-android.html#1-create-the-viewmanager-subclass
+
 		return REACT_CLASS;
 	}
 
 	@Override
 	public MerryPhotoView createViewInstance(ThemedReactContext context) {
 		context = context;
-		// Create a view here
-		// https://facebook.github.io/react-native/docs/native-components-android.html#2-implement-method-createviewinstance
+
 		return new MerryPhotoView(context);
 	}
 
@@ -64,36 +62,41 @@ public class MerryPhotoViewManager extends SimpleViewManager<MerryPhotoView> {
 
 		for (int i = 0; i < prop.size(); i++) {
 
-			MerryPhotoData merryPhotoData = new MerryPhotoData() {
-			};
-			ReadableMap rm = prop.getMap(i);
-			if (rm.getMap("source") != null) {
-				merryPhotoData.source = rm.getMap("source");
 
+			try {
+				MerryPhotoData merryPhotoData = new MerryPhotoData() {
+				};
+				ReadableMap rm = prop.getMap(i);
+
+				if (rm.hasKey("source")) {
+					merryPhotoData.source = rm.getMap("source");
+
+				}
+				if (rm.hasKey("summary")) {
+					merryPhotoData.summary = rm.getString("summary");
+
+				}
+				if (rm.hasKey("summaryColor")) {
+					merryPhotoData.summaryColor = rm.getInt("summaryColor");
+
+				}
+				if (rm.hasKey("title")) {
+					merryPhotoData.title = rm.getString("title");
+
+				}
+				if (rm.hasKey("titleColor")) {
+					merryPhotoData.titleColor = rm.getInt("titleColor");
+				}
+				list.add(merryPhotoData);
+
+			} catch (Exception e) {
+				Log.e("PHOTO_VIEWER: ", e.toString());
 			}
-//			if (rm.getString("summary") != null) {
-//				merryPhotoData.summary = rm.getString("summary");
-//
-//			}
-//			if (rm.getInt("summaryColor") != 0) {
-//				merryPhotoData.summaryColor = rm.getInt("summaryColor");
-//
-//			}
-//			if (rm.getString("title") != null) {
-//				merryPhotoData.title = rm.getString("title");
-//
-//			}
-//			if (rm.getInt("titleColor") != 0) {
-//				merryPhotoData.titleColor = rm.getInt("titleColor");
-//			}
-
-			list.add(merryPhotoData);
 
 
 		}
 
 		merryPhotoView.setData(list.toArray(merryPhotoDatas));
-		Log.e("", prop.toString());
 	}
 
 	@ReactProp(name = "initial")

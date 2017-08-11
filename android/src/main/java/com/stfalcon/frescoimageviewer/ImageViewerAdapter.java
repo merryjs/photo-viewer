@@ -156,6 +156,7 @@ class ImageViewerAdapter
 				imageRequestBuilder.setSource(Uri.parse(url));
 				controllerBuilder.setImageRequest(imageRequestBuilder.build());
 			}
+//			support load local image just like React Native do
 			ImageSource imageSource = new ImageSource(getContext(), url);
 			controllerBuilder.setImageRequest(ImageRequestBuilder.newBuilderWithSource(imageSource.getUri()).build());
 			drawee.setController(controllerBuilder.build());
