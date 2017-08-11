@@ -85,7 +85,7 @@ public class MerryPhotoView extends View {
 				.setFormatter(new ImageViewer.Formatter<MerryPhotoData>() {
 					@Override
 					public String format(MerryPhotoData o) {
-						return o.url;
+						return o.source.getString("uri");
 					}
 				})
 				.setOnDismissListener(getDismissListener());
@@ -100,13 +100,13 @@ public class MerryPhotoView extends View {
 		return builder;
 	}
 
-	private ImageRequestBuilder getLocalImage(){
+	private ImageRequestBuilder getLocalImage() {
 		final Context context = getContext();
 
 		ImageSource imageSource = new ImageSource(context, "cat-2575694_1920");
 
-		ImageRequestBuilder imageRequestBuilder =  ImageRequestBuilder.newBuilderWithSource(imageSource.getUri());
-		return  imageRequestBuilder;
+		ImageRequestBuilder imageRequestBuilder = ImageRequestBuilder.newBuilderWithSource(imageSource.getUri());
+		return imageRequestBuilder;
 	}
 
 	private ImageViewer.OnImageChangeListener getImageChangeListener() {
@@ -115,7 +115,7 @@ public class MerryPhotoView extends View {
 			public void onImageChange(int position) {
 
 				final MerryPhotoData merryPhotoData = getData()[position];
-				String url = merryPhotoData.url;
+				String url = merryPhotoData.source.getString("uri");
 //                default use url
 				overlayView.setShareContext(url);
 
@@ -170,6 +170,7 @@ public class MerryPhotoView extends View {
 
 	/**
 	 * on photo change
+	 *
 	 * @param merryPhotoData
 	 */
 //	protected void onNavigateToPhoto(WritableMap map) {

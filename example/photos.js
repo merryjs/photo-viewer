@@ -52,7 +52,7 @@ const photos = [
   // },
   {
     source: {
-      uri: "http://127.0.0.1:8082/Kapture%202017-08-09%20at%2016.32.12.gif"
+      uri: "http://192.168.45.103:8082/Kapture%202017-08-09%20at%2016.32.12.gif"
     },
     title: "gif 1"
   },

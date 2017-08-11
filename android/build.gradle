@@ -48,6 +48,6 @@ dependencies {
 
 	compile "com.facebook.fresco:fresco:$frescoVersion"
 	compile "com.facebook.fresco:animated-gif:$frescoVersion"
-	compile "com.google.code.gson:gson:2.8.1"
+//	compile "com.google.code.gson:gson:2.8.1"
 
 }

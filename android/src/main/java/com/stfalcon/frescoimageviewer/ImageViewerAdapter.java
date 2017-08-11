@@ -13,6 +13,8 @@ import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
 import com.facebook.imagepipeline.image.ImageInfo;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
+import com.facebook.react.views.imagehelper.ImageSource;
+
 import com.stfalcon.frescoimageviewer.adapter.RecyclingPagerAdapter;
 import com.stfalcon.frescoimageviewer.adapter.ViewHolder;
 import com.stfalcon.frescoimageviewer.drawee.ZoomableDraweeView;
@@ -25,133 +27,139 @@ import me.relex.photodraweeview.OnScaleChangeListener;
  * Created by troy379 on 07.12.16.
  */
 class ImageViewerAdapter
-        extends RecyclingPagerAdapter<ImageViewerAdapter.ImageViewHolder> {
+		extends RecyclingPagerAdapter<ImageViewerAdapter.ImageViewHolder> {
 
-    private Context context;
-    private ImageViewer.DataSet<?> dataSet;
-    private HashSet<ImageViewHolder> holders;
-    private ImageRequestBuilder imageRequestBuilder;
-    private GenericDraweeHierarchyBuilder hierarchyBuilder;
-    private boolean isZoomingAllowed;
+	private Context context;
+	private ImageViewer.DataSet<?> dataSet;
+	private HashSet<ImageViewHolder> holders;
+	private ImageRequestBuilder imageRequestBuilder;
+	private GenericDraweeHierarchyBuilder hierarchyBuilder;
+	private boolean isZoomingAllowed;
 
-    ImageViewerAdapter(Context context, ImageViewer.DataSet<?> dataSet,
-                       ImageRequestBuilder imageRequestBuilder,
-                       GenericDraweeHierarchyBuilder hierarchyBuilder,
-                       boolean isZoomingAllowed) {
-        this.context = context;
-        this.dataSet = dataSet;
-        this.holders = new HashSet<>();
-        this.imageRequestBuilder = imageRequestBuilder;
-        this.hierarchyBuilder = hierarchyBuilder;
-        this.isZoomingAllowed = isZoomingAllowed;
-    }
+	ImageViewerAdapter(Context context, ImageViewer.DataSet<?> dataSet,
+					   ImageRequestBuilder imageRequestBuilder,
+					   GenericDraweeHierarchyBuilder hierarchyBuilder,
+					   boolean isZoomingAllowed) {
+		this.context = context;
+		this.dataSet = dataSet;
+		this.holders = new HashSet<>();
+		this.imageRequestBuilder = imageRequestBuilder;
+		this.hierarchyBuilder = hierarchyBuilder;
+		this.isZoomingAllowed = isZoomingAllowed;
+	}
 
-    @Override
-    public ImageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ZoomableDraweeView drawee = new ZoomableDraweeView(context);
-        drawee.setEnabled(isZoomingAllowed);
+	@Override
+	public ImageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+		ZoomableDraweeView drawee = new ZoomableDraweeView(context);
+		drawee.setEnabled(isZoomingAllowed);
 
-        ImageViewHolder holder = new ImageViewHolder(drawee);
-        holders.add(holder);
+		ImageViewHolder holder = new ImageViewHolder(drawee);
+		holders.add(holder);
 
-        return holder;
-    }
+		return holder;
+	}
 
-    @Override
-    public void onBindViewHolder(ImageViewHolder holder, int position) {
-        holder.bind(position);
-    }
+	@Override
+	public void onBindViewHolder(ImageViewHolder holder, int position) {
+		holder.bind(position);
+	}
 
-    @Override
-    public int getItemCount() {
-        return dataSet.getData().size();
-    }
+	@Override
+	public int getItemCount() {
+		return dataSet.getData().size();
+	}
 
 
-    boolean isScaled(int index) {
-        for (ImageViewHolder holder : holders) {
-            if (holder.position == index) {
-                return holder.isScaled;
-            }
-        }
-        return false;
-    }
+	boolean isScaled(int index) {
+		for (ImageViewHolder holder : holders) {
+			if (holder.position == index) {
+				return holder.isScaled;
+			}
+		}
+		return false;
+	}
 
-    void resetScale(int index) {
-        for (ImageViewHolder holder : holders) {
-            if (holder.position == index) {
-                holder.resetScale();
-                break;
-            }
-        }
-    }
+	void resetScale(int index) {
+		for (ImageViewHolder holder : holders) {
+			if (holder.position == index) {
+				holder.resetScale();
+				break;
+			}
+		}
+	}
 
-    String getUrl(int index) {
-        return dataSet.format(index);
-    }
+	String getUrl(int index) {
+		return dataSet.format(index);
+	}
 
-    private BaseControllerListener<ImageInfo>
-    getDraweeControllerListener(final ZoomableDraweeView drawee) {
-        return new BaseControllerListener<ImageInfo>() {
-            @Override
-            public void onFinalImageSet(String id, ImageInfo imageInfo, Animatable animatable) {
-                super.onFinalImageSet(id, imageInfo, animatable);
-                if (imageInfo == null) {
-                    return;
-                }
-                drawee.update(imageInfo.getWidth(), imageInfo.getHeight());
-            }
-        };
-    }
+	private BaseControllerListener<ImageInfo>
+	getDraweeControllerListener(final ZoomableDraweeView drawee) {
+		return new BaseControllerListener<ImageInfo>() {
+			@Override
+			public void onFinalImageSet(String id, ImageInfo imageInfo, Animatable animatable) {
+				super.onFinalImageSet(id, imageInfo, animatable);
+				if (imageInfo == null) {
+					return;
+				}
+				drawee.update(imageInfo.getWidth(), imageInfo.getHeight());
+			}
+		};
+	}
 
-    class ImageViewHolder extends ViewHolder implements OnScaleChangeListener {
+	public Context getContext() {
+		return context;
+	}
 
-        private int position = -1;
-        private ZoomableDraweeView drawee;
-        private boolean isScaled;
+	class ImageViewHolder extends ViewHolder implements OnScaleChangeListener {
 
-        ImageViewHolder(View itemView) {
-            super(itemView);
-            drawee = (ZoomableDraweeView) itemView;
-        }
+		private int position = -1;
+		private ZoomableDraweeView drawee;
+		private boolean isScaled;
 
-        void bind(int position) {
-            this.position = position;
+		ImageViewHolder(View itemView) {
+			super(itemView);
+			drawee = (ZoomableDraweeView) itemView;
+		}
 
-            tryToSetHierarchy();
-            setController(dataSet.format(position));
+		void bind(int position) {
+			this.position = position;
 
-            drawee.setOnScaleChangeListener(this);
-        }
+			tryToSetHierarchy();
+			setController(dataSet.format(position));
 
-        @Override
-        public void onScaleChange(float scaleFactor, float focusX, float focusY) {
-            isScaled = drawee.getScale() > 1.0f;
-        }
+			drawee.setOnScaleChangeListener(this);
+		}
 
-        void resetScale() {
-            drawee.setScale(1.0f, true);
-        }
+		@Override
+		public void onScaleChange(float scaleFactor, float focusX, float focusY) {
+			isScaled = drawee.getScale() > 1.0f;
+		}
 
-        private void tryToSetHierarchy() {
-            if (hierarchyBuilder != null) {
-                hierarchyBuilder.setActualImageScaleType(ScalingUtils.ScaleType.FIT_CENTER);
-                drawee.setHierarchy(hierarchyBuilder.build());
-            }
-        }
+		void resetScale() {
+			drawee.setScale(1.0f, true);
+		}
 
-        private void setController(String url) {
-            PipelineDraweeControllerBuilder controllerBuilder = Fresco.newDraweeControllerBuilder();
-            controllerBuilder.setUri(url);
-            controllerBuilder.setOldController(drawee.getController());
-            controllerBuilder.setControllerListener(getDraweeControllerListener(drawee));
-            controllerBuilder.setAutoPlayAnimations(true);    
-            if (imageRequestBuilder != null) {
-                imageRequestBuilder.setSource(Uri.parse(url));
-                controllerBuilder.setImageRequest(imageRequestBuilder.build());
-            }
-            drawee.setController(controllerBuilder.build());
-        }
+		private void tryToSetHierarchy() {
+			if (hierarchyBuilder != null) {
+				hierarchyBuilder.setActualImageScaleType(ScalingUtils.ScaleType.FIT_CENTER);
+				drawee.setHierarchy(hierarchyBuilder.build());
+			}
+		}
 
-    }
+		private void setController(String url) {
+			PipelineDraweeControllerBuilder controllerBuilder = Fresco.newDraweeControllerBuilder();
+//			controllerBuilder.setUri(url);
+			controllerBuilder.setOldController(drawee.getController());
+			controllerBuilder.setControllerListener(getDraweeControllerListener(drawee));
+			controllerBuilder.setAutoPlayAnimations(true);
+			if (imageRequestBuilder != null) {
+				imageRequestBuilder.setSource(Uri.parse(url));
+				controllerBuilder.setImageRequest(imageRequestBuilder.build());
+			}
+			ImageSource imageSource = new ImageSource(getContext(), url);
+			controllerBuilder.setImageRequest(ImageRequestBuilder.newBuilderWithSource(imageSource.getUri()).build());
+			drawee.setController(controllerBuilder.build());
+		}
+
+	}
 }

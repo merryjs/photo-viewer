@@ -3,6 +3,7 @@ import { requireNativeComponent, processColor, Platform } from "react-native";
 import * as PropTypes from "prop-types";
 const resolveAssetSource = require("react-native/Libraries/Image/resolveAssetSource");
 const ImageSourcePropType = require("react-native/Libraries/Image/ImageSourcePropType");
+var RNMerryPhotoView = requireNativeComponent("MerryPhotoView", MerryPhotoView);
 class MerryPhotoView extends React.Component {
     constructor() {
         super(...arguments);
@@ -36,6 +37,7 @@ class MerryPhotoView extends React.Component {
         const { visible, data, initial, ...props } = this.props;
         const dataCopy = [...data];
         const transformData = this.processor(dataCopy);
+        console.log(props);
         // initial
         let startPosition = initial;
         if (initial < 0) {
@@ -78,11 +80,10 @@ MerryPhotoView.propTypes = {
     // IOS only
     hideShareButton: PropTypes.bool,
     onDismiss: PropTypes.func.isRequired,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    shareText: PropTypes.string
 };
 MerryPhotoView.defaultProps = {
     visible: false
 };
-//  Created by react-native-create-bridge
-var RNMerryPhotoView = requireNativeComponent("MerryPhotoView", MerryPhotoView);
 export default MerryPhotoView;

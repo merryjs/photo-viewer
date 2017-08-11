@@ -49,6 +49,7 @@ export interface MerryPhotoViewPorps {
   onDismiss: () => void;
 }
 
+var RNMerryPhotoView = requireNativeComponent("MerryPhotoView", MerryPhotoView);
 class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
   static propTypes = {
     data: PropTypes.arrayOf(
@@ -86,7 +87,8 @@ class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
     // IOS only
     hideShareButton: PropTypes.bool,
     onDismiss: PropTypes.func.isRequired,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    shareText: PropTypes.string
   };
 
   static defaultProps = {
@@ -126,7 +128,7 @@ class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
     const dataCopy = [...data];
 
     const transformData = this.processor(dataCopy);
-
+    console.log(props);
     // initial
     let startPosition = initial;
     if (initial < 0) {
@@ -144,16 +146,5 @@ class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
     );
   }
 }
-//  Created by react-native-create-bridge
-
-var RNMerryPhotoView = requireNativeComponent(
-  "MerryPhotoView",
-  MerryPhotoView,
-  {
-    nativeOnly: {
-      onNavigateToPhoto: true
-    }
-  }
-);
 
 export default MerryPhotoView;
