@@ -16,8 +16,6 @@ import {
 
 import PhotoView from "./photo-viewer";
 
-const resolveAssetSource = require("react-native/Libraries/Image/resolveAssetSource");
-
 const cat = require("./cat-2575694_1920.jpg");
 
 const photos = [
