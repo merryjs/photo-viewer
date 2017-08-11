@@ -1,5 +1,5 @@
 
-# Photo-Viewer
+# React Native Photo Viewer
 
 > A photo viewer for react native build on top of [NYTPhotoViewer](https://github.com/NYTimes/NYTPhotoViewer) and [FrescoImageViewer](https://github.com/stfalcon-studio/FrescoImageViewer)
 
@@ -10,7 +10,9 @@
 - Support for multiple images
 - Interactive flick to dismiss
 - Animated zooming presentation
+- Support remote image and local image or images from Camera Roll
 - And more...
+
 
 
 ## TOC
@@ -222,6 +224,10 @@ const photos = [
 
 ```
 For complete documentation please see https://merryjs.github.io/photo-viewer/interfaces/merryphotoviewporps.html
+
+## Known issues
+
+- IOS not support gif well when using imageLoader Please see https://github.com/facebook/react-native/issues/15427 any help are welcome. at this moment gif image on ios platform are only display the first frame and no animation.
 
 ## LICENSE
 
