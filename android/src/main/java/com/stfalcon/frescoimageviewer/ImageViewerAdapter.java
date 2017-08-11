@@ -13,8 +13,10 @@ import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
 import com.facebook.imagepipeline.image.ImageInfo;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.views.imagehelper.ImageSource;
 
+import com.merryjs.PhotoViewer.MerryPhotoData;
 import com.stfalcon.frescoimageviewer.adapter.RecyclingPagerAdapter;
 import com.stfalcon.frescoimageviewer.adapter.ViewHolder;
 import com.stfalcon.frescoimageviewer.drawee.ZoomableDraweeView;
@@ -22,6 +24,9 @@ import com.stfalcon.frescoimageviewer.drawee.ZoomableDraweeView;
 import java.util.HashSet;
 
 import me.relex.photodraweeview.OnScaleChangeListener;
+
+import com.facebook.react.modules.fresco.ReactNetworkImageRequest;
+import com.facebook.imagepipeline.request.ImageRequest;
 
 /*
  * Created by troy379 on 07.12.16.
@@ -125,7 +130,24 @@ class ImageViewerAdapter
 			this.position = position;
 
 			tryToSetHierarchy();
-			setController(dataSet.format(position));
+			ReadableMap mHeaders = null;
+
+			try {
+				MerryPhotoData current = ((MerryPhotoData) dataSet.getData().get(position));
+				if (current.source != null) {
+
+
+					if (current.source.hasKey("headers")) {
+						mHeaders = current.source.getMap("headers");
+					}
+
+				}
+			} catch (Exception e) {
+//				Log.e("PHOTO_VIEWER: ", e.toString());
+			}
+
+
+			setController(dataSet.format(position), mHeaders);
 
 			drawee.setOnScaleChangeListener(this);
 		}
@@ -146,7 +168,7 @@ class ImageViewerAdapter
 			}
 		}
 
-		private void setController(String url) {
+		private void setController(String url, ReadableMap headers) {
 			PipelineDraweeControllerBuilder controllerBuilder = Fresco.newDraweeControllerBuilder();
 //			controllerBuilder.setUri(url);
 			controllerBuilder.setOldController(drawee.getController());
@@ -157,8 +179,15 @@ class ImageViewerAdapter
 				controllerBuilder.setImageRequest(imageRequestBuilder.build());
 			}
 //			support load local image just like React Native do
+
 			ImageSource imageSource = new ImageSource(getContext(), url);
-			controllerBuilder.setImageRequest(ImageRequestBuilder.newBuilderWithSource(imageSource.getUri()).build());
+			ImageRequestBuilder imageRequestBuilder1 = ImageRequestBuilder.newBuilderWithSource(imageSource.getUri());
+//			support headers
+			ImageRequest imageRequest = ReactNetworkImageRequest.fromBuilderWithHeaders(imageRequestBuilder1, headers);
+
+			controllerBuilder.setImageRequest(imageRequest);
+
+
 			drawee.setController(controllerBuilder.build());
 		}
 

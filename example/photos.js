@@ -22,7 +22,10 @@ const photos = [
   {
     source: {
       uri:
-        "https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+        "https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+      headers: {
+        a: "1"
+      }
     },
     title: "Flash End-of-Life",
     summary:
