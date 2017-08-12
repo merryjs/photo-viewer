@@ -37,7 +37,6 @@ class MerryPhotoView extends React.Component {
         const { visible, data, initial, ...props } = this.props;
         const dataCopy = [...data];
         const transformData = this.processor(dataCopy);
-        console.log(props);
         // initial
         let startPosition = initial;
         if (initial < 0) {
@@ -80,7 +79,7 @@ MerryPhotoView.propTypes = {
     // IOS only
     hideShareButton: PropTypes.bool,
     onDismiss: PropTypes.func.isRequired,
-    onChange: PropTypes.func,
+    // onChange: PropTypes.func,
     shareText: PropTypes.string
 };
 MerryPhotoView.defaultProps = {

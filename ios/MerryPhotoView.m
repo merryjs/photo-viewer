@@ -6,7 +6,6 @@
 
     __weak RCTBridge* _bridge;
 }
-//@synthesize bridge = _bridge;
 
 - (instancetype)initWithBridge:(RCTBridge*)bridge
 {
@@ -84,7 +83,6 @@
 {
 
     if (!data) {
-        //        reject(@"9527", @"Display photo viewer failed, please config it first", nil);
         return;
     }
 
@@ -119,58 +117,33 @@
 
     dispatch_async(dispatch_get_main_queue(), ^{
 
-        @try {
-            NYTPhotosViewController* photosViewController = [[NYTPhotosViewController alloc]
-                initWithDataSource:self.dataSource
-                      initialPhoto:[self.photos objectAtIndex:initialPhoto]
-                          delegate:self];
-            //   TODO add options for:
-            // hide left bar button
-            if (self.hideCloseButton) {
-                photosViewController.leftBarButtonItem = nil;
-            }
-            // hide right bar button
-            if (self.hideShareButton) {
-                photosViewController.rightBarButtonItem = nil;
-            }
-
-            self.nytPhotosViewController = photosViewController;
-
-            [[self getRootView] presentViewController:photosViewController
-                                             animated:YES
-                                           completion:nil];
-            if (initialPhoto >= 0) {
-                [self updatePhotoAtIndex:photosViewController Index:initialPhoto];
-            }
-            if (self.hideStatusBar) {
-                [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
-            }
-            //            resolve(@"");
-        } @catch (NSException* exception) {
-            //            reject(@"9527", @"Display photo viewer failed, please check your configurations", nil);
-        } @finally {
+        NYTPhotosViewController* photosViewController = [[NYTPhotosViewController alloc]
+            initWithDataSource:self.dataSource
+                  initialPhoto:[self.photos objectAtIndex:initialPhoto]
+                      delegate:self];
+        // hide left bar button
+        if (self.hideCloseButton) {
+            photosViewController.leftBarButtonItem = nil;
+        }
+        // hide right bar button
+        if (self.hideShareButton) {
+            photosViewController.rightBarButtonItem = nil;
         }
 
+        self.nytPhotosViewController = photosViewController;
+
+        [[self getRootView] presentViewController:photosViewController
+                                         animated:YES
+                                       completion:nil];
+        if (initialPhoto >= 0) {
+            [self updatePhotoAtIndex:photosViewController Index:initialPhoto];
+        }
+        if (self.hideStatusBar) {
+            [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
+        }
     });
 }
-+ (NSString*)contentTypeForImageData:(NSData*)data
-{
-    uint8_t c;
-    [data getBytes:&c length:1];
 
-    switch (c) {
-    case 0xFF:
-        return @"jpeg";
-    case 0x89:
-        return @"png";
-    case 0x47:
-        return @"gif";
-    case 0x49:
-    case 0x4D:
-        return @"tiff";
-    }
-    return nil;
-}
 /**
  Update Photo
  @param photosViewController <#photosViewController description#>
@@ -183,37 +156,19 @@
     MerryPhoto* currentPhoto = [self.dataSource.photos objectAtIndex:current];
     MerryPhotoData* d = self.reactPhotos[current];
 
-    //
-    //            NSString* url = d.url;
-    //            NSURL* imageURL = [NSURL URLWithString:url];
-
-    // check an url is a gif image.
-    // NOTE: this check require your url have an extension.
-    //            BOOL isGif = [[imageURL pathExtension] isEqual:@"gif"];
-
     [_bridge.imageLoader loadImageWithURLRequest:d.source.request
         size:d.source.size
         scale:d.source.scale
         clipped:YES
         resizeMode:RCTResizeModeStretch
         progressBlock:^(int64_t progress, int64_t total) {
-//            NSLog(@"%lld %lld", progress, total);
+            //            NSLog(@"%lld %lld", progress, total);
         }
         partialLoadBlock:nil
         completionBlock:^(NSError* error, UIImage* image) {
             if (image) {
                 dispatch_async(dispatch_get_main_queue(), ^{
 
-                    //                    NSData *data = UIImagePNGRepresentation(image);
-                    //                    NSString* ext = [MerryPhotoView contentTypeForImageData:data];
-                    //                    BOOL isGif = ext && [ext isEqualToString:@"gif"];
-
-                    //                    if(isGif){
-                    //                        currentPhoto.imageData = data;
-                    //                    }else{
-                    //                        currentPhoto.image = image;
-                    //                    }
-                    //
                     currentPhoto.image = image;
 
                     [photosViewController updatePhoto:currentPhoto];

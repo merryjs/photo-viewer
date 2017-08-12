@@ -91,7 +91,7 @@ class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
     // IOS only
     hideShareButton: PropTypes.bool,
     onDismiss: PropTypes.func.isRequired,
-    onChange: PropTypes.func,
+    // onChange: PropTypes.func,
     shareText: PropTypes.string
   };
 
@@ -132,8 +132,8 @@ class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
     const dataCopy = [...data];
 
     const transformData = this.processor(dataCopy);
-    console.log(props);
-    // initial
+
+		// initial
     let startPosition = initial;
     if (initial < 0) {
       startPosition = 0;

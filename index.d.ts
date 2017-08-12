@@ -52,7 +52,6 @@ declare class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
         hideCloseButton: PropTypes.Requireable<any>;
         hideShareButton: PropTypes.Requireable<any>;
         onDismiss: PropTypes.Validator<any>;
-        onChange: PropTypes.Requireable<any>;
         shareText: PropTypes.Requireable<any>;
     };
     static defaultProps: {
