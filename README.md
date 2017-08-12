@@ -164,6 +164,9 @@ The most part from this package is setup the Native side dependencies, once you 
 you can use it as below, very very easy to use:
 
 ```javascript
+
+import PhotoView from '@merryjs/photo-viewer';
+
 // local image
 const cat = require("./cat-2575694_1920.jpg");
 
