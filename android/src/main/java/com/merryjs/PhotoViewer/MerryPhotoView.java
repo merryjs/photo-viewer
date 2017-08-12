@@ -12,7 +12,6 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-//import com.merryjs.PhotoViewer.CircleProgressBarDrawable;
 import com.merryjs.PhotoViewer.MerryPhotoData;
 import com.merryjs.PhotoViewer.MerryPhotoOverlay;
 import com.stfalcon.frescoimageviewer.ImageViewer;
@@ -95,7 +94,7 @@ public class MerryPhotoView extends View {
 		builder.setStartPosition(getInitial());
 		builder.hideStatusBar(isHideStatusBar());
 		builder.setCustomImageRequestBuilder(getLocalImage());
-//        builder.setCustomDraweeHierarchyBuilder(progressBarDrawableBuilder());
+		builder.setCustomDraweeHierarchyBuilder(progressBarDrawableBuilder());
 
 		return builder;
 	}
@@ -190,18 +189,10 @@ public class MerryPhotoView extends View {
 		};
 	}
 
-//    private GenericDraweeHierarchyBuilder progressBarDrawableBuilder() {
-//        return GenericDraweeHierarchyBuilder.newInstance(getResources())
-//                .setProgressBarImage(
-//                        new CircleProgressBarDrawable()
-//                        new CircularProgressDrawable
-//                                .Builder()
-//                                .setInnerCircleScale(0.75f)
-//                                .setRingWidth(4)
-//                                .setRingColor(Color.WHITE)
-//                                .setCenterColor(Color.WHITE)
-//                                .create()
-//
-//                );
-//    }
+	private GenericDraweeHierarchyBuilder progressBarDrawableBuilder() {
+		return GenericDraweeHierarchyBuilder.newInstance(getResources())
+				.setProgressBarImage(
+						new CircleProgressBarDrawable()
+				);
+	}
 }
