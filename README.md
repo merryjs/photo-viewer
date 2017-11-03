@@ -74,7 +74,7 @@ For some reasons if you dont want use any package manager in your side then you 
 
 ##### [CocoaPods](https://cocoapods.org/)
 
-TODO: If you want use CocoaPods you can go to these repo find out how to integrated with cocoapods, i have not try this in the example repo
+Add `pod 'NYTPhotoViewer',:git => 'https://github.com/merryjs/NYTPhotoViewer.git', :branch => 'master'` in your `Podfile`
 
 ##### [Carthage](https://github.com/Carthage/Carthage)
 
