@@ -1,6 +1,6 @@
 {
   "name": "@merryjs/photo-viewer",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A photo viewer for react native",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   "author": "bang88",
   "license": "Apache-2.0",
   "peerDependencies": {
-    "react-native": "^0.41.2"
+    "react-native": ">= 0.41.2"
   },
   "repository": {
     "type": "git",
@@ -26,8 +26,10 @@
   },
   "homepage": "https://github.com/merryjs/photo-viewer#readme",
   "devDependencies": {
-    "@types/prop-types": "^15.5.1",
-    "@types/react-native": "^0.46.3",
-    "typescript": "^2.4.1"
-  }
+    "@types/prop-types": "^15.5.2",
+    "@types/react": "^16.0.25",
+    "@types/react-native": "^0.50.7",
+    "typescript": "^2.6.1"
+  },
+  "dependencies": {}
 }
