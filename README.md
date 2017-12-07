@@ -82,7 +82,7 @@ If you want use Carthage in your project and then you can add these dependencies
 
 ```
 
-github "NYTimes/NYTPhotoViewer" "develop"
+github "merryjs/NYTPhotoViewer"
 
 ```
 and run `carthage update` when you done this you can link it like Manual link from node_modules describes, the only difference is use your carthage file instead of ours
