@@ -90,8 +90,8 @@ and run `carthage update` when you done this you can link it like Manual link fr
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.merryjs.PhotoViewer.MerryPhotoViewerPackage;` to the imports at the top of the file
-  - Add `new MerryPhotoViewerPackage()` to the list returned by the `getPackages()` method
+  - Add `import com.merryjs.PhotoViewer.MerryPhotoViewPackage;` to the imports at the top of the file
+  - Add `new MerryPhotoViewPackage()` to the list returned by the `getPackages()` method
 2. Append the following lines to `android/settings.gradle`:
   	```
   	include ':@merryjs/photo-viewer'
