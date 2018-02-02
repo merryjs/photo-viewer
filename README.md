@@ -101,6 +101,8 @@ and run `carthage update` when you done this you can link it like Manual link fr
   	```
       compile project(':@merryjs/photo-viewer')
   	```
+4. Workaround for older gradles please see https://github.com/merryjs/photo-viewer/issues/39	
+
 #### Android targetSdkVersion configuration
 
 We use a third part library and both of them are target to `targetSdkVersion 25`, so you need update your build.gradle to the same version or you will meet a build error
