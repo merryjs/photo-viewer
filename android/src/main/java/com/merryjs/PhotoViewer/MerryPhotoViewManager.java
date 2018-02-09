@@ -116,6 +116,11 @@ public class MerryPhotoViewManager extends SimpleViewManager<MerryPhotoView> {
 		merryPhotoView.setShareText(prop);
 	}
 
+	@ReactProp(name = "hideShareButton", defaultBoolean=false)
+	public void setHideShareButton(MerryPhotoView merryPhotoView, Boolean prop) {
+        merryPhotoView.setHideShareButton(prop);
+    }
+
 	@Nullable
 	@Override
 	public Map<String, Object> getExportedCustomDirectEventTypeConstants() {
