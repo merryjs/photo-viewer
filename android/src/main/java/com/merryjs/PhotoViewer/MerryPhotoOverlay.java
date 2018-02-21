@@ -38,6 +38,10 @@ public class MerryPhotoOverlay extends RelativeLayout {
         init();
     }
 
+    public void setHideShareButton(Boolean hideShareButton) {
+        tvShare.setVisibility(hideShareButton ? View.GONE : View.VISIBLE);
+    }
+
     public void setPagerText(String text) {
         tvTitlePager.setText(text);
     }

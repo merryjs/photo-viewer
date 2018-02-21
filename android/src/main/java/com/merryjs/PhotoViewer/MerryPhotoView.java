@@ -72,6 +72,17 @@ public class MerryPhotoView extends View {
 	protected boolean hideStatusBar;
 
 
+    public boolean isHideShareButton(){
+        return hideShareButton;
+    }
+
+    public MerryPhotoView setHideShareButton(boolean hideShareButton) {
+        this.hideShareButton = hideShareButton;
+        return this;
+    }
+
+    protected boolean hideShareButton;
+
 	public MerryPhotoView(Context context) {
 		super(context);
 	}
@@ -89,6 +100,7 @@ public class MerryPhotoView extends View {
 				})
 				.setOnDismissListener(getDismissListener());
 
+//		overlayView.setHideShareButton(isHideShareButton());
 		builder.setOverlayView(overlayView);
 		builder.setImageChangeListener(getImageChangeListener());
 		builder.setStartPosition(getInitial());
@@ -126,6 +138,10 @@ public class MerryPhotoView extends View {
 				if (getShareText() != null) {
 					overlayView.setShareText(getShareText());
 				}
+
+				// is hide sharebutton
+				overlayView.setHideShareButton(isHideShareButton());
+
 //                if (options.titlePagerColor != null) {
 //                    overlayView.setPagerTextColor(options.titlePagerColor);
 //                }
