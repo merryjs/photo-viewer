@@ -1,13 +1,13 @@
 {
-  "commitish" : "1.3.0",
+  "commitish" : "2.0.0",
   "iOS" : [
     {
-      "name" : "NYTPhotoViewerCore",
-      "hash" : "284a56571721bb17ca290bb50b594abe2cce539890f65038a029dd8042cd1c83"
+      "name" : "NYTPhotoViewer",
+      "hash" : "15d4fbb2593ebc0c04119769f2bcae173733e3eea221ee94952a3bd3119cce89"
     },
     {
-      "name" : "NYTPhotoViewer",
-      "hash" : "e0c61611223f9b972d15bb5ddbd8896805fa595d4014bd2b27774ea19bb54733"
+      "name" : "NYTPhotoViewerCore",
+      "hash" : "c90ab23d02db4d692c58ab3c68b52ea400386f45839a0e46e2e49a1574c5023a"
     }
   ]
 }

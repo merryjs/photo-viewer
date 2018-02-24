@@ -80,7 +80,7 @@ MerryPhotoView.propTypes = {
     // IOS only
     hideShareButton: PropTypes.bool,
     onDismiss: PropTypes.func.isRequired,
-    onChange: PropTypes.func,
+    onNavigateToPhoto: PropTypes.func,
     shareText: PropTypes.string
 };
 MerryPhotoView.defaultProps = {

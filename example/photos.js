@@ -88,14 +88,16 @@ export default class Photos extends Component {
           visible={this.state.visible}
           data={this.state.photos}
           hideStatusBar={true}
-          initial={this.state.initial}
+          hideCloseButton={true}
+          hideShareButton={true}
+					initial={this.state.initial}
           onDismiss={e => {
             this.setState({ visible: false });
           }}
         />
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.photoContainer}>
-            {this.state.photos.map((cat, index) =>
+            {this.state.photos.map((cat, index) => (
               <TouchableOpacity
                 key={index}
                 style={[imageStyle, {}]}
@@ -104,7 +106,7 @@ export default class Photos extends Component {
               >
                 <Image style={imageStyle} source={cat.source} />
               </TouchableOpacity>
-            )}
+            ))}
           </View>
         </ScrollView>
         <Button

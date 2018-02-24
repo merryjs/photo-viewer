@@ -1,5 +1,5 @@
 rootProject.name = 'PhotoViewerExample'
-include ':@merryjs/photo-viewer'
-project(':@merryjs/photo-viewer').projectDir = new File(rootProject.projectDir, '../node_modules/@merryjs/photo-viewer/android')
+include ':merryjs-photo-viewer'
+project(':merryjs-photo-viewer').projectDir = new File(rootProject.projectDir, '../node_modules/@merryjs/photo-viewer/android')
 
 include ':app'

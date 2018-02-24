@@ -35,10 +35,10 @@
 		2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* PhotoViewerExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PhotoViewerExampleTests.m */; };
 		300A6ECCB45C4BA2BA5E82D5 /* libMerryPhotoViewer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E956B65E8D14D0599D187FE /* libMerryPhotoViewer.a */; };
-		362C5AEB1F38443900E51087 /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 362C5AE71F38443900E51087 /* FLAnimatedImage.framework */; };
-		362C5AEC1F38443900E51087 /* FLAnimatedImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 362C5AE71F38443900E51087 /* FLAnimatedImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		362C5AED1F38443900E51087 /* NYTPhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 362C5AE81F38443900E51087 /* NYTPhotoViewer.framework */; };
-		362C5AEE1F38443900E51087 /* NYTPhotoViewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 362C5AE81F38443900E51087 /* NYTPhotoViewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		360D4A7A203DC7F1004131C3 /* NYTPhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360D4A78203DC7F0004131C3 /* NYTPhotoViewer.framework */; };
+		360D4A7B203DC7F1004131C3 /* NYTPhotoViewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 360D4A78203DC7F0004131C3 /* NYTPhotoViewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		360D4A7C203DC7F1004131C3 /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360D4A79203DC7F1004131C3 /* FLAnimatedImage.framework */; };
+		360D4A7D203DC7F1004131C3 /* FLAnimatedImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 360D4A79203DC7F1004131C3 /* FLAnimatedImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		362C5B4D1F3ABB2300E51087 /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 362C5B321F3ABB0100E51087 /* libRCTCameraRoll.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -285,8 +285,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				362C5AEC1F38443900E51087 /* FLAnimatedImage.framework in Embed Frameworks */,
-				362C5AEE1F38443900E51087 /* NYTPhotoViewer.framework in Embed Frameworks */,
+				360D4A7B203DC7F1004131C3 /* NYTPhotoViewer.framework in Embed Frameworks */,
+				360D4A7D203DC7F1004131C3 /* FLAnimatedImage.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,8 +315,8 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* PhotoViewerExample-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PhotoViewerExample-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* PhotoViewerExample-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PhotoViewerExample-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		362C5AE71F38443900E51087 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FLAnimatedImage.framework; sourceTree = "<group>"; };
-		362C5AE81F38443900E51087 /* NYTPhotoViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NYTPhotoViewer.framework; sourceTree = "<group>"; };
+		360D4A78203DC7F0004131C3 /* NYTPhotoViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NYTPhotoViewer.framework; sourceTree = "<group>"; };
+		360D4A79203DC7F1004131C3 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FLAnimatedImage.framework; sourceTree = "<group>"; };
 		362C5B291F3ABB0000E51087 /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		42CBF07B9FC54B808427F1BC /* MerryPhotoViewer.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = MerryPhotoViewer.xcodeproj; path = "../node_modules/@merryjs/photo-viewer/ios/MerryPhotoViewer.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
@@ -339,7 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				362C5B4D1F3ABB2300E51087 /* libRCTCameraRoll.a in Frameworks */,
-				362C5AEB1F38443900E51087 /* FLAnimatedImage.framework in Frameworks */,
+				360D4A7C203DC7F1004131C3 /* FLAnimatedImage.framework in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -352,7 +352,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				300A6ECCB45C4BA2BA5E82D5 /* libMerryPhotoViewer.a in Frameworks */,
-				362C5AED1F38443900E51087 /* NYTPhotoViewer.framework in Frameworks */,
+				360D4A7A203DC7F1004131C3 /* NYTPhotoViewer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +491,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		360D4A23203DC316004131C3 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				9E956B65E8D14D0599D187FE /* libMerryPhotoViewer.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		362C5B2A1F3ABB0000E51087 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,12 +565,13 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				362C5AE71F38443900E51087 /* FLAnimatedImage.framework */,
-				362C5AE81F38443900E51087 /* NYTPhotoViewer.framework */,
+				360D4A79203DC7F1004131C3 /* FLAnimatedImage.framework */,
+				360D4A78203DC7F0004131C3 /* NYTPhotoViewer.framework */,
 				13B07FAE1A68108700A75B9A /* PhotoViewerExample */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* PhotoViewerExampleTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
+				360D4A23203DC316004131C3 /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -1163,6 +1172,7 @@
 				DEAD_CODE_STRIPPING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/**",
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
@@ -1188,6 +1198,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/**",
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
