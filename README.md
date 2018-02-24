@@ -96,18 +96,19 @@ and run `carthage update` when you done this you can link it like Manual link fr
    ```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
    ```
-     compile project(':@merryjs/photo-viewer')
+   compile project(':@merryjs/photo-viewer')
    ```
 4. **Workaround for older gradles** please see https://github.com/merryjs/photo-viewer/issues/39
 
-```
-include ':merryjs-photo-viewer'
-  	project(':merryjs-photo-viewer').projectDir = new File(rootProject.projectDir, 	'../node_modules/@merryjs/photo-viewer/android')
-```
+   ```
+   include ':merryjs-photo-viewer'
+   project(':merryjs-photo-viewer').projectDir = new File(rootProject.projectDir,'../node_modules/@merryjs/photo-viewer/android')
+   ```
 
-```
-		compile project(':merryjs-photo-viewer')
-```
+   ```
+   compile project(':merryjs-photo-viewer')
+   ```
+
 #### Android targetSdkVersion configuration
 
 We use a third part library and both of them are target to `targetSdkVersion 25`, so you need update your build.gradle to the same version or you will meet a build error
@@ -115,7 +116,6 @@ We use a third part library and both of them are target to `targetSdkVersion 25`
 The configuration looks like: (`android/app/build.gradle`)
 
 ```java
-
 android {
  compileSdkVersion 25
  buildToolsVersion "25.0.3"
@@ -135,7 +135,7 @@ android {
  }
 	// ...
 }
-````
+```
 
 If we have any better solution will update this section in the future.
 
