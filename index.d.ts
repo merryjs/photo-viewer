@@ -30,6 +30,14 @@ export interface MerryPhotoViewPorps {
        */
     hideStatusBar?: boolean;
     /**
+       * Hide close button
+       */
+    hideCloseButton?: boolean;
+    /**
+     * Hide share button
+     */
+    hideShareButton?: boolean;
+    /**
        * **Android only**
        * Set share text the default text is `SHARE`
        */
