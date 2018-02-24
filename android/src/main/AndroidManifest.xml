@@ -1,7 +1,5 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.merryjs.PhotoViewer">
-  <application>
-    <activity android:name=".PhotoViewer.MerryPhotoViewActivity" android:theme="@style/Theme.Transparent"/>
-  </application>
+  <activity android:name=".PhotoViewer.MerryPhotoViewActivity" android:theme="@style/Theme.Transparent"/>
 </manifest>

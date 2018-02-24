@@ -1,14 +1,18 @@
+
 package com.merryjs.PhotoViewer;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.merryjs.PhotoViewer.R;
+import com.stfalcon.frescoimageviewer.ImageViewer;
 
 
 /**
@@ -21,8 +25,12 @@ public class MerryPhotoOverlay extends RelativeLayout {
 
     private TextView tvDescription;
     private TextView tvShare;
+    private TextView tvClose;
+    private ImageViewer imageViewer;
     private String sharingText;
-
+    public void setImageViewer(ImageViewer imageViewer){
+        this.imageViewer = imageViewer;
+    }
     public MerryPhotoOverlay(Context context) {
         super(context);
         init();
@@ -41,7 +49,9 @@ public class MerryPhotoOverlay extends RelativeLayout {
     public void setHideShareButton(Boolean hideShareButton) {
         tvShare.setVisibility(hideShareButton ? View.GONE : View.VISIBLE);
     }
-
+    public void setHideCloseButton(Boolean hideCloseButton) {
+        tvClose.setVisibility(hideCloseButton ? View.GONE : View.VISIBLE);
+    }
     public void setPagerText(String text) {
         tvTitlePager.setText(text);
     }
@@ -98,6 +108,14 @@ public class MerryPhotoOverlay extends RelativeLayout {
             @Override
             public void onClick(View v) {
                 sendShareIntent();
+            }
+        });
+        tvClose = (TextView) view.findViewById(R.id.btnClose);
+        tvClose.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+               imageViewer.onDismiss();
             }
         });
     }

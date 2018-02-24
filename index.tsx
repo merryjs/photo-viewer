@@ -37,7 +37,15 @@ export interface MerryPhotoViewPorps {
   /**
 	 * Hide status bar
 	 */
-  hideStatusBar?: boolean;
+	hideStatusBar?: boolean;
+  /**
+	 * Hide close button
+	 */
+	hideCloseButton?: boolean;
+	/**
+	 * Hide share button
+	 */
+  hideShareButton?: boolean;
   /**
 	 * **Android only**
 	 * Set share text the default text is `SHARE`
@@ -53,7 +61,6 @@ export interface MerryPhotoViewPorps {
   onDismiss: () => void;
 }
 
-var RNMerryPhotoView = requireNativeComponent("MerryPhotoView", MerryPhotoView);
 class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
   static propTypes = {
     data: PropTypes.arrayOf(
@@ -86,12 +93,9 @@ class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
     visible: PropTypes.bool,
     initial: PropTypes.number.isRequired,
     hideStatusBar: PropTypes.bool,
-    // IOS only
     hideCloseButton: PropTypes.bool,
-    // IOS only
     hideShareButton: PropTypes.bool,
     onDismiss: PropTypes.func.isRequired,
-    // onChange: PropTypes.func,
     shareText: PropTypes.string
   };
 
@@ -143,12 +147,13 @@ class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
     }
     return (
       <RNMerryPhotoView
-        {...props}
+        {...props as any}
         initial={startPosition}
         data={transformData}
       />
     );
   }
 }
+var RNMerryPhotoView = requireNativeComponent("MerryPhotoView", MerryPhotoView);
 
 export default MerryPhotoView;

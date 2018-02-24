@@ -1,4 +1,5 @@
 <resources>
     <string name="share">Share</string>
+    <string name="close">x</string>
 
 </resources>

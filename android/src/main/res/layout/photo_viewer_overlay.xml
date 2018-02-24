@@ -6,12 +6,21 @@
     <TextView
         android:id="@+id/tvTitlePager"
         style="@style/TitleText"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:padding="16dp" />
+        android:padding="16dp"
+        android:textAlignment="center" />
 
+    <Button
+        android:id="@+id/btnClose"
+        style="@style/SimpleButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/close" />
     <Button
         android:id="@+id/btnShare"
         style="@style/SimpleButtonStyle"
@@ -20,7 +29,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:text="@string/share" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

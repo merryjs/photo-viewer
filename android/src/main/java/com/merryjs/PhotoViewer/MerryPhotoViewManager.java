@@ -1,3 +1,4 @@
+
 package com.merryjs.PhotoViewer;
 
 
@@ -50,7 +51,7 @@ public class MerryPhotoViewManager extends SimpleViewManager<MerryPhotoView> {
 	@Override
 	protected void onAfterUpdateTransaction(MerryPhotoView merryPhotoView) {
 		super.onAfterUpdateTransaction(merryPhotoView);
-		merryPhotoView.init().show();
+		merryPhotoView.init();
 	}
 
 	@ReactProp(name = "data")
@@ -120,7 +121,10 @@ public class MerryPhotoViewManager extends SimpleViewManager<MerryPhotoView> {
 	public void setHideShareButton(MerryPhotoView merryPhotoView, Boolean prop) {
         merryPhotoView.setHideShareButton(prop);
     }
-
+	@ReactProp(name = "hideCloseButton", defaultBoolean=false)
+	public void setHideCloseButton(MerryPhotoView merryPhotoView, Boolean prop) {
+		merryPhotoView.setHideCloseButton(prop);
+	}
 	@Nullable
 	@Override
 	public Map<String, Object> getExportedCustomDirectEventTypeConstants() {
