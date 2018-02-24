@@ -1,5 +1,5 @@
 import * as React from "react";
-import { requireNativeComponent, processColor, Platform } from "react-native";
+import { requireNativeComponent, processColor, Platform, View } from "react-native";
 import * as PropTypes from "prop-types";
 const resolveAssetSource = require("react-native/Libraries/Image/resolveAssetSource");
 const ImageSourcePropType = require("react-native/Libraries/Image/ImageSourcePropType");
@@ -7,9 +7,9 @@ class MerryPhotoView extends React.Component {
     constructor() {
         super(...arguments);
         /**
-           * Handle UIColor conversions
-           * @param data Photo[]
-           */
+         * Handle UIColor conversions
+         * @param data Photo[]
+         */
         this.processor = (data) => {
             if (data && data.length) {
                 return data.map(o => {
@@ -76,7 +76,8 @@ MerryPhotoView.propTypes = {
     hideCloseButton: PropTypes.bool,
     hideShareButton: PropTypes.bool,
     onDismiss: PropTypes.func.isRequired,
-    shareText: PropTypes.string
+    shareText: PropTypes.string,
+    ...View.propTypes
 };
 MerryPhotoView.defaultProps = {
     visible: false
