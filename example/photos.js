@@ -93,7 +93,10 @@ export default class Photos extends Component {
 					initial={this.state.initial}
           onDismiss={e => {
             this.setState({ visible: false });
-          }}
+					}}
+					onNavigateToPhoto={e=> {
+						console.log(e)
+					}}
         />
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.photoContainer}>

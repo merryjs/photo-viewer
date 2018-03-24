@@ -60,6 +60,7 @@ declare class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
         hideCloseButton: PropTypes.Requireable<any>;
         hideShareButton: PropTypes.Requireable<any>;
         onDismiss: PropTypes.Validator<any>;
+        onNavigateToPhoto: PropTypes.Requireable<any>;
         shareText: PropTypes.Requireable<any>;
     } | {
         accessibilityLabel?: ((object: ViewProperties, key: string, componentName: string, ...rest: any[]) => Error | null) | undefined;
@@ -104,6 +105,7 @@ declare class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
         hideCloseButton: PropTypes.Requireable<any>;
         hideShareButton: PropTypes.Requireable<any>;
         onDismiss: PropTypes.Validator<any>;
+        onNavigateToPhoto: PropTypes.Requireable<any>;
         shareText: PropTypes.Requireable<any>;
     };
     static defaultProps: {

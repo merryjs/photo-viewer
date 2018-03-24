@@ -25,7 +25,7 @@ import android.view.MotionEvent;
 /*
  * Created by Alexander Krol (troy379) on 29.08.16.
  */
-public class MultiTouchViewPager extends ViewPager {
+class MultiTouchViewPager extends ViewPager {
 
     private boolean isDisallowIntercept, isScrolled = true;
 

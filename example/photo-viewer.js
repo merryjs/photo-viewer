@@ -1,16 +1,15 @@
 import * as React from "react";
-import { requireNativeComponent, processColor, Platform } from "react-native";
+import { requireNativeComponent, processColor, Platform, View } from "react-native";
 import * as PropTypes from "prop-types";
 const resolveAssetSource = require("react-native/Libraries/Image/resolveAssetSource");
 const ImageSourcePropType = require("react-native/Libraries/Image/ImageSourcePropType");
-var RNMerryPhotoView = requireNativeComponent("MerryPhotoView", MerryPhotoView);
 class MerryPhotoView extends React.Component {
     constructor() {
         super(...arguments);
         /**
-           * Handle UIColor conversions
-           * @param data Photo[]
-           */
+         * Handle UIColor conversions
+         * @param data Photo[]
+         */
         this.processor = (data) => {
             if (data && data.length) {
                 return data.map(o => {
@@ -37,7 +36,6 @@ class MerryPhotoView extends React.Component {
         const { visible, data, initial, ...props } = this.props;
         const dataCopy = [...data];
         const transformData = this.processor(dataCopy);
-        console.log(props);
         // initial
         let startPosition = initial;
         if (initial < 0) {
@@ -75,15 +73,19 @@ MerryPhotoView.propTypes = {
     visible: PropTypes.bool,
     initial: PropTypes.number.isRequired,
     hideStatusBar: PropTypes.bool,
-    // IOS only
     hideCloseButton: PropTypes.bool,
-    // IOS only
     hideShareButton: PropTypes.bool,
     onDismiss: PropTypes.func.isRequired,
     onNavigateToPhoto: PropTypes.func,
-    shareText: PropTypes.string
+    shareText: PropTypes.string,
+    ...View.propTypes
 };
 MerryPhotoView.defaultProps = {
     visible: false
 };
+var RNMerryPhotoView = requireNativeComponent("MerryPhotoView", MerryPhotoView, {
+    nativeOnly: {
+        onNavigateToPhoto: true
+    }
+});
 export default MerryPhotoView;

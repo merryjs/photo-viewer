@@ -7,7 +7,9 @@ import android.view.View;
 
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.stfalcon.frescoimageviewer.ImageViewer;
 import com.facebook.react.views.imagehelper.ImageSource;
@@ -170,11 +172,11 @@ public class MerryPhotoView extends View {
 
 
                 // onChange event from js side
-//				WritableMap map = Arguments.createMap();
-//
-//				map.putString("currentPhoto", "");
-//
-//				onNavigateToPhoto(map);
+				WritableMap map = Arguments.createMap();
+
+				map.putString("currentPhoto", "");
+
+				onNavigateToPhoto(map);
 //
 //                if (options.shareTextColor != null) {
 //                    overlayView.setShareTextColor(options.shareTextColor);
@@ -196,12 +198,12 @@ public class MerryPhotoView extends View {
     /**
      * on photo change
      */
-//	protected void onNavigateToPhoto(WritableMap map) {
-//		final Context context = getContext();
-//		if (context instanceof ReactContext) {
-//			((ReactContext) context).getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onNavigateToPhoto", map);
-//		}
-//	}
+	protected void onNavigateToPhoto(WritableMap map) {
+		final Context context = getContext();
+		if (context instanceof ReactContext) {
+			((ReactContext) context).getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onNavigateToPhoto", map);
+		}
+	}
 
     //
     private ImageViewer.OnDismissListener getDismissListener() {

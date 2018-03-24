@@ -76,11 +76,16 @@ MerryPhotoView.propTypes = {
     hideCloseButton: PropTypes.bool,
     hideShareButton: PropTypes.bool,
     onDismiss: PropTypes.func.isRequired,
+    onNavigateToPhoto: PropTypes.func,
     shareText: PropTypes.string,
     ...View.propTypes
 };
 MerryPhotoView.defaultProps = {
     visible: false
 };
-var RNMerryPhotoView = requireNativeComponent("MerryPhotoView", MerryPhotoView);
+var RNMerryPhotoView = requireNativeComponent("MerryPhotoView", MerryPhotoView, {
+    nativeOnly: {
+        onNavigateToPhoto: true
+    }
+});
 export default MerryPhotoView;
