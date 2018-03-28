@@ -27,6 +27,13 @@ class MerryPhotoView extends React.Component {
             }
             return data;
         };
+        this.onChange = (event) => {
+            const { onChange } = this.props;
+            if (onChange) {
+                const { target, ...rest } = event.nativeEvent;
+                onChange(rest);
+            }
+        };
     }
     render() {
         // nothing
@@ -44,7 +51,7 @@ class MerryPhotoView extends React.Component {
         if (initial > dataCopy.length) {
             startPosition = dataCopy.length;
         }
-        return (<RNMerryPhotoView {...props} initial={startPosition} data={transformData}/>);
+        return (<RNMerryPhotoView {...props} initial={startPosition} data={transformData} onChange={this.onChange}/>);
     }
 }
 MerryPhotoView.propTypes = {
@@ -76,7 +83,7 @@ MerryPhotoView.propTypes = {
     hideCloseButton: PropTypes.bool,
     hideShareButton: PropTypes.bool,
     onDismiss: PropTypes.func.isRequired,
-    onNavigateToPhoto: PropTypes.func,
+    onChange: PropTypes.func,
     shareText: PropTypes.string,
     ...View.propTypes
 };
@@ -85,7 +92,7 @@ MerryPhotoView.defaultProps = {
 };
 var RNMerryPhotoView = requireNativeComponent("MerryPhotoView", MerryPhotoView, {
     nativeOnly: {
-        onNavigateToPhoto: true
+        onChange: true
     }
 });
 export default MerryPhotoView;

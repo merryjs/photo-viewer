@@ -15,7 +15,7 @@ RCT_EXPORT_MODULE();
 // Return the native view that represents your React component
 - (UIView*)view
 {
-    return [[MerryPhotoView alloc] initWithBridge: self.bridge];
+    return [[MerryPhotoView alloc] initWithBridge:self.bridge];
 }
 
 RCT_EXPORT_VIEW_PROPERTY(data, NSArray)
@@ -25,6 +25,6 @@ RCT_EXPORT_VIEW_PROPERTY(hideCloseButton, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(hideShareButton, BOOL)
 
 RCT_EXPORT_VIEW_PROPERTY(onDismiss, RCTBubblingEventBlock)
-// RCT_EXPORT_VIEW_PROPERTY(onNavigateToPhoto, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onChange, RCTBubblingEventBlock)
 
 @end

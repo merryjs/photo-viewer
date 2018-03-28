@@ -9,6 +9,7 @@ import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.stfalcon.frescoimageviewer.ImageViewer;
@@ -159,7 +160,6 @@ public class MerryPhotoView extends View {
 //                }
 //
                 overlayView.setPagerText((position + 1) + " / " + getData().length);
-//
                 if (merryPhotoData.titleColor != 0) {
 
                     titleColor = merryPhotoData.titleColor;
@@ -170,17 +170,20 @@ public class MerryPhotoView extends View {
                 }
                 overlayView.setDescriptionTextColor(summaryColor);
 
+                WritableMap writableMap = Arguments.createMap();
+                writableMap.putString("title", merryPhotoData.title);
+                writableMap.putString("summary", merryPhotoData.summary);
+                writableMap.putInt("summaryColor", merryPhotoData.summaryColor);
+                writableMap.putInt("titleColor", merryPhotoData.titleColor);
+                writableMap.putMap("source", Utils.toWritableMap(merryPhotoData.source));
 
                 // onChange event from js side
-				WritableMap map = Arguments.createMap();
+                WritableMap map = Arguments.createMap();
+                map.putMap("photo", writableMap);
+                map.putInt("index", position);
 
-				map.putString("currentPhoto", "");
+                onNavigateToPhoto(map);
 
-				onNavigateToPhoto(map);
-//
-//                if (options.shareTextColor != null) {
-//                    overlayView.setShareTextColor(options.shareTextColor);
-//                }
             }
         };
     }
@@ -198,12 +201,12 @@ public class MerryPhotoView extends View {
     /**
      * on photo change
      */
-	protected void onNavigateToPhoto(WritableMap map) {
-		final Context context = getContext();
-		if (context instanceof ReactContext) {
-			((ReactContext) context).getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onNavigateToPhoto", map);
-		}
-	}
+    protected void onNavigateToPhoto(WritableMap map) {
+        final Context context = getContext();
+        if (context instanceof ReactContext) {
+            ((ReactContext) context).getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onChange", map);
+        }
+    }
 
     //
     private ImageViewer.OnDismissListener getDismissListener() {

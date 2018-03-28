@@ -61,6 +61,12 @@ export interface MerryPhotoViewPorps {
    * When viewer has dismissed but you still needs to update the visible state
    */
   onDismiss: () => void;
+  onChange?: (
+    data: {
+      index: number;
+      photo: Photo;
+    }
+  ) => void;
 }
 
 class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
@@ -98,7 +104,7 @@ class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
     hideCloseButton: PropTypes.bool,
     hideShareButton: PropTypes.bool,
     onDismiss: PropTypes.func.isRequired,
-    onNavigateToPhoto: PropTypes.func,
+    onChange: PropTypes.func,
     shareText: PropTypes.string,
     ...View.propTypes
   };
@@ -128,7 +134,13 @@ class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
     }
     return data;
   };
-
+  onChange = (event: any) => {
+    const { onChange } = this.props;
+    if (onChange) {
+      const { target, ...rest } = event.nativeEvent;
+      onChange(rest);
+    }
+  };
   render() {
     // nothing
     if (this.props.visible === false) {
@@ -154,6 +166,7 @@ class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
         {...props as any}
         initial={startPosition}
         data={transformData}
+        onChange={this.onChange}
       />
     );
   }
@@ -163,7 +176,7 @@ var RNMerryPhotoView = requireNativeComponent(
   MerryPhotoView,
   {
     nativeOnly: {
-      onNavigateToPhoto: true
+      onChange: true
     }
   }
 );

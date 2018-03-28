@@ -50,6 +50,10 @@ export interface MerryPhotoViewPorps {
      * When viewer has dismissed but you still needs to update the visible state
      */
     onDismiss: () => void;
+    onChange?: (data: {
+        index: number;
+        photo: Photo;
+    }) => void;
 }
 declare class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
     static propTypes: {
@@ -60,7 +64,7 @@ declare class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
         hideCloseButton: PropTypes.Requireable<any>;
         hideShareButton: PropTypes.Requireable<any>;
         onDismiss: PropTypes.Validator<any>;
-        onNavigateToPhoto: PropTypes.Requireable<any>;
+        onChange: PropTypes.Requireable<any>;
         shareText: PropTypes.Requireable<any>;
     } | {
         accessibilityLabel?: ((object: ViewProperties, key: string, componentName: string, ...rest: any[]) => Error | null) | undefined;
@@ -105,7 +109,7 @@ declare class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
         hideCloseButton: PropTypes.Requireable<any>;
         hideShareButton: PropTypes.Requireable<any>;
         onDismiss: PropTypes.Validator<any>;
-        onNavigateToPhoto: PropTypes.Requireable<any>;
+        onChange: PropTypes.Requireable<any>;
         shareText: PropTypes.Requireable<any>;
     };
     static defaultProps: {
@@ -116,6 +120,7 @@ declare class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
      * @param data Photo[]
      */
     processor: (data: Photo[]) => Photo[];
+    onChange: (event: any) => void;
     render(): JSX.Element | null;
 }
 export default MerryPhotoView;

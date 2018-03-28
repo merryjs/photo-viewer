@@ -35,6 +35,15 @@ public class Utils {
     }
 
     /**
+     * Convert ReadableMap to WritableMap
+     * @param readableMap
+     * @return
+     */
+    public static WritableMap toWritableMap(@Nullable ReadableMap readableMap) {
+        return Utils.jsonToWritableMap(Utils.readableMapToJson(readableMap));
+    }
+
+    /**
      * Converts Facebook's ReadableMap to a Java Map<>
      *
      * @param readableMap The Readable Map to parse

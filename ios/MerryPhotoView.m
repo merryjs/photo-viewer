@@ -141,6 +141,8 @@
         if (self.hideStatusBar) {
             [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
         }
+        // keep a same behavior with Android which trigger an onChange event after first showing up
+        [self onNavigateToPhoto:photosViewController Index:initialPhoto];
     });
 }
 
@@ -221,14 +223,23 @@
     if (!photo.image || !photo.imageData) {
         [self updatePhotoAtIndex:photosViewController Index:photoIndex];
     }
-    // NOTE: onChange are useless so we don't plan to implementing it.
-    //    MerryPhotoData* current = [self.reactPhotos objectAtIndex:photoIndex];
-    //
-    //    if (self.onNavigateToPhoto) {
-    //        self.onNavigateToPhoto(@{
-    //            @"currentPhoto" : current
-    //        });
-    //    }
+    [self onNavigateToPhoto:photosViewController Index:photoIndex];
+}
+
+/**
+ * onNavigateToPhoto
+ */
+- (void)onNavigateToPhoto:(NYTPhotosViewController*)photosViewController
+                    Index:(NSUInteger)photoIndex
+{
+    MerryPhotoData* current = self.data[photoIndex];
+
+    if (self.onChange) {
+        self.onChange(@{
+            @"index" : [NSNumber numberWithInteger:photoIndex],
+            @"photo" : current
+        });
+    }
 }
 
 - (void)displayActivityViewController:(UIActivityViewController*)controller animated:(BOOL)animated

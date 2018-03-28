@@ -90,13 +90,13 @@ export default class Photos extends Component {
           hideStatusBar={true}
           hideCloseButton={true}
           hideShareButton={true}
-					initial={this.state.initial}
-          onDismiss={e => {
+          initial={this.state.initial}
+          onDismiss={() => {
             this.setState({ visible: false });
-					}}
-					onNavigateToPhoto={e=> {
-						console.log(e)
-					}}
+          }}
+          onChange={data => {
+            console.log(data);
+          }}
         />
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.photoContainer}>
