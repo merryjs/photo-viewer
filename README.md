@@ -72,6 +72,12 @@ For some reasons if you dont want use any package manager in your side then you 
 
 Add `pod 'NYTPhotoViewer',:git => 'https://github.com/NYTimes/NYTPhotoViewer.git', :branch => 'master'` in your `Podfile`
 
+If you only use CocoaPods to define your react-native 3rd party libraries you can add this to you `Podfile` without linking to project as above:
+
+```ruby
+pod 'MerryPhotoViewer', path: '../node_modules/@merryjs/photo-viewer'
+```
+
 ##### [Carthage](https://github.com/Carthage/Carthage)
 
 If you want use Carthage in your project and then you can add these dependencies into your Cartfile
