@@ -72,7 +72,7 @@ For some reasons if you dont want use any package manager in your side then you 
 
 Add `pod 'NYTPhotoViewer',:git => 'https://github.com/NYTimes/NYTPhotoViewer.git', :branch => 'master'` in your `Podfile`
 
-Alternatively, If you only use CocoaPods to define your react-native 3rd party libraries you can add this to you `Podfile` without linking to project as above:
+If you only use CocoaPods to define your react-native 3rd party libraries you can add this to you `Podfile` without linking to project as above:
 
 ```ruby
 pod 'MerryPhotoViewer', path: '../node_modules/@merryjs/photo-viewer'
