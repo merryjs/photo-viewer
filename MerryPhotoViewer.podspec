@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.homepage     = 'https://github.com/merryjs/photo-viewer'
   s.author       = package['author']
   s.platforms    = { :ios => "8.0", :tvos => "9.2" }
-  s.source       = { :git => "https://github.com/author/MerryPhotoViewer.git", :tag => s.version }
+  s.source       = { :git => "https://github.com/merryjs/photo-viewer.git", :tag => s.version }
   s.source_files  = "ios/*.{h,m}"
   s.requires_arc = true
 
