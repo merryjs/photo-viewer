@@ -95,7 +95,7 @@ export default class Photos extends Component {
             this.setState({ visible: false });
           }}
           onChange={data => {
-            console.log(data);
+						this.setState({ initial: data.index });
           }}
         />
         <ScrollView showsVerticalScrollIndicator={false}>
