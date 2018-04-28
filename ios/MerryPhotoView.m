@@ -241,7 +241,10 @@
         });
     }
 }
-
+- (BOOL)photosViewController:(NYTPhotosViewController*)photosViewController captionViewRespectsSafeAreaForPhoto:(id<NYTPhoto>)photo;
+{
+    return false;
+}
 - (void)displayActivityViewController:(UIActivityViewController*)controller animated:(BOOL)animated
 {
 
