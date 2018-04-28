@@ -99,6 +99,9 @@ public class MerryPhotoView extends View {
 
 
     protected void init() {
+        if(builder != null){
+            return;
+        }
         final Context context = getContext();
         builder = new ImageViewer.Builder(context, getData())
                 .setFormatter(new ImageViewer.Formatter<MerryPhotoData>() {
@@ -113,7 +116,7 @@ public class MerryPhotoView extends View {
         builder.setImageChangeListener(getImageChangeListener());
         builder.setStartPosition(getInitial());
         builder.hideStatusBar(isHideStatusBar());
-        builder.setCustomImageRequestBuilder(getLocalImage());
+        // builder.setCustomImageRequestBuilder(getLocalImage());
         builder.setCustomDraweeHierarchyBuilder(progressBarDrawableBuilder());
         overlayView = new MerryPhotoOverlay(context);
         builder.setOverlayView(overlayView);
@@ -193,6 +196,8 @@ public class MerryPhotoView extends View {
      */
     protected void onDialogDismiss() {
         final Context context = getContext();
+        builder = null;
+        overlayView = null;
         if (context instanceof ReactContext) {
             ((ReactContext) context).getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "onDismiss", null);
         }
