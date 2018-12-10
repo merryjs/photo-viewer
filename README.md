@@ -147,13 +147,18 @@ If we have any better solution will update this section in the future.
 
 #### Android Fresco initialize
 
-When you have linked you need one more step for initialize the Fresco Library
+When you have linked you need one more step for initialize the Fresco Library in `MainApplication.java`
 
 ```java
+
+import com.facebook.drawee.backends.pipeline.Fresco; // <-- import on top of the file
+
+// ...
+
 @Override
 public void onCreate() {
-super.onCreate();
-SoLoader.init(this, /* native exopackage */ false);
+	super.onCreate();
+	SoLoader.init(this, /* native exopackage */ false);
 // If your picture very large you can initialize it with these configurations
 
 //        ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
@@ -163,7 +168,7 @@ SoLoader.init(this, /* native exopackage */ false);
 //                .build();
 //        Fresco.initialize(this, config);
 
-Fresco.initialize(this);
+	Fresco.initialize(this);
 
 }
 ```
