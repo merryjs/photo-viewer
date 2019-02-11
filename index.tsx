@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import * as PropTypes from "prop-types";
 const resolveAssetSource = require("react-native/Libraries/Image/resolveAssetSource");
-const ImageSourcePropType = require("react-native/Libraries/Image/ImageSourcePropType");
+const ImageSourcePropType = require("react-native/Libraries/Image/ImageSource");
 
 /**
  * Photo data
@@ -18,7 +18,7 @@ const ImageSourcePropType = require("react-native/Libraries/Image/ImageSourcePro
 export interface Photo {
   /**
    * Same as React Native Image source but not support Array
-   * @see https://github.com/facebook/react-native/blob/master/Libraries/Image/ImageSourcePropType.js
+   * @see https://github.com/facebook/react-native/blob/master/Libraries/Image/ImageSource.js
    */
   source: ImageURISource;
   title?: string;
