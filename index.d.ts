@@ -8,7 +8,7 @@ import * as PropTypes from "prop-types";
 export interface Photo {
     /**
      * Same as React Native Image source but not support Array
-     * @see https://github.com/facebook/react-native/blob/master/Libraries/Image/ImageSourcePropType.js
+     * @see https://github.com/facebook/react-native/blob/master/Libraries/Image/ImageSource.js
      */
     source: ImageURISource;
     title?: string;

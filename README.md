@@ -14,23 +14,33 @@
 
 ## TOC
 
-- [Photo-Viewer](#photo-viewer)
-  - [TOC](#toc)
-  - [Getting started](#getting-started)
-    - [Mostly automatic installation](#mostly-automatic-installation)
-    - [Manual installation](#manual-installation)
-      - [iOS](#ios)
-      - [IOS Link Frameworks](#ios-link-frameworks)
-        - [Manual link](#manual-link)
-        - [[CocoaPods](https://cocoapods.org/)](#cocoapodshttpscocoapodsorg)
-        - [[Carthage](https://github.com/Carthage/Carthage)](#carthagehttpsgithubcomcarthagecarthage)
-      - [Android](#android)
-      - [Android targetSdkVersion configuration](#android-targetsdkversion-configuration)
-      - [Android Fresco initialize](#android-fresco-initialize)
-  - [Usage](#usage)
-  - [LICENSE](#license)
+- [React Native Photo Viewer](#react-native-photo-viewer)
+	- [TOC](#toc)
+	- [Getting started](#getting-started)
+		- [Mostly automatic installation](#mostly-automatic-installation)
+		- [Manual installation](#manual-installation)
+			- [iOS](#ios)
+			- [IOS Link Frameworks](#ios-link-frameworks)
+				- [Manual link](#manual-link)
+				- [CocoaPods](#cocoapods)
+				- [Carthage](#carthage)
+			- [Android](#android)
+			- [Android targetSdkVersion configuration](#android-targetsdkversion-configuration)
+			- [Android Fresco initialize](#android-fresco-initialize)
+	- [Usage](#usage)
+	- [Known issues](#known-issues)
+	- [LICENSE](#license)
 
 ![preview](./assets/preview.gif) ![preview](./assets/android.gif)
+
+
+**Note**
+
+If your `react-native` version is under `0.57` please use version `2.x` otherwise please use the latest version
+
+
+----
+
 
 ## Getting started
 
