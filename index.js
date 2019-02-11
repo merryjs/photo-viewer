@@ -2,7 +2,7 @@ import * as React from "react";
 import { requireNativeComponent, processColor, Platform, View } from "react-native";
 import * as PropTypes from "prop-types";
 const resolveAssetSource = require("react-native/Libraries/Image/resolveAssetSource");
-const ImageSourcePropType = require("react-native/Libraries/Image/ImageSourcePropType");
+const ImageSourcePropType = require("react-native/Libraries/Image/ImageSource");
 class MerryPhotoView extends React.Component {
     constructor() {
         super(...arguments);

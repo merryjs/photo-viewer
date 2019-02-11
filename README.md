@@ -4,31 +4,31 @@
 
 **Key features:**
 
-* Double-tap to zoom
-* Captions and summaries
-* Support for multiple images
-* Interactive flick to dismiss
-* Animated zooming presentation
-* Support remote image and local image or images from Camera Roll
-* And more...
+- Double-tap to zoom
+- Captions and summaries
+- Support for multiple images
+- Interactive flick to dismiss
+- Animated zooming presentation
+- Support remote image and local image or images from Camera Roll
+- And more...
 
 ## TOC
 
-* [Photo-Viewer](#photo-viewer)
-  * [TOC](#toc)
-  * [Getting started](#getting-started)
-    * [Mostly automatic installation](#mostly-automatic-installation)
-    * [Manual installation](#manual-installation)
-      * [iOS](#ios)
-      * [IOS Link Frameworks](#ios-link-frameworks)
-        * [Manual link](#manual-link)
-        * [[CocoaPods](https://cocoapods.org/)](#cocoapodshttpscocoapodsorg)
-        * [[Carthage](https://github.com/Carthage/Carthage)](#carthagehttpsgithubcomcarthagecarthage)
-      * [Android](#android)
-      * [Android targetSdkVersion configuration](#android-targetsdkversion-configuration)
-      * [Android Fresco initialize](#android-fresco-initialize)
-  * [Usage](#usage)
-  * [LICENSE](#license)
+- [Photo-Viewer](#photo-viewer)
+  - [TOC](#toc)
+  - [Getting started](#getting-started)
+    - [Mostly automatic installation](#mostly-automatic-installation)
+    - [Manual installation](#manual-installation)
+      - [iOS](#ios)
+      - [IOS Link Frameworks](#ios-link-frameworks)
+        - [Manual link](#manual-link)
+        - [[CocoaPods](https://cocoapods.org/)](#cocoapodshttpscocoapodsorg)
+        - [[Carthage](https://github.com/Carthage/Carthage)](#carthagehttpsgithubcomcarthagecarthage)
+      - [Android](#android)
+      - [Android targetSdkVersion configuration](#android-targetsdkversion-configuration)
+      - [Android Fresco initialize](#android-fresco-initialize)
+  - [Usage](#usage)
+  - [LICENSE](#license)
 
 ![preview](./assets/preview.gif) ![preview](./assets/android.gif)
 
@@ -64,8 +64,8 @@ and initialize Fresco Library please see [Android Fresco initialize](#android-fr
 
 For some reasons if you dont want use any package manager in your side then you can link frameworks as:
 
-* Go to your xcode project choose your project if you unsure it click (command + 1)
-* Choose target General panel find embedded binaries click + icon will display a dialog and then go to `node_modules/@merryjs/photo-viewer/ios/Carthage/Build/iOS/` folder add these frameworks into your xcode project. make sure `checked` **copy items if needed** and then It should looks like below,
+- Go to your xcode project choose your project if you unsure it click (command + 1)
+- Choose target General panel find embedded binaries click + icon will display a dialog and then go to `node_modules/@merryjs/photo-viewer/ios/Carthage/Build/iOS/` folder add these frameworks into your xcode project. make sure `checked` **copy items if needed** and then It should looks like below,
   ![Link Frameworks](assets/20170728-110148@2x.png)
 
 ##### [CocoaPods](https://cocoapods.org/)
@@ -92,8 +92,8 @@ and run `carthage update` when you done this you can link it like Manual link fr
 
 1. Open up `android/app/src/main/java/[...]/MainActivity.java`
 
-* Add `import com.merryjs.PhotoViewer.MerryPhotoViewPackage;` to the imports at the top of the file
-* Add `new MerryPhotoViewPackage()` to the list returned by the `getPackages()` method
+- Add `import com.merryjs.PhotoViewer.MerryPhotoViewPackage;` to the imports at the top of the file
+- Add `new MerryPhotoViewPackage()` to the list returned by the `getPackages()` method
 
 2. Append the following lines to `android/settings.gradle`:
    ```
@@ -159,18 +159,35 @@ import com.facebook.drawee.backends.pipeline.Fresco; // <-- import on top of the
 public void onCreate() {
 	super.onCreate();
 	SoLoader.init(this, /* native exopackage */ false);
-// If your picture very large you can initialize it with these configurations
-
-//        ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
-//                .setProgressiveJpegConfig(new SimpleProgressiveJpegConfig())
-//                .setResizeAndRotateEnabledForNetwork(true)
-//                .setDownsampleEnabled(true)
-//                .build();
-//        Fresco.initialize(this, config);
 
 	Fresco.initialize(this);
 
 }
+```
+
+If your pictures are very large, you can initialize with these configurations in `MainApplication.java`
+
+```java
+// Add these imports on top of the file
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.facebook.imagepipeline.decoder.SimpleProgressiveJpegConfig;
+
+// ...
+
+@Override
+public void onCreate() {
+	super.onCreate();
+	SoLoader.init(this, /* native exopackage */ false);
+
+  ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
+    .setProgressiveJpegConfig(new SimpleProgressiveJpegConfig())
+    .setResizeAndRotateEnabledForNetwork(true)
+    .setDownsampleEnabled(true)
+    .build();
+  Fresco.initialize(this, config);
+}
+
 ```
 
 Thats all.
@@ -246,7 +263,7 @@ For complete documentation please see https://merryjs.github.io/photo-viewer/int
 
 ## Known issues
 
-* IOS not support gif well when using imageLoader Please see https://github.com/facebook/react-native/issues/15427 any help are welcome. at this moment gif image on ios platform are only display the first frame and no animation.
+- IOS not support gif well when using imageLoader Please see https://github.com/facebook/react-native/issues/15427 any help are welcome. at this moment gif image on ios platform are only display the first frame and no animation.
 
 ## LICENSE
 
@@ -268,6 +285,6 @@ limitations under the License.
 
 Due to we use some third-part softwares and both of them are licensed under Apache 2.0 so do we.
 
-* [Photo Viewer](https://github.com/merryjs/photo-viewer/blob/master/LICENSE)
-* [NYTPhotoViewer](https://github.com/NYTimes/NYTPhotoViewer/blob/develop/LICENSE.md)
-* [FrescoImageViewer](https://github.com/stfalcon-studio/FrescoImageViewer#license)
+- [Photo Viewer](https://github.com/merryjs/photo-viewer/blob/master/LICENSE)
+- [NYTPhotoViewer](https://github.com/NYTimes/NYTPhotoViewer/blob/develop/LICENSE.md)
+- [FrescoImageViewer](https://github.com/stfalcon-studio/FrescoImageViewer#license)
