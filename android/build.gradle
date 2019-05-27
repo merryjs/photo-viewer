@@ -11,12 +11,12 @@ buildscript {
 apply plugin: 'com.android.library'
 
 android {
-	compileSdkVersion 25
-	buildToolsVersion "25.0.3"
+	compileSdkVersion 28
+	buildToolsVersion "28.0.3"
 
 	defaultConfig {
 		minSdkVersion 16
-		targetSdkVersion 25
+		targetSdkVersion 28
 		versionCode 1
 		versionName "1.0"
 	}
@@ -32,20 +32,20 @@ repositories {
 
 
 ext {
-	supportVersion = '25.1.1'
-	frescoVersion = '1.3.0'
+	supportVersion = '28.0.3'
+	frescoVersion = '1.13.0'
 }
 
 dependencies {
 
-	compile "com.facebook.react:react-native:+"  // From node_modules
+	implementation "com.facebook.react:react-native:+"  // From node_modules
 	// compile "com.android.support:design:$supportVersion"
 	// compile "com.android.support:appcompat-v7:$supportVersion"
 	// compile "com.android.support:support-v4:$supportVersion"
 	// compile "com.android.support:cardview-v7:$supportVersion"
-	compile 'me.relex:photodraweeview:1.1.0'
+	implementation 'me.relex:photodraweeview:1.1.0'
 
-	compile "com.facebook.fresco:fresco:$frescoVersion"
-	compile "com.facebook.fresco:animated-gif:$frescoVersion"
+	implementation "com.facebook.fresco:fresco:$frescoVersion"
+	implementation "com.facebook.fresco:animated-gif:$frescoVersion"
 
 }
