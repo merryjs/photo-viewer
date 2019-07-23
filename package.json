@@ -26,10 +26,8 @@
   },
   "homepage": "https://github.com/merryjs/photo-viewer#readme",
   "devDependencies": {
-    "@types/prop-types": "^15.5.2",
-    "@types/react": "^16.0.25",
-    "@types/react-native": "^0.50.7",
-    "typescript": "^2.6.1"
+    "react": "16.0.0",
+    "react-native": ">= 0.58.0"
   },
   "dependencies": {}
 }

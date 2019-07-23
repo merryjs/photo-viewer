@@ -20,12 +20,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.net.Uri;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.DimenRes;
-import android.support.annotation.StyleRes;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.StyleRes;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DimenRes;
+import androidx.appcompat.app.AlertDialog;
+import androidx.viewpager.widget.ViewPager;
+
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -149,7 +151,8 @@ public class ImageViewer implements OnDismissListener, DialogInterface.OnKeyList
         void onDismiss();
     }
 
-    private @StyleRes int getDialogStyle() {
+    private @StyleRes
+    int getDialogStyle() {
         return builder.shouldStatusBarHide
                 ? android.R.style.Theme_Translucent_NoTitleBar_Fullscreen
                 : android.R.style.Theme_Translucent_NoTitleBar;
@@ -199,7 +202,8 @@ public class ImageViewer implements OnDismissListener, DialogInterface.OnKeyList
 
         private Context context;
         private DataSet<T> dataSet;
-        private @ColorInt int backgroundColor = Color.BLACK;
+        private @ColorInt
+        int backgroundColor = Color.BLACK;
         private int startPosition;
         private OnImageChangeListener imageChangeListener;
         private OnDismissListener onDismissListener;
