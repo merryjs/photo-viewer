@@ -1,272 +1,196 @@
-/*
- * Copyright (C) 2016 stfalcon.com
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.stfalcon.frescoimageviewer;
 
 import android.content.Context;
-
-import androidx.core.view.GestureDetectorCompat;
-import androidx.viewpager.widget.ViewPager;
-
-import android.util.AttributeSet;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
+import android.graphics.drawable.Animatable;
+import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
-import com.merryjs.PhotoViewer.R;
-
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder;
+import com.facebook.drawee.controller.BaseControllerListener;
+import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
+import com.facebook.imagepipeline.image.ImageInfo;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
+import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.views.imagehelper.ImageSource;
+
+import com.merryjs.PhotoViewer.MerryPhotoData;
+import com.stfalcon.frescoimageviewer.adapter.RecyclingPagerAdapter;
+import com.stfalcon.frescoimageviewer.adapter.ViewHolder;
+import com.stfalcon.frescoimageviewer.drawee.ZoomableDraweeView;
+
+import java.util.HashSet;
+
+import me.relex.photodraweeview.OnScaleChangeListener;
+
+import com.facebook.react.modules.fresco.ReactNetworkImageRequest;
+import com.facebook.imagepipeline.request.ImageRequest;
 
 /*
- * Created by Alexander Krol (troy379) on 29.08.16.
+ * Created by troy379 on 07.12.16.
  */
-class ImageViewerView extends RelativeLayout
-		implements OnDismissListener, SwipeToDismissListener.OnViewMoveListener {
+class ImageViewerAdapter
+		extends RecyclingPagerAdapter<ImageViewerAdapter.ImageViewHolder> {
 
-	private View backgroundView;
-	private MultiTouchViewPager pager;
-	private ImageViewerAdapter adapter;
-	private SwipeDirectionDetector directionDetector;
-	private ScaleGestureDetector scaleDetector;
-	private ViewPager.OnPageChangeListener pageChangeListener;
-	private GestureDetectorCompat gestureDetector;
+	private Context context;
+	private ImageViewer.DataSet<?> dataSet;
+	private HashSet<ImageViewHolder> holders;
+	private ImageRequestBuilder imageRequestBuilder;
+	private GenericDraweeHierarchyBuilder hierarchyBuilder;
+	private boolean isZoomingAllowed;
 
-	private ViewGroup dismissContainer;
-	private SwipeToDismissListener swipeDismissListener;
-	private View overlayView;
-
-	private SwipeDirectionDetector.Direction direction;
-
-	private ImageRequestBuilder customImageRequestBuilder;
-	private GenericDraweeHierarchyBuilder customDraweeHierarchyBuilder;
-
-	private boolean wasScaled;
-	private OnDismissListener onDismissListener;
-	private boolean isOverlayWasClicked;
-
-	private boolean isZoomingAllowed = true;
-	private boolean isSwipeToDismissAllowed = true;
-
-	public ImageViewerView(Context context) {
-		super(context);
-		init();
-	}
-
-	public ImageViewerView(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		init();
-	}
-
-	public ImageViewerView(Context context, AttributeSet attrs, int defStyleAttr) {
-		super(context, attrs, defStyleAttr);
-		init();
-	}
-
-	public void setUrls(ImageViewer.DataSet<?> dataSet, int startPosition) {
-		adapter = new ImageViewerAdapter(
-				getContext(), dataSet, customImageRequestBuilder, customDraweeHierarchyBuilder, isZoomingAllowed);
-		pager.setAdapter(adapter);
-		setStartPosition(startPosition);
-	}
-
-	public void setCustomImageRequestBuilder(ImageRequestBuilder customImageRequestBuilder) {
-		this.customImageRequestBuilder = customImageRequestBuilder;
-	}
-
-	public void setCustomDraweeHierarchyBuilder(GenericDraweeHierarchyBuilder customDraweeHierarchyBuilder) {
-		this.customDraweeHierarchyBuilder = customDraweeHierarchyBuilder;
+	ImageViewerAdapter(Context context, ImageViewer.DataSet<?> dataSet,
+					   ImageRequestBuilder imageRequestBuilder,
+					   GenericDraweeHierarchyBuilder hierarchyBuilder,
+					   boolean isZoomingAllowed) {
+		this.context = context;
+		this.dataSet = dataSet;
+		this.holders = new HashSet<>();
+		this.imageRequestBuilder = imageRequestBuilder;
+		this.hierarchyBuilder = hierarchyBuilder;
+		this.isZoomingAllowed = isZoomingAllowed;
 	}
 
 	@Override
-	public void setBackgroundColor(int color) {
-		findViewById(R.id.backgroundView)
-				.setBackgroundColor(color);
+	public ImageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+		ZoomableDraweeView drawee = new ZoomableDraweeView(context);
+		drawee.setEnabled(isZoomingAllowed);
+
+		ImageViewHolder holder = new ImageViewHolder(drawee);
+		holders.add(holder);
+
+		return holder;
 	}
 
-	public void setOverlayView(View view) {
-		this.overlayView = view;
-		if (overlayView != null) {
-			dismissContainer.addView(view);
+	@Override
+	public void onBindViewHolder(ImageViewHolder holder, int position) {
+		holder.bind(position);
+	}
+
+	@Override
+	public int getItemCount() {
+		return dataSet.getData().size();
+	}
+
+
+	boolean isScaled(int index) {
+		for (ImageViewHolder holder : holders) {
+			if (holder.position == index) {
+				return holder.isScaled;
+			}
+		}
+		return false;
+	}
+
+	void resetScale(int index) {
+		for (ImageViewHolder holder : holders) {
+			if (holder.position == index) {
+				holder.resetScale();
+				break;
+			}
 		}
 	}
 
-	public void allowZooming(boolean allowZooming) {
-		this.isZoomingAllowed = allowZooming;
+	String getUrl(int index) {
+		return dataSet.format(index);
 	}
 
-	public void allowSwipeToDismiss(boolean allowSwipeToDismiss) {
-		this.isSwipeToDismissAllowed = allowSwipeToDismiss;
-	}
-
-	public void setImageMargin(int marginPixels) {
-		pager.setPageMargin(marginPixels);
-	}
-
-	public void setContainerPadding(int[] paddingPixels) {
-		pager.setPadding(
-				paddingPixels[0],
-				paddingPixels[1],
-				paddingPixels[2],
-				paddingPixels[3]);
-	}
-
-	private void init() {
-		inflate(getContext(), R.layout.image_viewer, this);
-
-		backgroundView = findViewById(R.id.backgroundView);
-		pager = (MultiTouchViewPager) findViewById(R.id.pager);
-
-		dismissContainer = (ViewGroup) findViewById(R.id.container);
-		swipeDismissListener = new SwipeToDismissListener(findViewById(R.id.dismissView), this, this);
-		dismissContainer.setOnTouchListener(swipeDismissListener);
-
-		directionDetector = new SwipeDirectionDetector(getContext()) {
+	private BaseControllerListener<ImageInfo>
+	getDraweeControllerListener(final ZoomableDraweeView drawee) {
+		return new BaseControllerListener<ImageInfo>() {
 			@Override
-			public void onDirectionDetected(Direction direction) {
-				ImageViewerView.this.direction = direction;
+			public void onFinalImageSet(String id, ImageInfo imageInfo, Animatable animatable) {
+				super.onFinalImageSet(id, imageInfo, animatable);
+				if (imageInfo == null) {
+					return;
+				}
+				drawee.update(imageInfo.getWidth(), imageInfo.getHeight());
 			}
 		};
+	}
 
-		scaleDetector = new ScaleGestureDetector(getContext(),
-				new ScaleGestureDetector.SimpleOnScaleGestureListener());
+	public Context getContext() {
+		return context;
+	}
 
-		gestureDetector = new GestureDetectorCompat(getContext(), new GestureDetector.SimpleOnGestureListener() {
-			@Override
-			public boolean onSingleTapConfirmed(MotionEvent e) {
-				if (pager.isScrolled()) {
-					onClick(e, isOverlayWasClicked);
+	class ImageViewHolder extends ViewHolder implements OnScaleChangeListener {
+
+		private int position = -1;
+		private ZoomableDraweeView drawee;
+		private boolean isScaled;
+
+		ImageViewHolder(View itemView) {
+			super(itemView);
+			drawee = (ZoomableDraweeView) itemView;
+		}
+
+		void bind(int position) {
+			this.position = position;
+
+			tryToSetHierarchy();
+			ReadableMap mHeaders = null;
+
+			try {
+				MerryPhotoData current = ((MerryPhotoData) dataSet.getData().get(position));
+				if (current.source != null) {
+
+
+					if (current.source.hasKey("headers")) {
+						mHeaders = current.source.getMap("headers");
+					}
+
 				}
-				return false;
+			} catch (Exception e) {
+//				Log.e("PHOTO_VIEWER: ", e.toString());
 			}
-		});
-	}
 
-	@Override
-	public boolean dispatchTouchEvent(MotionEvent event) {
-		onUpDownEvent(event);
 
-		if (direction == null) {
-			if (scaleDetector.isInProgress() || event.getPointerCount() > 1) {
-				wasScaled = true;
-				return pager.dispatchTouchEvent(event);
+			setController(dataSet.format(position), mHeaders);
+
+			drawee.setOnScaleChangeListener(this);
+		}
+
+		@Override
+		public void onScaleChange(float scaleFactor, float focusX, float focusY) {
+			isScaled = drawee.getScale() > 1.0f;
+		}
+
+		void resetScale() {
+			drawee.setScale(1.0f, true);
+		}
+
+		private void tryToSetHierarchy() {
+			if (hierarchyBuilder != null) {
+				hierarchyBuilder.setActualImageScaleType(ScalingUtils.ScaleType.FIT_CENTER);
+				drawee.setHierarchy(hierarchyBuilder.build());
 			}
 		}
 
-		if (!adapter.isScaled(pager.getCurrentItem())) {
-			directionDetector.onTouchEvent(event);
-			if (direction != null) {
-				switch (direction) {
-					case UP:
-					case DOWN:
-						if (isSwipeToDismissAllowed && !wasScaled && pager.isScrolled()) {
-							return swipeDismissListener.onTouch(dismissContainer, event);
-						} else break;
-					case LEFT:
-					case RIGHT:
-						return pager.dispatchTouchEvent(event);
-				}
+		private void setController(String url, ReadableMap headers) {
+			PipelineDraweeControllerBuilder controllerBuilder = Fresco.newDraweeControllerBuilder();
+//			controllerBuilder.setUri(url);
+			controllerBuilder.setOldController(drawee.getController());
+			controllerBuilder.setControllerListener(getDraweeControllerListener(drawee));
+			controllerBuilder.setAutoPlayAnimations(true);
+			if (imageRequestBuilder != null) {
+				imageRequestBuilder.setSource(Uri.parse(url));
+				controllerBuilder.setImageRequest(imageRequestBuilder.build());
 			}
-			return true;
-		}
-		return super.dispatchTouchEvent(event);
-	}
+//			support load local image just like React Native do
 
-	@Override
-	public void onDismiss() {
-		if (onDismissListener != null) {
-			onDismissListener.onDismiss();
-		}
-	}
+			ImageSource imageSource = new ImageSource(getContext(), url);
+			ImageRequestBuilder imageRequestBuilder1 = ImageRequestBuilder.newBuilderWithSource(imageSource.getUri());
+//			support headers
+			ImageRequest imageRequest = ReactNetworkImageRequest.fromBuilderWithHeaders(imageRequestBuilder1, headers);
 
-	@Override
-	public void onViewMove(float translationY, int translationLimit) {
-		float alpha = 1.0f - (1.0f / translationLimit / 4) * Math.abs(translationY);
-		backgroundView.setAlpha(alpha);
-		if (overlayView != null) overlayView.setAlpha(alpha);
-	}
+			controllerBuilder.setImageRequest(imageRequest);
 
-	public void setOnDismissListener(OnDismissListener onDismissListener) {
-		this.onDismissListener = onDismissListener;
-	}
 
-	public void resetScale() {
-		adapter.resetScale(pager.getCurrentItem());
-	}
-
-	public boolean isScaled() {
-		return adapter.isScaled(pager.getCurrentItem());
-	}
-
-	public String getUrl() {
-		return adapter.getUrl(pager.getCurrentItem());
-	}
-
-	public void setPageChangeListener(ViewPager.OnPageChangeListener pageChangeListener) {
-		pager.removeOnPageChangeListener(this.pageChangeListener);
-		this.pageChangeListener = pageChangeListener;
-		pager.addOnPageChangeListener(pageChangeListener);
-		pageChangeListener.onPageSelected(pager.getCurrentItem());
-	}
-
-	private void setStartPosition(int position) {
-		pager.setCurrentItem(position);
-	}
-
-	private void onUpDownEvent(MotionEvent event) {
-		if (event.getAction() == MotionEvent.ACTION_UP) {
-			onActionUp(event);
+			drawee.setController(controllerBuilder.build());
 		}
 
-		if (event.getAction() == MotionEvent.ACTION_DOWN) {
-			onActionDown(event);
-		}
-
-		scaleDetector.onTouchEvent(event);
-		gestureDetector.onTouchEvent(event);
 	}
-
-	private void onActionDown(MotionEvent event) {
-		direction = null;
-		wasScaled = false;
-		pager.dispatchTouchEvent(event);
-		swipeDismissListener.onTouch(dismissContainer, event);
-		isOverlayWasClicked = dispatchOverlayTouch(event);
-	}
-
-	private void onActionUp(MotionEvent event) {
-		swipeDismissListener.onTouch(dismissContainer, event);
-		pager.dispatchTouchEvent(event);
-		isOverlayWasClicked = dispatchOverlayTouch(event);
-	}
-
-	private void onClick(MotionEvent event, boolean isOverlayWasClicked) {
-		if (overlayView != null && !isOverlayWasClicked) {
-			AnimationUtils.animateVisibility(overlayView);
-			super.dispatchTouchEvent(event);
-		}
-	}
-
-	private boolean dispatchOverlayTouch(MotionEvent event) {
-		return overlayView != null
-				&& overlayView.getVisibility() == VISIBLE
-				&& overlayView.dispatchTouchEvent(event);
-	}
-
 }
+
