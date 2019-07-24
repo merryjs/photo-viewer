@@ -39,10 +39,7 @@ ext {
 dependencies {
 
 	implementation "com.facebook.react:react-native:+"  // From node_modules
-	// compile "com.android.support:design:$supportVersion"
-	// compile "com.android.support:appcompat-v7:$supportVersion"
-	// compile "com.android.support:support-v4:$supportVersion"
-	// compile "com.android.support:cardview-v7:$supportVersion"
+	implementation "androidx.appcompat:appcompat:1.0.0"
 	implementation 'me.relex:photodraweeview:1.1.0'
 
 	implementation "com.facebook.fresco:fresco:$frescoVersion"
