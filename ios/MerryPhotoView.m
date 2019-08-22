@@ -146,6 +146,34 @@
     });
 }
 
+- (void)getCurrent_Previous_NextPhoto:(NSUInteger)photoIndex photosViewController:(NYTPhotosViewController *)photosViewController {
+    
+    NSInteger current = (unsigned long)photoIndex;
+    MerryPhoto* currentPhoto = [self.dataSource.photos objectAtIndex:current];
+    MerryPhotoData* d = self.reactPhotos[current];
+    
+    [_bridge.imageLoader loadImageWithURLRequest:d.source.request
+                                            size:d.source.size
+                                           scale:d.source.scale
+                                         clipped:YES
+                                      resizeMode:RCTResizeModeStretch
+                                   progressBlock:^(int64_t progress, int64_t total) {
+                                       //            NSLog(@"%lld %lld", progress, total);
+                                   }
+                                partialLoadBlock:nil
+                                 completionBlock:^(NSError* error, UIImage* image) {
+                                     if (image) {
+                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                             
+                                             currentPhoto.image = image;
+                                             
+                                             [photosViewController updatePhoto:currentPhoto];
+                                             
+                                         });
+                                     }
+                                 }];
+}
+
 /**
  Update Photo
  @param photosViewController <#photosViewController description#>
@@ -154,30 +182,23 @@
 - (void)updatePhotoAtIndex:(NYTPhotosViewController*)photosViewController
                      Index:(NSUInteger)photoIndex
 {
-    NSInteger current = (unsigned long)photoIndex;
-    MerryPhoto* currentPhoto = [self.dataSource.photos objectAtIndex:current];
-    MerryPhotoData* d = self.reactPhotos[current];
 
-    [_bridge.imageLoader loadImageWithURLRequest:d.source.request
-        size:d.source.size
-        scale:d.source.scale
-        clipped:YES
-        resizeMode:RCTResizeModeStretch
-        progressBlock:^(int64_t progress, int64_t total) {
-            //            NSLog(@"%lld %lld", progress, total);
+    if(photoIndex+1 <= self.dataSource.photos.count)
+    {
+        [self getCurrent_Previous_NextPhoto:photoIndex+1 photosViewController:photosViewController];
+    }
+    
+    if(photoIndex > 0 && self.dataSource.photos.count > 0 )
+    {
+        MerryPhoto* currentPhoto = [self.dataSource.photos objectAtIndex:photoIndex-1];
+        if (currentPhoto.image) {
+            [self getCurrent_Previous_NextPhoto:photoIndex-1 photosViewController:photosViewController];
+
         }
-        partialLoadBlock:nil
-        completionBlock:^(NSError* error, UIImage* image) {
-            if (image) {
-                dispatch_async(dispatch_get_main_queue(), ^{
+    }
+    
+    [self getCurrent_Previous_NextPhoto:photoIndex photosViewController:photosViewController];
 
-                    currentPhoto.image = image;
-
-                    [photosViewController updatePhoto:currentPhoto];
-
-                });
-            }
-        }];
 }
 
 #pragma mark - NYTPhotosViewControllerDelegate
