@@ -146,8 +146,21 @@
     });
 }
 
-- (void)getCurrent_Previous_NextPhoto:(NSUInteger)photoIndex photosViewController:(NYTPhotosViewController *)photosViewController {
+/**
+ Update Photo
+ @param photosViewController <#photosViewController description#>
+ @param photoIndex <#photoIndex description#>
+ */
+- (void)updatePhotoAtIndex:(NYTPhotosViewController*)photosViewController
+                     Index:(NSUInteger)photoIndex
+{
     
+    // now you can pass the # of photos u need to pre-load
+    [self getCurrent_Previous_NextPhoto:photoIndex photosViewController:photosViewController numberOfPreLoadImages:2];
+    
+}
+
+- (void)getImageForIndex:(NSUInteger)photoIndex photosViewController:(NYTPhotosViewController *)photosViewController {
     NSInteger current = (unsigned long)photoIndex;
     MerryPhoto* currentPhoto = [self.dataSource.photos objectAtIndex:current];
     MerryPhotoData* d = self.reactPhotos[current];
@@ -174,31 +187,22 @@
                                  }];
 }
 
-/**
- Update Photo
- @param photosViewController <#photosViewController description#>
- @param photoIndex <#photoIndex description#>
- */
-- (void)updatePhotoAtIndex:(NYTPhotosViewController*)photosViewController
-                     Index:(NSUInteger)photoIndex
-{
-
-    if(photoIndex+1 <= self.dataSource.photos.count)
-    {
-        [self getCurrent_Previous_NextPhoto:photoIndex+1 photosViewController:photosViewController];
-    }
+- (void)getCurrent_Previous_NextPhoto:(NSUInteger)photoIndex photosViewController:(NYTPhotosViewController *)photosViewController numberOfPreLoadImages:(int)preLoadImagesCount{
     
-    if(photoIndex > 0 && self.dataSource.photos.count > 0 )
-    {
-        MerryPhoto* currentPhoto = [self.dataSource.photos objectAtIndex:photoIndex-1];
-        if (currentPhoto.image) {
-            [self getCurrent_Previous_NextPhoto:photoIndex-1 photosViewController:photosViewController];
-
+    [self getImageForIndex:photoIndex photosViewController:photosViewController];
+    
+    for (int i = 1; i <= preLoadImagesCount; i++) {
+        
+        // check if the next index to pre-load exist or not , and pre-load if yes
+        if ((int)photoIndex+i < self.dataSource.photos.count) {
+            [self getImageForIndex:photoIndex+i photosViewController:photosViewController];
+        }
+        
+        // check prev index to pre-load if it is exist or not , and pre-load if yes
+        if ((int)photoIndex-i >= 0) {
+            [self getImageForIndex:photoIndex-i photosViewController:photosViewController];
         }
     }
-    
-    [self getCurrent_Previous_NextPhoto:photoIndex photosViewController:photosViewController];
-
 }
 
 #pragma mark - NYTPhotosViewControllerDelegate
