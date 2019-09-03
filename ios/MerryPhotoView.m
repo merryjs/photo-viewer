@@ -104,6 +104,10 @@
             merryPhoto.attributedCaptionSummary = [MerryPhotoView attributedSummaryFromString:d.summary:d.summaryColor ? [RCTConvert UIColor:d.summaryColor] : [UIColor lightGrayColor]];
         }
 
+        if (d.url) {
+            merryPhoto.imageURL = d.url;
+        }
+        
         [msPhotos addObject:merryPhoto];
 
         [rsPhotos addObject:d];
@@ -154,55 +158,30 @@
 - (void)updatePhotoAtIndex:(NYTPhotosViewController*)photosViewController
                      Index:(NSUInteger)photoIndex
 {
-    
-    // now you can pass the # of photos u need to pre-load
-    [self getCurrent_Previous_NextPhoto:photoIndex photosViewController:photosViewController numberOfPreLoadImages:2];
-    
-}
-
-- (void)getImageForIndex:(NSUInteger)photoIndex photosViewController:(NYTPhotosViewController *)photosViewController {
     NSInteger current = (unsigned long)photoIndex;
     MerryPhoto* currentPhoto = [self.dataSource.photos objectAtIndex:current];
     MerryPhotoData* d = self.reactPhotos[current];
-    
-    [_bridge.imageLoader loadImageWithURLRequest:d.source.request
-                                            size:d.source.size
-                                           scale:d.source.scale
-                                         clipped:YES
-                                      resizeMode:RCTResizeModeStretch
-                                   progressBlock:^(int64_t progress, int64_t total) {
-                                       //            NSLog(@"%lld %lld", progress, total);
-                                   }
-                                partialLoadBlock:nil
-                                 completionBlock:^(NSError* error, UIImage* image) {
-                                     if (image) {
-                                         dispatch_async(dispatch_get_main_queue(), ^{
-                                             
-                                             currentPhoto.image = image;
-                                             
-                                             [photosViewController updatePhoto:currentPhoto];
-                                             
-                                         });
-                                     }
-                                 }];
-}
 
-- (void)getCurrent_Previous_NextPhoto:(NSUInteger)photoIndex photosViewController:(NYTPhotosViewController *)photosViewController numberOfPreLoadImages:(int)preLoadImagesCount{
-    
-    [self getImageForIndex:photoIndex photosViewController:photosViewController];
-    
-    for (int i = 1; i <= preLoadImagesCount; i++) {
-        
-        // check if the next index to pre-load exist or not , and pre-load if yes
-        if ((int)photoIndex+i < self.dataSource.photos.count) {
-            [self getImageForIndex:photoIndex+i photosViewController:photosViewController];
+    [_bridge.imageLoader loadImageWithURLRequest:d.source.request
+        size:d.source.size
+        scale:d.source.scale
+        clipped:YES
+        resizeMode:RCTResizeModeStretch
+        progressBlock:^(int64_t progress, int64_t total) {
+            //            NSLog(@"%lld %lld", progress, total);
         }
-        
-        // check prev index to pre-load if it is exist or not , and pre-load if yes
-        if ((int)photoIndex-i >= 0) {
-            [self getImageForIndex:photoIndex-i photosViewController:photosViewController];
-        }
-    }
+        partialLoadBlock:nil
+        completionBlock:^(NSError* error, UIImage* image) {
+            if (image) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+
+                    currentPhoto.image = image;
+
+                    [photosViewController updatePhoto:currentPhoto];
+
+                });
+            }
+        }];
 }
 
 #pragma mark - NYTPhotosViewControllerDelegate
@@ -303,6 +282,27 @@
         self.onDismiss(nil);
     }
     [self clean];
+}
+
+- (void)photosViewOpenProjectDetailControllerDidDismiss:(NYTPhotosViewController*)photosViewController
+{
+    
+  //  if (self.hideStatusBar) {
+   //     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
+   // }
+    if (self.onProjectDetails) {
+        MerryPhotoData* current = self.data[0];
+        
+        if (self.onProjectDetails) {
+            self.onProjectDetails(@{
+                            @"index" : [NSNumber numberWithInteger:0],
+                            @"photo" : current
+                            });
+        }
+    }
+    [self photosViewControllerDidDismiss:photosViewController];
+
+//[self clean];
 }
 
 + (NSAttributedString*)attributedTitleFromString:(NSString*)caption

@@ -15,6 +15,7 @@ NSString* const kMerryPhotoDataSummaryColor = @"summaryColor";
 NSString* const kMerryPhotoDataTitle = @"title";
 NSString* const kMerryPhotoDataTitleColor = @"titleColor";
 NSString* const kMerryPhotoSource = @"source";
+NSString* const kMerryPhotoURL = @"url";
 
 @interface MerryPhotoData ()
 @end
@@ -42,6 +43,10 @@ NSString* const kMerryPhotoSource = @"source";
     
     if (![dictionary[kMerryPhotoSource] isKindOfClass:[NSNull class]]) {
         self.source = [RCTConvert RCTImageSource: dictionary[kMerryPhotoSource]];
+    }
+    
+    if (![dictionary[kMerryPhotoURL] isKindOfClass:[NSNull class]]) {
+        self.url = dictionary[kMerryPhotoURL];
     }
     return self;
 }

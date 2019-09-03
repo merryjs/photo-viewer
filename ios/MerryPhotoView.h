@@ -27,6 +27,7 @@
 @property (nonatomic) BOOL hideStatusBar;
 @property (nonatomic, copy) RCTBubblingEventBlock onDismiss;
 @property (nonatomic, copy) RCTBubblingEventBlock onChange;
+@property (nonatomic, copy) RCTBubblingEventBlock onProjectDetails;
 @property (nonatomic) BOOL hideCloseButton;
 @property (nonatomic) BOOL hideShareButton;
 
