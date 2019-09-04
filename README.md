@@ -1,6 +1,6 @@
 # React Native Photo Viewer
 
-> A photo viewer for react native build on top of [NYTPhotoViewer](https://github.com/NYTimes/NYTPhotoViewer) and [FrescoImageViewer](https://github.com/stfalcon-studio/FrescoImageViewer)
+> A photo viewer for react native build on top of [NYTPhotoViewer](https://github.com/Architizer/NYTPhotoViewer) and [FrescoImageViewer](https://github.com/stfalcon-studio/FrescoImageViewer)
 
 **Key features:**
 
@@ -80,7 +80,7 @@ For some reasons if you dont want use any package manager in your side then you 
 
 ##### [CocoaPods](https://cocoapods.org/)
 
-Add `pod 'NYTPhotoViewer',:git => 'https://github.com/NYTimes/NYTPhotoViewer.git', :branch => 'master'` in your `Podfile`
+Add `pod 'NYTPhotoViewer',:git => 'https://github.com/Architizer/NYTPhotoViewer.git', :branch => 'master'` in your `Podfile`
 
 If you only use CocoaPods to define your react-native 3rd party libraries you can add this to you `Podfile` without linking to project as above:
 
@@ -93,7 +93,7 @@ pod 'MerryPhotoViewer', path: '../node_modules/@merryjs/photo-viewer'
 If you want use Carthage in your project and then you can add these dependencies into your Cartfile
 
 ```
-github "NYTimes/NYTPhotoViewer"
+github "Architizer/NYTPhotoViewer"
 ```
 
 and run `carthage update` when you done this you can link it like Manual link from node_modules describes, the only difference is use your carthage file instead of ours
@@ -296,5 +296,5 @@ limitations under the License.
 Due to we use some third-part softwares and both of them are licensed under Apache 2.0 so do we.
 
 - [Photo Viewer](https://github.com/merryjs/photo-viewer/blob/master/LICENSE)
-- [NYTPhotoViewer](https://github.com/NYTimes/NYTPhotoViewer/blob/develop/LICENSE.md)
+- [NYTPhotoViewer](https://github.com/Architizer/NYTPhotoViewer/blob/develop/LICENSE.md)
 - [FrescoImageViewer](https://github.com/stfalcon-studio/FrescoImageViewer#license)
