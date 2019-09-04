@@ -316,16 +316,13 @@
     if (self.onProjectDetails) {
         //[self photosViewControllerDidDismiss:photosViewController];
 
-        MerryPhotoData* current = self.data[currentPhotoIndex];
-        if (current != nil) {
+//        MerryPhotoData* current = self.data[currentPhotoIndex];
+//        if (current != nil) {
             if (self.onProjectDetails) {
-                self.onProjectDetails(@{
-                                        @"index" : [NSNumber numberWithInteger:currentPhotoIndex],
-                                        @"photo" : current
-                                        });
+                self.onProjectDetails(nil);
             }
         }
-    }
+//    }
 
 }
 
