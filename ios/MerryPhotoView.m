@@ -109,6 +109,8 @@
             merryPhoto.imageURL = d.url;
         }
         
+        merryPhoto.showProjectDetailButton = d.showProjectDetailButton;
+        
         [msPhotos addObject:merryPhoto];
 
         [rsPhotos addObject:d];
