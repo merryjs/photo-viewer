@@ -141,8 +141,7 @@ public class MerryPhotoView extends View {
             public void onImageChange(int position) {
 
                 final MerryPhotoData merryPhotoData = getData()[position];
-                String url = merryPhotoData.source.getString("uri");
-//                default use url
+                String url = merryPhotoData.url;
                 overlayView.setShareContext(url);
 
                 overlayView.setDescription(merryPhotoData.summary);

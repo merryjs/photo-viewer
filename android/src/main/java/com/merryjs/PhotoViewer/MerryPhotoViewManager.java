@@ -83,6 +83,9 @@ public class MerryPhotoViewManager extends SimpleViewManager<MerryPhotoView> {
                 }
                 if (rm.hasKey("title")) {
                     merryPhotoData.title = rm.getString("title");
+                }
+                if (rm.hasKey("url")) {
+                    merryPhotoData.url = rm.getString("url");
 
                 }
                 if (rm.hasKey("titleColor")) {
