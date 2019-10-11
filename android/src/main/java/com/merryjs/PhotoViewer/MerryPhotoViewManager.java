@@ -71,25 +71,24 @@ public class MerryPhotoViewManager extends SimpleViewManager<MerryPhotoView> {
 
                 if (rm.hasKey("source")) {
                     merryPhotoData.source = rm.getMap("source");
-
                 }
                 if (rm.hasKey("summary")) {
                     merryPhotoData.summary = rm.getString("summary");
-
                 }
                 if (rm.hasKey("summaryColor")) {
                     merryPhotoData.summaryColor = rm.getInt("summaryColor");
-
                 }
                 if (rm.hasKey("title")) {
                     merryPhotoData.title = rm.getString("title");
                 }
                 if (rm.hasKey("url")) {
                     merryPhotoData.url = rm.getString("url");
-
                 }
                 if (rm.hasKey("titleColor")) {
                     merryPhotoData.titleColor = rm.getInt("titleColor");
+                }
+                if (rm.hasKey("isCollected")) {
+                    merryPhotoData.isCollected = rm.getBoolean("isCollected");
                 }
                 list.add(merryPhotoData);
 
@@ -105,9 +104,7 @@ public class MerryPhotoViewManager extends SimpleViewManager<MerryPhotoView> {
 
     @ReactProp(name = "initial")
     public void setInitial(MerryPhotoView merryPhotoView, int prop) {
-
         merryPhotoView.setInitial(prop);
-
     }
 
     @ReactProp(name = "hideStatusBar")
@@ -130,11 +127,36 @@ public class MerryPhotoViewManager extends SimpleViewManager<MerryPhotoView> {
         merryPhotoView.setHideCloseButton(prop);
     }
 
+    @ReactProp(name = "enableCollect", defaultBoolean = false)
+    public void setEnableCollect(MerryPhotoView merryPhotoView, Boolean prop) {
+        merryPhotoView.setEnableCollect(prop);
+    }
+
+    @ReactProp(name = "DismissOnCollect", defaultBoolean = false)
+    public void setDismissOnCollect(MerryPhotoView merryPhotoView, Boolean prop) {
+        merryPhotoView.setDismissOnCollect(prop);
+    }
+
+    @ReactProp(name = "enableSimilarImages", defaultBoolean = false)
+    public void setEnableSimilarImages(MerryPhotoView merryPhotoView, Boolean prop) {
+        merryPhotoView.setEnableSimilarImages(prop);
+    }
+
+    @ReactProp(name = "showProjectDetailButton", defaultBoolean = false)
+    public void setShowProjectDetailButton(MerryPhotoView merryPhotoView, Boolean prop) {
+        merryPhotoView.setShowProjectDetailButton(prop);
+    }
+
     @Nullable
     @Override
     public Map<String, Object> getExportedCustomDirectEventTypeConstants() {
         return MapBuilder.<String, Object>builder()
                 .put("onChange", MapBuilder.of("registrationName", "onChange"))
-                .put("onDismiss", MapBuilder.of("registrationName", "onDismiss")).build();
+                .put("onDismiss", MapBuilder.of("registrationName", "onDismiss"))
+                .put("onShare", MapBuilder.of("registrationName", "onShare"))
+                .put("onCollect", MapBuilder.of("registrationName", "onCollect"))
+                .put("onUncollect", MapBuilder.of("registrationName", "onUncollect"))
+                .put("onSimilarImages", MapBuilder.of("registrationName", "onSimilarImages"))
+                .build();
     }
 }

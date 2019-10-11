@@ -14,4 +14,5 @@ public class MerryPhotoData {
     public String summary;
     public int titleColor;
     public int summaryColor;
+    public boolean isCollected;
 }

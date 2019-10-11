@@ -1,4 +1,6 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -10,25 +12,66 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
         android:padding="16dp"
         android:textAlignment="center" />
 
-    <Button
+    <ImageView
         android:id="@+id/btnClose"
         style="@style/SimpleButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="@string/close" />
-    <Button
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        app:srcCompat="@drawable/ic_close"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
         android:id="@+id/btnShare"
         style="@style/SimpleButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="@string/share" />
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        app:srcCompat="@drawable/ic_share"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/ivCollect"
+        style="@style/SimpleButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnShare"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/ic_heart_outline"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/ivSimilar"
+        style="@style/SimpleButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivCollect"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/ic_search"
+        tools:ignore="ContentDescription" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
