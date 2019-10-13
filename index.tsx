@@ -67,6 +67,32 @@ export interface MerryPhotoViewPorps {
       photo: Photo;
     }
   ) => void;
+  enableCollect: boolean;
+  onCollect?: (
+    data: {
+      index: number;
+      photo: Photo;
+    }
+  ) => void;
+  onUncollect?: (
+    data: {
+      index: number;
+      photo: Photo;
+    }
+  ) => void;
+  onShare?: (
+    data: {
+      index: number;
+      photo: Photo;
+    }
+  ) => void;
+  enableSimilarImages: boolean;
+  onSimilarImages?: (
+    data: {
+      index: number;
+      photo: Photo;
+    }
+  ) => void;
 }
 
 class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
@@ -141,6 +167,34 @@ class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
       onChange(rest);
     }
   };
+  onCollect = (event: any) => {
+    const { onCollect } = this.props;
+    if (onCollect) {
+      const { target, ...rest } = event.nativeEvent;
+      onCollect(rest);
+    }
+  };
+  onUncollect = (event: any) => {
+    const { onUncollect } = this.props;
+    if (onUncollect) {
+      const { target, ...rest } = event.nativeEvent;
+      onUncollect(rest);
+    }
+  };
+  onShare = (event: any) => {
+    const { onShare } = this.props;
+    if (onShare) {
+      const { target, ...rest } = event.nativeEvent;
+      onShare(rest);
+    }
+  };
+  onSimilarImages = (event: any) => {
+    const { onSimilarImages } = this.props;
+    if (onSimilarImages) {
+      const { target, ...rest } = event.nativeEvent;
+      onSimilarImages(rest);
+    }
+  };
   render() {
     // nothing
     if (this.props.visible === false) {
@@ -167,6 +221,10 @@ class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
         initial={startPosition}
         data={transformData}
         onChange={this.onChange}
+        onCollect={this.onCollect}
+        onUncollect={this.onUncollect}
+        onShare={this.onShare}
+        onSimilarImages={this.onSimilarImages}
       />
     );
   }
