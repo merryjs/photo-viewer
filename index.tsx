@@ -234,7 +234,12 @@ var RNMerryPhotoView = requireNativeComponent(
   MerryPhotoView,
   {
     nativeOnly: {
-      onChange: true
+      onChange: true,
+      onChange: true,
+      onCollect: true,
+      onUncollect: true,
+      onShare: true,
+      onSimilarImages: true
     }
   }
 );
