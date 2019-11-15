@@ -1,5 +1,6 @@
 //  Created by react-native-create-bridge
 #import "MerryPhotoView.h"
+#import <React/RCTImageLoader.h>
 #import <Foundation/Foundation.h>
 
 @implementation MerryPhotoView {
@@ -158,7 +159,7 @@
     MerryPhoto* currentPhoto = [self.dataSource.photos objectAtIndex:current];
     MerryPhotoData* d = self.reactPhotos[current];
 
-    [_bridge.imageLoader loadImageWithURLRequest:d.source.request
+    [[_bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:d.source.request
         size:d.source.size
         scale:d.source.scale
         clipped:YES
