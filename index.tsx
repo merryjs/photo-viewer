@@ -9,8 +9,8 @@ import {
   ViewProperties
 } from "react-native";
 import * as PropTypes from "prop-types";
-const resolveAssetSource = require("react-native/Libraries/Image/resolveAssetSource");
-const ImageSourcePropType = require("react-native/Libraries/Image/ImageSource");
+import resolveAssetSource from "react-native/Libraries/Image/resolveAssetSource";
+import ImageSourcePropType from "react-native/Libraries/DeprecatedPropTypes/DeprecatedImageSourcePropType";
 
 /**
  * Photo data
@@ -61,12 +61,7 @@ export interface MerryPhotoViewPorps {
    * When viewer has dismissed but you still needs to update the visible state
    */
   onDismiss: () => void;
-  onChange?: (
-    data: {
-      index: number;
-      photo: Photo;
-    }
-  ) => void;
+  onChange?: (data: { index: number; photo: Photo }) => void;
 }
 
 class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
@@ -163,7 +158,7 @@ class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
     }
     return (
       <RNMerryPhotoView
-        {...props as any}
+        {...(props as any)}
         initial={startPosition}
         data={transformData}
         onChange={this.onChange}
