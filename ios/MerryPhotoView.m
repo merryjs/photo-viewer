@@ -235,7 +235,7 @@
 {
     MerryPhotoData* current = self.data[photoIndex];
 
-    if (self.onChange) {
+    if (self.onChange && current != nil) {
         self.onChange(@{
             @"index" : [NSNumber numberWithInteger:photoIndex],
             @"photo" : current
