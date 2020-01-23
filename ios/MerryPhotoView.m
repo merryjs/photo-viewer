@@ -159,7 +159,14 @@
     MerryPhoto* currentPhoto = [self.dataSource.photos objectAtIndex:current];
     MerryPhotoData* d = self.reactPhotos[current];
 
-    [[_bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:d.source.request
+    NSURLRequest *request = d.source.request;
+    bool requestValid = [NSURLConnection canHandleRequest:request];
+
+    if (!requestValid) {
+        return;
+    }
+
+    [[_bridge moduleForClass:[RCTImageLoader class]] loadImageWithURLRequest:request
         size:d.source.size
         scale:d.source.scale
         clipped:YES
