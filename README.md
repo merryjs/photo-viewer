@@ -80,7 +80,7 @@ For some reasons if you dont want use any package manager in your side then you 
 
 ##### [CocoaPods](https://cocoapods.org/)
 
-Add `pod 'NYTPhotoViewer',:git => 'https://github.com/NYTimes/NYTPhotoViewer.git', :branch => 'master'` in your `Podfile`
+Add `pod "NYTPhotoViewer", "~> 2.0.0"` in your `Podfile`
 
 If you only use CocoaPods to define your react-native 3rd party libraries you can add this to you `Podfile` without linking to project as above:
 
