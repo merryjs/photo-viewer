@@ -13,14 +13,17 @@
         android:padding="16dp"
         android:textAlignment="center" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btnClose"
-        style="@style/SimpleButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        style="@style/SimpleImageButtonStyle"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_alignParentStart="true"
-        android:text="@string/close" />
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/close_button_x" />
     <Button
         android:id="@+id/btnShare"
         style="@style/SimpleButtonStyle"

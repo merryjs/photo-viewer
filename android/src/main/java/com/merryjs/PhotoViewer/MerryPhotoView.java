@@ -81,6 +81,17 @@ public class MerryPhotoView extends View {
 
     protected boolean hideShareButton;
 
+    protected boolean hideTitle;
+
+    public boolean isHideTitle() {
+        return hideTitle;
+    }
+
+    public MerryPhotoView setHideTitle(boolean hideTitle) {
+        this.hideTitle = hideTitle;
+        return this;
+    }
+
     protected boolean hideCloseButton;
 
     public boolean isHideCloseButton() {
@@ -157,6 +168,7 @@ public class MerryPhotoView extends View {
                 // is hide sharebutton
                 overlayView.setHideShareButton(isHideShareButton());
                 overlayView.setHideCloseButton(isHideCloseButton());
+                overlayView.setHideTitle(isHideTitle());
 
 //                if (options.titlePagerColor != null) {
 //                    overlayView.setPagerTextColor(options.titlePagerColor);

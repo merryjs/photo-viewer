@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,7 +26,7 @@ public class MerryPhotoOverlay extends RelativeLayout {
 
     private TextView tvDescription;
     private TextView tvShare;
-    private TextView tvClose;
+    private ImageButton tvClose;
     private ImageViewer imageViewer;
     private String sharingText;
     public void setImageViewer(ImageViewer imageViewer){
@@ -52,6 +53,11 @@ public class MerryPhotoOverlay extends RelativeLayout {
     public void setHideCloseButton(Boolean hideCloseButton) {
         tvClose.setVisibility(hideCloseButton ? View.GONE : View.VISIBLE);
     }
+
+    public void setHideTitle(Boolean hideTitle) {
+        tvTitlePager.setVisibility(hideTitle? View.GONE : View.VISIBLE);
+    }
+
     public void setPagerText(String text) {
         tvTitlePager.setText(text);
     }
@@ -110,7 +116,8 @@ public class MerryPhotoOverlay extends RelativeLayout {
                 sendShareIntent();
             }
         });
-        tvClose = (TextView) view.findViewById(R.id.btnClose);
+        tvClose = (ImageButton) view.findViewById(R.id.btnClose);
+        tvClose.setColorFilter(Color.parseColor("#FFFFFF"));
         tvClose.setOnClickListener(new OnClickListener() {
 
             @Override

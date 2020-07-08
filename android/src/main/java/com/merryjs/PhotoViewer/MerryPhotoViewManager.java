@@ -127,6 +127,11 @@ public class MerryPhotoViewManager extends SimpleViewManager<MerryPhotoView> {
         merryPhotoView.setHideCloseButton(prop);
     }
 
+    @ReactProp(name = "hideTitle", defaultBoolean = false)
+    public void setHideTitle(MerryPhotoView merryPhotoView, Boolean prop) {
+        merryPhotoView.setHideTitle(prop);
+    }
+
     @Nullable
     @Override
     public Map<String, Object> getExportedCustomDirectEventTypeConstants() {
