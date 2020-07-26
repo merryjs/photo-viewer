@@ -31,8 +31,7 @@
 	- [Known issues](#known-issues)
 	- [LICENSE](#license)
 
-![preview](![image](https://user-images.githubusercontent.com/433259/88470922-102fb600-cf35-11ea-92ae-b4cafe9ab9dd.png)
-) ![android](https://user-images.githubusercontent.com/433259/88471006-fb9fed80-cf35-11ea-9661-e1bd58de826f.gif)
+![image](https://user-images.githubusercontent.com/433259/88470922-102fb600-cf35-11ea-92ae-b4cafe9ab9dd.png) ![android](https://user-images.githubusercontent.com/433259/88471006-fb9fed80-cf35-11ea-9661-e1bd58de826f.gif)
 
 
 ----
