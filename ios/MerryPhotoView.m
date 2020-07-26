@@ -253,8 +253,13 @@
 }
 - (void)displayActivityViewController:(UIActivityViewController*)controller animated:(BOOL)animated
 {
-
-    [[self getRootView] presentViewController:controller animated:animated completion:nil];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [[self getRootView] presentViewController:controller animated:animated completion:nil];
+    }
+    else {
+        UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
+        [popup presentPopoverFromRect:CGRectMake([self getRootView].view.frame.size.width/2, [self getRootView].view.frame.size.height/2, 0, 0)inView:[self getRootView].view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
 }
 - (BOOL)photosViewController:(NYTPhotosViewController*)photosViewController handleLongPressForPhoto:(id<NYTPhoto>)photo withGestureRecognizer:(UILongPressGestureRecognizer*)longPressGestureRecognizer
 {
