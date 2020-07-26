@@ -30,8 +30,9 @@
 	- [Usage](#usage)
 	- [Known issues](#known-issues)
 	- [LICENSE](#license)
-
-![image](https://user-images.githubusercontent.com/433259/88470922-102fb600-cf35-11ea-92ae-b4cafe9ab9dd.png) ![android](https://user-images.githubusercontent.com/433259/88471006-fb9fed80-cf35-11ea-9661-e1bd58de826f.gif)
+	
+	
+<img width="375" alt="20170728-110148@2x" src="https://user-images.githubusercontent.com/433259/88470922-102fb600-cf35-11ea-92ae-b4cafe9ab9dd.png"> ![android](https://user-images.githubusercontent.com/433259/88471006-fb9fed80-cf35-11ea-9661-e1bd58de826f.gif)
 
 
 ----
