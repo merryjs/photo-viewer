@@ -31,7 +31,11 @@
 	- [Known issues](#known-issues)
 	- [LICENSE](#license)
 
-![preview](./assets/preview.gif) ![preview](./assets/android.gif)
+![preview](![image](https://user-images.githubusercontent.com/433259/88470922-102fb600-cf35-11ea-92ae-b4cafe9ab9dd.png)
+) ![android](https://user-images.githubusercontent.com/433259/88471006-fb9fed80-cf35-11ea-9661-e1bd58de826f.gif)
+
+
+----
 
 
 **Note**
@@ -39,7 +43,6 @@
 If your `react-native` version is under `0.57` please use version `2.x` otherwise please use the latest version
 
 
-----
 
 
 ## Getting started
@@ -76,7 +79,8 @@ For some reasons if you dont want use any package manager in your side then you 
 
 - Go to your xcode project choose your project if you unsure it click (command + 1)
 - Choose target General panel find embedded binaries click + icon will display a dialog and then go to `node_modules/@merryjs/photo-viewer/ios/Carthage/Build/iOS/` folder add these frameworks into your xcode project. make sure `checked` **copy items if needed** and then It should looks like below,
-  ![Link Frameworks](assets/20170728-110148@2x.png)
+  <img width="1331" alt="20170728-110148@2x" src="https://user-images.githubusercontent.com/433259/88471015-1eca9d00-cf36-11ea-870a-3f95b96bc48e.png">
+
 
 ##### [CocoaPods](https://cocoapods.org/)
 

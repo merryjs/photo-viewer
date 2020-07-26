@@ -51,5 +51,5 @@ index.tsx
 assets/
 tsconfig.json
 .vscode
-example/
+PhotoViewerExample/
 docs/
