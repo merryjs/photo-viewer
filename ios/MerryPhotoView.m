@@ -191,6 +191,16 @@
 {
     return nil;
 }
+- (void)photosViewController:(NYTPhotosViewController *)photosViewController actionCompletedWithActivityType:(NSString *)activityType {
+    if (self.hideStatusBar) {
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
+    }
+
+    if (self.onDismiss) {
+        self.onDismiss(nil);
+    }
+    [self clean];
+}
 
 /**
  Customize title display
