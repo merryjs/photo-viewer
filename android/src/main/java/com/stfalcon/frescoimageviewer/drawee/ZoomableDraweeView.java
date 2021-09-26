@@ -141,6 +141,11 @@ public class ZoomableDraweeView extends SimpleDraweeView implements IAttacher {
     }
 
     @Override
+    public void setOrientation(int orientation) {
+
+    }
+
+    @Override
     public void setZoomTransitionDuration(long duration) {
         attacher.setZoomTransitionDuration(duration);
     }

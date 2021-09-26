@@ -1,6 +1,6 @@
 buildscript {
 	repositories {
-		jcenter()
+		mavenCentral()
 	}
 
 	dependencies {
@@ -11,12 +11,12 @@ buildscript {
 apply plugin: 'com.android.library'
 
 android {
-	compileSdkVersion 28
-	buildToolsVersion "28.0.3"
+	compileSdkVersion 30
+	buildToolsVersion "30.0.3"
 
 	defaultConfig {
 		minSdkVersion 16
-		targetSdkVersion 28
+		targetSdkVersion 30
 		versionCode 1
 		versionName "1.0"
 	}
@@ -26,21 +26,20 @@ android {
 }
 
 repositories {
-	jcenter()
 	mavenCentral()
 }
 
 
 ext {
-	supportVersion = '28.0.3'
+	supportVersion = '30.0.3'
 	frescoVersion = '1.13.0'
 }
 
 dependencies {
 
 	implementation "com.facebook.react:react-native:+"  // From node_modules
-	implementation "androidx.appcompat:appcompat:1.0.0"
-	implementation 'me.relex:photodraweeview:1.1.0'
+	implementation "androidx.appcompat:appcompat:1.3.1"
+	implementation 'me.relex:photodraweeview:2.1.0'
 
 	implementation "com.facebook.fresco:fresco:$frescoVersion"
 	implementation "com.facebook.fresco:animated-gif:$frescoVersion"
