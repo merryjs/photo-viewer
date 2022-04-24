@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import * as PropTypes from "prop-types";
 import resolveAssetSource from "react-native/Libraries/Image/resolveAssetSource";
-import ImageSourcePropType from "react-native/Libraries/DeprecatedPropTypes/DeprecatedImageSourcePropType";
 
 /**
  * Photo data
@@ -68,10 +67,7 @@ class MerryPhotoView extends React.Component<MerryPhotoViewPorps, any> {
   static propTypes = {
     data: PropTypes.arrayOf(
       PropTypes.shape({
-        source:
-          Platform.OS === "ios"
-            ? ImageSourcePropType
-            : PropTypes.oneOfType([
+        source: PropTypes.oneOfType([
                 PropTypes.shape({
                   uri: PropTypes.string,
                   headers: PropTypes.objectOf(PropTypes.string)
