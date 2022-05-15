@@ -25,7 +25,7 @@ RCT_EXPORT_VIEW_PROPERTY(hideCloseButton, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(hideShareButton, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(hideTitle, BOOL)
 
-RCT_EXPORT_VIEW_PROPERTY(onDismiss, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onDismiss, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onChange, RCTBubblingEventBlock)
 
 @end
