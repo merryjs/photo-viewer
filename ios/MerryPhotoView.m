@@ -174,7 +174,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     // https://github.com/merryjs/photo-viewer/issues/11
                     // We convert RCTAnimatedImage to UIAnimatedImage so that UIImageView can display gif
-                    if ([image isKindOfClass:NSClassFromString(@"RCTAnimatedImage")]) {
+                    if ([image isKindOfClass:[RCTAnimatedImage class]]) {
                         RCTAnimatedImage *animatedImage = (RCTAnimatedImage *)image;
                         NSMutableArray *imageList = [@[] mutableCopy];
                         NSTimeInterval duration = 0;
