@@ -1,6 +1,7 @@
 //  Created by react-native-create-bridge
 #import "MerryPhotoView.h"
 #import <React/RCTImageLoader.h>
+#import <React/RCTAnimatedImage.h>
 #import <Foundation/Foundation.h>
 
 @implementation MerryPhotoView {
@@ -171,8 +172,20 @@
         completionBlock:^(NSError* error, UIImage* image) {
             if (image) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-
-                    currentPhoto.image = image;
+                	// https://github.com/merryjs/photo-viewer/issues/11
+                	// we convert RCTAnimatedImage to UIAnimatedImage so that UIImageView can display gif
+                    if ([image isKindOfClass:NSClassFromString(@"RCTAnimatedImage")]) {
+                        RCTAnimatedImage *animatedImage = (RCTAnimatedImage *)image;
+                        NSMutableArray *imageList = [@[] mutableCopy];
+                        NSTimeInterval duration = 0;
+                        for (int i = 0; i < [animatedImage animatedImageFrameCount]; i ++) {
+                            [imageList addObject:[animatedImage animatedImageFrameAtIndex:i]];
+                            duration += [animatedImage animatedImageDurationAtIndex:i];
+                        }
+                        currentPhoto.image = [UIImage animatedImageWithImages:imageList duration:duration];
+                    } else {
+                        currentPhoto.image = image;
+                    }
 
                     [photosViewController updatePhoto:currentPhoto];
 

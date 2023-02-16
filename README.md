@@ -275,10 +275,6 @@ const photos = [
 
 For complete documentation please see https://merryjs.github.io/photo-viewer/interfaces/merryphotoviewporps.html
 
-## Known issues
-
-- IOS not support gif well when using imageLoader Please see https://github.com/facebook/react-native/issues/15427 any help are welcome. at this moment gif image on ios platform are only display the first frame and no animation.
-
 ## LICENSE
 
 ```
